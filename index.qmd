@@ -51,13 +51,6 @@ El paquete `ggtree` se instala desde BioConductor a tráves del paquete `BiocMan
 BiocManager::install("ggtree")
 ```
 
-R ver
-
-```{r}
-
-```
-
-
 
 
 
