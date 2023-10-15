@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: >
+    PCB 2024-1 
+    Grupo T446
+  sidebar:
+    background: primary
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/luisDVA/PCB-R-curso
+        text: GitHub
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Inicio
+      - href: materiales.qmd
+        text: Materiales
+        
+  page-footer:
+    left: | 
+      Luis D. Verde Arregoitia
+      
+    center: |
+      Página creada con [Quarto](https://quarto.org/)
+    
+    right: |
+      ![](presentaciones/imgs/UNAM-posgrado-300x87.png){width=120px}
+      ![](presentaciones/imgs/logoPCB.png){width=120px}
+      
+
+      
+format:
+  html:
+    theme: darkly
+    fontsize: 1.3em
+    toc: true
+
+execute:
+  freeze: auto
+

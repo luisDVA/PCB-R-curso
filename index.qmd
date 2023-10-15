@@ -1,0 +1,63 @@
+---
+title: "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1"
+subtitle: "Unidad 3 - R"
+toc: false
+---
+
+
+Este sitio contiene los materiales prácticos y las presentaciones para todos los temas de la unidad 3.
+
+**Temario del curso** [(descargar PDF)](https://pcbiol.posgrado.unam.mx/programas_cursos/2024-1/introduccion_al_estudio_de_los_procesos_evolutivos_con_enfasis_en_metod._de_secuenciacion_masiva.pdf)
+
+### Imparten
+
+Dr. Giovani Hernández Canchola  
+Dra. Helena S. Hernández Rosales  
+**Dr. Luis D. Verde Arregoitia**
+Dra. Susette S. Castañeda Rico
+
+## Instrucciones de instalación de paquetes requeridos
+
+Previo a las actividades de la unidad 3 del curso, programadas para el lunes 23 de octubre, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):
+
+- ‘R’ versión >= 4.2.2 (disponible desde octubre de 2022; la versión más reciente es la 4.3.1). Obtener en [https://cran.r-project.org/](https://cran.r-project.org/)
+
+- ‘RStudio’ versión >= 2023.02.01 (disponible desde febrero de 2022; la versión más reciente es la 2023.09.0). Descargar desde [https://posit.co/download/rstudio-desktop/](https://cran.r-project.org/)
+
+Los paquetes necesarios para el curso son:
+
+```{r}
+#| eval: false
+ape
+dplyr
+tidyr
+purrr
+ggplot2
+ggtree
+stringr
+remotes
+fs
+here
+BiocManager
+```
+
+
+Todos estos paquetes se instalan desde el repositorio CRAN usando la función `install.packages()` o interactivamente desde la pestaña de paquetes de RStudio).
+
+El paquete `ggtree` se instala desde BioConductor a tráves del paquete `BiocManager`
+
+```{r}
+#| eval: false
+BiocManager::install("ggtree")
+```
+
+R ver
+
+```{r}
+
+```
+
+
+
+
+

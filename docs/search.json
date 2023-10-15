@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1",
+    "section": "",
+    "text": "Este sitio contiene los materiales prácticos y las presentaciones para todos los temas de la unidad 3.\nTemario del curso (descargar PDF)"
+  },
+  {
+    "objectID": "index.html#cursos-physalia",
+    "href": "index.html#cursos-physalia",
+    "title": "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1",
+    "section": "",
+    "text": "Temario del curso\n\n\nDr. Giovani Hernández Canchola Dra. Helena S. Hernández Rosales Dr. Luis D. Verde Arregoitia Dra. Susette S. Castañeda Rico"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#instrucciones-de-instalación",
+    "href": "index.html#instrucciones-de-instalación",
+    "title": "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1",
+    "section": "Instrucciones de instalación",
+    "text": "Instrucciones de instalación\nPrevio a las actividades de la unidad tres, programadas para el lunes 23 del curso, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):\n\n‘R’ versión &gt;= 4.2.2 (disponible desde octubre de 2022; la versión más reciente es la 4.3.1). Obtener en https://cran.r-project.org/\n‘RStudio’ versión &gt;= 2023.02.01 (disponible desde febrero de 2022; la versión más reciente es la 2023.09.0). Descargar desde https://posit.co/download/rstudio-desktop/\n\nLos paquetes necesarios para el curso son:\n\nape\ndplyr\ntidyr\npurrr\nggplot2\nggtree\nstringr\nremotes\nfs\nhere\n\n(se instalan desde el repositorio CRAN usando la función install.packages() o interactivamente desde la pestaña de paquetes de RStudio).\n\nBiocManager::install(\"ggtree\")\n\nR ver\n\nVirtual - 28 al 31 de agosto de 2023\nEste sitio contiene los materiales prácticos y las presentaciones para todos los temas de la unidad 3."
+  },
+  {
+    "objectID": "index.html#instrucciones-de-instalación-de-paquetes-requeridos",
+    "href": "index.html#instrucciones-de-instalación-de-paquetes-requeridos",
+    "title": "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1",
+    "section": "Instrucciones de instalación de paquetes requeridos",
+    "text": "Instrucciones de instalación de paquetes requeridos\nPrevio a las actividades de la unidad 3 del curso, programadas para el lunes 23 de octubre, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):\n\n‘R’ versión &gt;= 4.2.2 (disponible desde octubre de 2022; la versión más reciente es la 4.3.1). Obtener en https://cran.r-project.org/\n‘RStudio’ versión &gt;= 2023.02.01 (disponible desde febrero de 2022; la versión más reciente es la 2023.09.0). Descargar desde https://posit.co/download/rstudio-desktop/\n\nLos paquetes necesarios para el curso son:\n\nape\ndplyr\ntidyr\npurrr\nggplot2\nggtree\nstringr\nremotes\nfs\nhere\nBiocManager\n\nTodos estos paquetes se instalan desde el repositorio CRAN usando la función install.packages() o interactivamente desde la pestaña de paquetes de RStudio).\nEl paquete ggtree se instala desde BioConductor a tráves del paquete BiocManager\n\nBiocManager::install(\"ggtree\")\n\nR ver"
+  }
+]
