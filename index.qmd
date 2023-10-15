@@ -13,12 +13,12 @@ Este sitio contiene los materiales prácticos y las presentaciones para todos lo
 
 Dr. Giovani Hernández Canchola  
 Dra. Helena S. Hernández Rosales  
-**Dr. Luis D. Verde Arregoitia**
+**Dr. Luis D. Verde Arregoitia**  
 Dra. Susette S. Castañeda Rico
 
-## Instrucciones de instalación de paquetes requeridos
+## Instalación de paquetes requeridos
 
-Previo a las actividades de la unidad 3 del curso, programadas para el lunes 23 de octubre, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):
+Previo a las actividades de la Unidad, programadas para el lunes 23 de octubre, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):
 
 - ‘R’ versión >= 4.2.2 (disponible desde octubre de 2022; la versión más reciente es la 4.3.1). Obtener en [https://cran.r-project.org/](https://cran.r-project.org/)
 
