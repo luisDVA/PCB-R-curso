@@ -1,0 +1,21 @@
+---
+title: "Materiales del curso"
+toc-title: Contenido
+---
+
+## Datos 
+
+Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:
+
+[🗜️[Descargar datos](archivos-ej/datoscurso.zip)]{style="font-size: 1.6rem; background-color: #b46294; 	padding: 3px;	border-radius: 6px; text-align: center;"}
+
+## Presentaciones
+
+Estas presentaciones en formato web cuentan con un índice de contenidos interactivo (esquina inferior izquierda).
+
+### Lunes 23
+
+[Trabajando con R](presentaciones/01_trabajando-con-R.qmd){.external target="_blank"}
+
+[Preparación de datos ](presentaciones/02_preparacion-de-datos.qmd){.external target="_blank"}
+

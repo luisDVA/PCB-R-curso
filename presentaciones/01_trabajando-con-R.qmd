@@ -1,0 +1,844 @@
+---
+title: "Trabajando con R"
+author: Luis D. Verde Arregoitia
+format:
+  revealjs:
+    theme: curso_styles.scss
+    transition: fade
+    progress: true
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: printing
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 5
+  fig-height: 6
+---
+
+```{r packages setup}
+#| echo: false
+
+library(fontawesome)
+library(tibble)
+
+```
+
+
+## Hoy (lunes 23)
+
+- Introducción general
+- Conceptos básicos, nomenclatura para programación
+- Flujos de trabajo
+- Preparación de datos
+
+## 
+
+### Trabajando con R
+
+* R\
+* Organización de proyectos y archivos\
+* Buenas prácticas para nombrar archivos y objetos\
+* Trabajando con rutas\
+* Objetos y repaso general\
+* Importando archivos
+
+## ¿Qué es `r fontawesome::fa(name = "r-project")`?
+
+✍️Software
+
+. . .
+
+¿Dialecto de S?\
+¿Paquete estadístico?\
+¿RStudio?\
+¿Lenguaje de programación?\
+¿Dispositivo gráfico?
+
+## `r fontawesome::fa(name = "r-project")`?
+
+::: columns
+::: {.column width="50%"}
+✍️🧑‍🎓Ventajas
+:::
+
+::: {.column width="50%"}
+✍️🧑‍🎓Desventajas
+:::
+:::
+
+## Esta unidad
+
+- Instalaciones locales
+- RStudio
+- Dialecto `tidyverse`
+- Enfoque en código
+- Pipes
+
+## Mi sistema
+
+-   R v4.3.1
+
+-   RStudio 2023.06.1
+
+-   Sin personalizaciones visuales
+
+-   Linux Mint 20.3
+
+## `r fontawesome::fa(name = "r-project")` no es RStudio
+
+**IDE** - Entorno de desarrollo integrado
+
+Herramientas para facilitar el uso de un lenguaje de programación
+
+-   Editor de texto que 'reconoce' la sintaxis de un lenguaje
+
+-   Atajos y herramientas para administrar y ejecutar código
+
+## Otras opciones
+
+ - RStudio\
+- Emacs + ESS (https://ess.r-project.org)\
+- vim + Nvim-R: ([Turn Vim Into an IDE for R](https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217))\
+- Visual Studio + [RTVS](https://docs.microsoft.com/en-us/visualstudio/rtvs)
+- Cualquier editor de [texto](https://web.archive.org/web/20151108031733/http://www.sciviews.org/_rgui/projects/Editors.html) (enviando líneas o selecciones a una instancia de R)
+
+## 
+
+![R. Geert van den Berg [SPSS Tutorials] ](https://spss-tutorials.com/img/spss-data-editor-data-view.png)
+
+## Código fuente
+
+::: columns
+::: {.column width="40%"}
+![](imgs/pancks.png)
+:::
+
+::: {.column width="60%"}
+Reproducir y modificar pasos
+
+Encontrar errores
+
+Documentar el proceso
+
+Examinar código ajeno
+
+:::
+:::
+
+## 📦 Paquetes Adicionales
+
+-   \>19,000 en [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network)
+
+-   muchos más en GitHub, GitLab, Bitbucket, Bioconductor, etc.
+
+Se instalan desde R con:
+
+`install.packages()` para paquetes de CRAN\
+`📦 remotes` para otros repositorios y `📦 BiocManager` para BioConductor
+
+## 📦 Paquetes
+\
+\
+Al instalar R instalamos:
+
+`base`: las funciones fundamentales de R
+\
+\
+`list()`\
+`log()`\
+`cat()` `rm()` etc...
+
+## 📦 Paquetes
+
+Otros componentes de R-base:\
+`utils, stats, datasets, graphics, grDevices, grid, methods, tools, parallel, compiler, splines, tcltk, stats4`
+
+Paquetes 'recomendados' (se instalan con R pero no se cargan automáticamente)
+
+`boot, class, cluster, codetools, foreign, KernSmooth, lattice, mgcv, nlme, rpart, survival, MASS, spatial, nnet, Matrix`
+
+
+## Visita guiada por R y RStudio{background-color="#a4c5ff"}
+
+-   Ejecutar R
+
+-   Ejecutar RStudio
+
+-   Instalar algunos paquetes para el curso (si es que no los tienen):
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("readr")
+install.packages("tidyr")
+```
+
+## Paquetes instalados
+
+En _scripts_ o análisis interactivos se cargan con `library()`
+
+> La pestaña de paquetes de RStudio también puede cargar o remover paquetes  
+
+Al cargar un paquete ya podemos acceder a sus datos, funciones, métodos, etc.
+
+## La ruta de búsqueda (search path)
+
+```{r}
+#| eval: false
+search()
+```
+
+Observemos como cambia al cargar y remover paquetes.
+
+
+## Prefijos 
+
+
+`::` es un operador especial (**namespace**) para acceder a objetos o funciones de un paquete sin tener que cargarlo
+
+Cargando un paquete
+```{r}
+#| eval: false
+library(dplyr)
+filter(mis_datos)
+```
+
+Con prefijo
+```{r}
+#| eval: false
+dplyr::filter(mis_datos)
+```
+
+## `::` {background-color="#a4c5ff"}
+
+- ¿Cuándo conviene usar este operador?
+- ¿Qué desventaja(s) tiene?
+
+## tidyverse
+
+::: columns
+::: {.column width="20%"}
+![](imgs/tidyverse_celestial.png)
+:::
+
+::: {.column width="80%"}
+> ... una colección de paquetes de R diseñados para ciencia de datos. Todos los paquetes comparten una filosofía de diseño, gramática, y estructuras de datos. Su objetivo principal es de 'facilitar una conversación sobre datos entre un humano y su computador'
+:::
+:::
+
+::::{.rightref}
+:::{.refbox}
+Wickham et al. (2019)\
+[Welcome to the tidyverse](https://www.theoj.org/joss-papers/joss.01686/10.21105.joss.01686.pdf)\
+https://www.tidyverse.org/
+:::
+::::
+
+## tidyverse
+
+-   Para tareas comunes con datos: importar archivos, limpiar datos, transformar, visualizar, o programar nuevas funciones.
+
+-   Diseñado para facilitar su aprendizaje y que los usuarios vayan aprendiendo más funciones conforme interactuen con más elementos de este 'ecosistema'.
+
+::::{.rightref}
+:::{.refbox}
+Çetinkaya-Rundel et al. ([2021](https://arxiv.org/abs/2108.03510))\
+An educator's perspective of the tidyverse
+:::
+::::
+
+# Directorios, rutas y nombres
+
+
+##  {background-image="imgs/escritorioadri.png"}
+
+## Directorios, rutas y nombres
+
+::: columns
+::: {.column width="33%"}
+![](imgs/file-system.jpg)
+:::
+
+::: {.column width="66%"}
+Guardar archivos en ubicaciones específicas, con nombres intencionales y útiles
+
+- Nombres cortos e informativos
+
+- Fáciles de ordenar y que cooperen con búsquedas parciales
+
+- Atención con caracteres especiales y espacios
+:::
+:::
+
+## Nombres
+
+- ~60% del tiempo de un programador se dedica a entender código y no necesariamente a escribirlo
+
+- La memoria de corto plazo retiene 3-6 elementos
+
+- Nombres bien especificados ayudan a activar conocmiento desde la memoria a largo plazo
+
+
+::: {style="text-align: right"}
+Cognition: Programming Edition!  
+
+[Hannah Frick](https://www.youtube.com/live/1o-UoIF9vIc?si=LlqERD0VOSKXPJlz)
+:::
+
+
+## Nombres
+
+::: columns
+::: {.column width="40%"}
+### OK
+
+`max_temp` </br>\
+</br> `prec_min_usd`\
+`temp_mensual`
+:::
+
+::: {.column width="60%"}
+### No tanto
+
+`temperatura_maximaC2014`\
+`max`\
+`temp`\
+`'Precio Mínimo ($) USD'`\
+`'Temperatura/Mes (°F)'`\
+</br>
+:::
+:::
+
+::::{.rightref}
+:::{.refbox}
+Jenny Bryan (2015)\
+[Naming Things](https://speakerdeck.com/jennybc/how-to-name-files)
+:::
+::::
+
+## Nombres
+
+::: columns
+::: {.column width="61%"}
+### OK
+
+`01_factura-agosto2023.pdf`\
+`02_factura-sep2023.pdf`\
+`ms_helechos_20210412.docx`
+:::
+
+::: {.column width="39%"}
+### No tanto
+
+`descarga5462.pdf`\
+`compraluis.pdf`\
+`borrador.docx`\
+:::
+:::
+
+En R los nombres válidos solo pueden llevar letras, números, puntos, y guiones; no pueden comenzar con números
+
+
+## Esquemas de mayúsculas/minúsculas y espacios
+
+</br>
+
+**camelCase** - la segunda palabra en adelante con mayúscula, sin espacios 
+
+**snake_case** - solo minúsculas, guión bajo entre palabras  
+
+**slug-case** - solo minúsculas, guión entre palabras  
+
+- y muchas otras, podemos transformar cadenas de texto de un esquema a otro con el paquete 📦`snakecase`
+
+## Organización de proyectos
+
+### Proyecto
+
+Directorio con todo los archivos relevantes para algún trabajo
+
+### Separar:
+
+📁 Datos (o código para cargarlos desde fuentes remotas)\
+📁 *Scripts* de análisis y/o visualización\
+📁 Salidas (figuras, informes, datos intermedios, etc.)
+  
+  
+  \
+  
+::::{.rightref}
+:::{.refbox}
+::: columns
+::: {.column width="50%"}
+Jenny Bryan (2017)\
+[Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+:::
+
+::: {.column width="50%"}
+Maëlle Salmon (2021)\
+[Draw me a project](https://masalmon.eu/2021/06/30/r-projects/)
+:::
+:::
+:::
+::::
+
+
+
+## Proyectos en RStudio
+
+::: columns
+::: {.column width="35%"}
+![](imgs/rprojects.png)
+:::
+
+::: {.column width="65%"}
+-   Instancia de R dedicada
+
+-   Navegador apuntando al directorio del proyecto
+
+    -   botón para regresar al dir. del proyecto
+
+-   Dir. de proyecto establecido como Dir. de Trabajo
+
+    -   rutas relativas al Dir. de Proyecto
+:::
+:::
+
+## Rutas relativas
+
+No es lo mismo:
+
+`C:\luis\proyecto\respaldo\12\cursoR\resultados\`
+
+que:
+
+`\cursoR\resultados\`
+
+* el paquete `here` nos sirve para trabajar con rutas a través de sistemas operativos 
+
+## 
+
+![](imgs/ubereats.png){fig-align="center"}
+
+
+## Ejercicio{background-color="#a4c5ff"}
+
+Crear un proyecto para el curso en RStudio 
+
+</br>
+
+- en alguna ubicación fácil de encontrar (ej. Escritorio) 
+- "curso-PCB-R" como nombre  
+
+> Los proyectos en OneDrive pueden no funcionar correctamente
+
+
+## Ejercicio{background-color="#a4c5ff"}
+
+-   Crear nuevas carpetas en el directorio del proyecto
+    -   datos
+    -   salida
+    -   R
+
+
+## Guardar la fuente y no el entorno
+
+::: columns
+::: {.column width="40%"}
+<img src="imgs/pancks.png"/>
+:::
+
+::: {.column width="60%"}
+-   Exportar figuras y resultados a archivos
+
+-   Evitar `rm(list = ls())`.
+
+-   'Hoja en blanco' & reiniciar R seguido
+
+::::{.rightref}
+:::{.refbox}
+Jenny Bryan & Jim Hester (2020)\
+[What they forgot to teach you about R](https://rstats.wtf/save-source.html)\
+Jenny Bryan (2018)\
+[Zen And The aRt Of Workflow Maintenance](https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance)
+:::
+::::
+
+:::
+:::
+
+## Hoja en blanco (blank slate)
+
+::: columns
+::: {.column width="60%"}
+No se guarda el espacio de trabajo a un archivo _.Rdata_
+
+No se carga el espacio de trabajo desde un archivo _.Rdata_ al arrancar R
+
+:::
+
+::: {.column width="40%"}
+
+![](imgs/clnslt.jpg)
+
+:::
+:::
+
+
+
+## Reiniciar R
+
+### `Ctrl+Shift+F10`
+(Windows y Linux)
+
+### `Command+Shift+F10`    
+(Mac)
+
+
+
+
+# Estructuras de datos
+
+## Principios de programación en R
+
+</br>
+
+- Todo lo que existe es un *objeto*
+
+- Todo lo que ocurre lo hace una **función**\
+(*Las funciones son objetos*)
+
+- Las **funciones** (generalmente) viven en paquetes
+
+## Objetos
+
+-   Tablas con filas y columnas
+
+-   Modelos
+
+-   Listas
+
+-   Gráficos
+
+> Todos los objetos tienen clases y atributos y hay distintas formas de crearlos
+
+## 
+
+::: columns
+::: {.column width="50%"}
+
+### Vectores
+
+![](imgs/vector.png)
+
+### Listas
+
+![](imgs/listhad.png)
+:::
+
+::: {.column width="50%"}
+### Tablas
+
+![](imgs/dataframe.png)
+:::
+:::
+
+
+## Vectores
+
+Números
+
+:::{.big-code}
+```{r}
+c(1,2,3,4)
+```
+:::
+</br>
+
+:::{.big-code}
+```{r}
+c(22.1,0.006,4.1)
+```
+:::
+
+## Vectores
+
+Caracteres
+
+:::{.big-code}
+```{r}
+c("perro","gato","rata","B")
+```
+:::
+
+## Vectores
+
+Lógicos (verdadero/falso)
+
+:::{.big-code}
+```{r}
+c(TRUE,FALSE,FALSE,FALSE,TRUE)
+```
+:::
+---
+
+![](imgs/logical.jpg)
+
+---
+
+![](imgs/logicalNA.jpg)
+
+## Creando objetos
+
+:::{.big-code}
+```{r}
+x <- c(1, 2, 3)
+```
+:::
+
+Función `c()` para juntar elementos en un vector
+
+:::{.med-code}
+```{r}
+x <- c(1,2,3)
+y <- c("a","G","h")
+```
+:::
+
+:::{.med-code}
+```{r}
+x
+y
+```
+:::
+
+## Creando objetos
+
+:::{.big-code}
+```{r}
+#| eval: false
+#| error: false
+nombre_objeto <- valor 
+```
+:::
+
+* asignar vincula valores con nombres en el entorno de trabajo (environment)
+
+* preferir `<-` 
+
+::: {style="text-align: right"}
+Colin Fay (2018)  
+[Why do we use arrow as an assignment operator?](https://colinfay.me/r-assignment/)  
+:::
+
+## Los objetos tienen clases
+
+:::{.big-code}
+```{r}
+#| echo: true
+#| eval: true
+class(x)
+class(y)
+```
+:::
+
+
+## Los vectores solo pueden tener objetos de la misma clase
+
+:::{.big-code}
+```{r}
+c(1,"a",2)
+```
+:::
+
+Al combinar caracteres y números hay conversión automática
+
+## Vectores numéricos
+
+![](imgs/numeric.jpg)
+
+## Factores
+
+::: columns
+::: {.column width="40%"}
+![](imgs/factor.jpg)
+:::
+
+::: {.column width="60%"}
+- Representan datos categóricos
+
+- Las etiquetas de cada valor se conocen como niveles, que pueden o no llevar un orden específico
+
+- Crear con `factor()`
+:::
+:::
+
+## Factores
+
+:::{.med-code}
+```{r}
+#| eval: true
+#| echo: true
+factor(c("perro","gato","ave","ninguno",
+         "perro","ninguno","perro","perro",
+         "gato","ave","perro"))
+```
+:::
+
+## Dos o más vectores del mismo largo...
+
+</br>
+
+::: columns
+::: {.column width="40%"}
+![](imgs/dataframe.jpg)
+:::
+
+::: {.column width="60%"}
+### ¡Data frame!
+
+- Objeto tabular con filas y columnas
+
+- Puede almacenar objetos de distintas clases en las columnas
+
+- Nombres para cada columna
+:::
+:::
+
+## Data frames
+
+
+Se crean importando un archivo tabular o con `data.frame()`
+
+:::{.med-code}
+```{r}
+#| eval: true
+#| echo: true
+mi_tabla <- 
+data.frame(id=c("rana","pez","nutria","gusano"),
+           ind_g=c(12,15,13,10),
+           listo=c(TRUE,TRUE,FALSE,TRUE))
+
+```
+:::
+
+-   cada vector es una columna
+-   nombres de columnas sin comillas
+-   mismo largo para todos los vectores
+
+## 
+:::{.big-code}
+```{r}
+#| eval: true
+#| echo: true
+mi_tabla
+```
+:::
+
+## tibbles (/tibls/)
+
+'Modernizando' el `data.frame`  
+
+Implementado para todo el `tidyverse` a través del paquete 📦  `tibble`
+
+```{r}
+tibble(
+  x = c("a", "b", "c"),
+  y = c(1, 2, 3)
+)
+```
+
+. . .
+
+Objeto rectangular común para todos los paquetes del `tidyverse`
+
+## Funciones de `tidyverse`
+
+::: {.incremental}
+- reciben un `data.frame` ➡️ regresan un `data.frame`  
+
+
+- reciben un `tibble` ➡️ regresan un `tibble`  
+
+
+- generan un objeto nuevo ➡️ crean un `tibble`
+:::
+
+## Creando tibbles
+
+- Salida predeterminada de funciones 
+
+- Convirtiendo otros objetos con `as_tibble()`
+
+- Construyendo a partir de vectores con `tibble()`
+
+## tibbles
+
+Para menos ambigüedad:
+
+. . .
+
+:::{.incremental}
+- No asignan nombres a las filas 
+
+- No modifican los nombres de las columnas
+
+- No convierten caracteres en factores  
+
+:::
+
+## Impresión de tibbles
+
+Para no saturar la consola, los métodos de impresión para _tibbles_ muestran (se puede cambiar):
+
+:::{.incremental}
+- Las primeras 10 filas 
+
+- Cuántas filas y columnas no se imprimieron
+
+- Solo las columnas que entran en el ancho de nuestra pantalla
+
+- El tipo de variable de todas las columnas
+:::
+
+##
+
+```{r}
+as_tibble(datos::vehiculos)
+```
+## Importando archivos (tablas)
+
+-   Con el botón "*Import Dataset*"
+-   Con alguna función `read`
+
+> es posible leer datos directamente desde un URL
+
+## `readr` y `readxl`
+
+Paquetes adicionales para importar datos rectangulares desde archivos de texto y hojas de cálculo
+
+-   Menos errores al importar
+
+-   Mayor flexibilidad al leer archivos
+
+-   Lectura más rápida
+
+-   Funciones adicionales para limpiar los valores en las columnas
+
+## Ejercicio{background-color="#a4c5ff"}
+
+Importar una tabla a R desde un archivo
+
+
+# ¿Dudas?

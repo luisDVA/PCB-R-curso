@@ -40,5 +40,1363 @@
     "title": "Introducción al estudio de los procesos evolutivos con énfasis en métodos de secuenciación masiva 2024-1",
     "section": "Instalación de paquetes requeridos",
     "text": "Instalación de paquetes requeridos\nPrevio a las actividades de la Unidad, programadas para el lunes 23 de octubre, instalar los siguientes programas (no es necesario tener las versiones más recientes, pero se recomiendan las siguientes versiones mínimas para acceder a toda la funcionalidad de R):\n\n‘R’ versión &gt;= 4.2.2 (disponible desde octubre de 2022; la versión más reciente es la 4.3.1). Obtener en https://cran.r-project.org/\n‘RStudio’ versión &gt;= 2023.02.01 (disponible desde febrero de 2022; la versión más reciente es la 2023.09.0). Descargar desde https://posit.co/download/rstudio-desktop/\n\nLos paquetes necesarios para el curso son:\n\nape\ndplyr\ntidyr\npurrr\nggplot2\nggtree\nstringr\nremotes\nfs\nhere\nBiocManager\n\nTodos estos paquetes se instalan desde el repositorio CRAN usando la función install.packages() o interactivamente desde la pestaña de paquetes de RStudio).\nEl paquete ggtree se instala desde BioConductor a tráves del paquete BiocManager\n\nBiocManager::install(\"ggtree\")"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#hoy-lunes-23",
+    "href": "presentaciones/01_trabajando-con-R.html#hoy-lunes-23",
+    "title": "Trabajando con R",
+    "section": "Hoy (lunes 23)",
+    "text": "Hoy (lunes 23)\n\nIntroducción general\nConceptos básicos, nomenclatura para programación\nFlujos de trabajo\nPreparación de datos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#temas-de-hoy",
+    "href": "presentaciones/01_trabajando-con-R.html#temas-de-hoy",
+    "title": "Trabajando con R",
+    "section": "Temas de hoy",
+    "text": "Temas de hoy\nTrabajando con R\n\nR\n\nOrganización de proyectos y archivos\n\nBuenas prácticas para nombrar archivos y objetos\n\nTrabajando con rutas\n\nObjetos y repaso general\n\nImportando archivos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#qué-es",
+    "href": "presentaciones/01_trabajando-con-R.html#qué-es",
+    "title": "Trabajando con R",
+    "section": "¿Qué es ?",
+    "text": "¿Qué es ?\n✍️Software\n\n¿Dialecto de S?\n¿Paquete estadístico?\n¿RStudio?\n¿Lenguaje de programación?\n¿Dispositivo gráfico?"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section",
+    "href": "presentaciones/01_trabajando-con-R.html#section",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "Trabajando con R\n\nR\n\nOrganización de proyectos y archivos\n\nBuenas prácticas para nombrar archivos y objetos\n\nTrabajando con rutas\n\nObjetos y repaso general\n\nImportando archivos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#esta-unidad",
+    "href": "presentaciones/01_trabajando-con-R.html#esta-unidad",
+    "title": "Trabajando con R",
+    "section": "Esta unidad",
+    "text": "Esta unidad\n\nInstalaciones locales\nRStudio\nDialecto tidyverse\nEnfoque en código\nPipes"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#mi-sistema",
+    "href": "presentaciones/01_trabajando-con-R.html#mi-sistema",
+    "title": "Trabajando con R",
+    "section": "Mi sistema",
+    "text": "Mi sistema\n\nR v4.3.1\nRStudio 2023.06.1\nSin personalizaciones visuales\nLinux Mint 20.3"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#no-es-rstudio",
+    "href": "presentaciones/01_trabajando-con-R.html#no-es-rstudio",
+    "title": "Trabajando con R",
+    "section": " no es RStudio",
+    "text": "no es RStudio\nIDE - Entorno de desarrollo integrado\nHerramientas para facilitar el uso de un lenguaje de programación\n\nEditor de texto que ‘reconoce’ la sintaxis de un lenguaje\nAtajos y herramientas para administrar y ejecutar código"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#otras-opciones",
+    "href": "presentaciones/01_trabajando-con-R.html#otras-opciones",
+    "title": "Trabajando con R",
+    "section": "Otras opciones",
+    "text": "Otras opciones\n\nRStudio\n\nEmacs + ESS (https://ess.r-project.org)\n\nvim + Nvim-R: (Turn Vim Into an IDE for R)\n\nVisual Studio + RTVS\nCualquier editor de texto (enviando líneas o selecciones a una instancia de R)"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-1",
+    "href": "presentaciones/01_trabajando-con-R.html#section-1",
+    "title": "Trabajando con R",
+    "section": "?",
+    "text": "?\n\n\n✍️🧑‍🎓Ventajas\n\n✍️🧑‍🎓Desventajas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#código-fuente",
+    "href": "presentaciones/01_trabajando-con-R.html#código-fuente",
+    "title": "Trabajando con R",
+    "section": "Código fuente",
+    "text": "Código fuente\n\n\n\n\nReproducir y modificar pasos\nEncontrar errores\nDocumentar el proceso\nExaminar código ajeno"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#paquetes",
+    "href": "presentaciones/01_trabajando-con-R.html#paquetes",
+    "title": "Trabajando con R",
+    "section": "📦 Paquetes",
+    "text": "📦 Paquetes\n\n\nAl instalar R instalamos:\nbase: las funciones fundamentales de R\n\nlist()\nlog()\ncat() rm() etc…"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#paquetes-1",
+    "href": "presentaciones/01_trabajando-con-R.html#paquetes-1",
+    "title": "Trabajando con R",
+    "section": "📦 Paquetes",
+    "text": "📦 Paquetes\nOtros componentes de R-base:\nutils, stats, datasets, graphics, grDevices, grid, methods, tools, parallel, compiler, splines, tcltk, stats4\nPaquetes ‘recomendados’ (se instalan con R pero no se cargan automáticamente)\nboot, class, cluster, codetools, foreign, KernSmooth, lattice, mgcv, nlme, rpart, survival, MASS, spatial, nnet, Matrix"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#paquetes-adicionales",
+    "href": "presentaciones/01_trabajando-con-R.html#paquetes-adicionales",
+    "title": "Trabajando con R",
+    "section": "📦 Paquetes Adicionales",
+    "text": "📦 Paquetes Adicionales\n\n&gt;19,000 en CRAN (The Comprehensive R Archive Network)\nmuchos más en GitHub, GitLab, Bitbucket, Bioconductor, etc.\n\nSe instalan desde R con:\ninstall.packages() para paquetes de CRAN\n📦 remotes para otros repositorios y 📦 BiocManager para BioConductor"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#visita-guiada-por-r-y-rstudio",
+    "href": "presentaciones/01_trabajando-con-R.html#visita-guiada-por-r-y-rstudio",
+    "title": "Trabajando con R",
+    "section": "Visita guiada por R y RStudio",
+    "text": "Visita guiada por R y RStudio\n\nEjecutar R\nEjecutar RStudio\nInstalar algunos paquetes para el curso (si es que no los tienen):\n\n\ninstall.packages(\"ggplot2\")\ninstall.packages(\"dplyr\")\ninstall.packages(\"readr\")\ninstall.packages(\"tidyr\")"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#paquetes-instalados",
+    "href": "presentaciones/01_trabajando-con-R.html#paquetes-instalados",
+    "title": "Trabajando con R",
+    "section": "Paquetes instalados",
+    "text": "Paquetes instalados\nEn scripts o análisis interactivos se cargan con library()\n\nLa pestaña de paquetes de RStudio también puede cargar o remover paquetes\n\nAl cargar un paquete ya podemos acceder a sus datos, funciones, métodos, etc."
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#directorios-rutas-y-nombres",
+    "href": "presentaciones/01_trabajando-con-R.html#directorios-rutas-y-nombres",
+    "title": "Trabajando con R",
+    "section": "Directorios, rutas y nombres",
+    "text": "Directorios, rutas y nombres\n\n\n\n\nGuardar archivos en ubicaciones específicas, con nombres intencionales y útiles\n\nNombres cortos e informativos\nFáciles de ordenar y que cooperen con búsquedas parciales\nAtención con caracteres especiales y espacios"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#nombres",
+    "href": "presentaciones/01_trabajando-con-R.html#nombres",
+    "title": "Trabajando con R",
+    "section": "Nombres",
+    "text": "Nombres\n\n~60% del tiempo de un programador se dedica a entender código y no necesariamente a escribirlo\nLa memoria de corto plazo retiene 3-6 elementos\nNombres bien especificados ayudan a activar conocmiento desde la memoria a largo plazo\n\n\nCognition: Programming Edition!\nHannah Frick"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#nombres-1",
+    "href": "presentaciones/01_trabajando-con-R.html#nombres-1",
+    "title": "Trabajando con R",
+    "section": "Nombres",
+    "text": "Nombres\n\n\nOK\nmax_temp \n prec_min_usd\ntemp_mensual\n\nNo tanto\ntemperatura_maximaC2014\nmax\ntemp\n'Precio Mínimo ($) USD'\n'Temperatura/Mes (°F)'\n\n\n\n\n\nJenny Bryan (2015)\nNaming Things"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#nombres-2",
+    "href": "presentaciones/01_trabajando-con-R.html#nombres-2",
+    "title": "Trabajando con R",
+    "section": "Nombres",
+    "text": "Nombres\n\n\nOK\n01_factura-agosto2023.pdf\n02_factura-sep2023.pdf\nms_helechos_20210412.docx\n\nNo tanto\ndescarga5462.pdf\ncompraluis.pdf\nborrador.docx\n\n\n\nEn R los nombres válidos solo pueden llevar letras, números, puntos, y guiones; no pueden comenzar con números"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#esquemas-de-mayúsculasminúsculas-y-espacios",
+    "href": "presentaciones/01_trabajando-con-R.html#esquemas-de-mayúsculasminúsculas-y-espacios",
+    "title": "Trabajando con R",
+    "section": "Esquemas de mayúsculas/minúsculas y espacios",
+    "text": "Esquemas de mayúsculas/minúsculas y espacios\n\ncamelCase - la segunda palabra en adelante con mayúscula, sin espacios\nsnake_case - solo minúsculas, guión bajo entre palabras\nslug-case - solo minúsculas, guión entre palabras\n\ny muchas otras, podemos transformar cadenas de texto de un esquema a otro con el paquete 📦snakecase"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#organización-de-proyectos",
+    "href": "presentaciones/01_trabajando-con-R.html#organización-de-proyectos",
+    "title": "Trabajando con R",
+    "section": "Organización de proyectos",
+    "text": "Organización de proyectos\nProyecto\nDirectorio con todo los archivos relevantes para algún trabajo\nSeparar:\n📁 Datos (o código para cargarlos desde fuentes remotas)\n📁 Scripts de análisis y/o visualización\n📁 Salidas (figuras, informes, datos intermedios, etc.)\n\n\n\n\n\n\nJenny Bryan (2017)\nProject-oriented workflow\n\nMaëlle Salmon (2021)\nDraw me a project"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#proyectos-en-rstudio",
+    "href": "presentaciones/01_trabajando-con-R.html#proyectos-en-rstudio",
+    "title": "Trabajando con R",
+    "section": "Proyectos en RStudio",
+    "text": "Proyectos en RStudio\n\n\n\n\n\nInstancia de R dedicada\nNavegador apuntando al directorio del proyecto\n\nbotón para regresar al dir. del proyecto\n\nDir. de proyecto establecido como Dir. de Trabajo\n\nrutas relativas al Dir. de Proyecto"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#ejercicio",
+    "href": "presentaciones/01_trabajando-con-R.html#ejercicio",
+    "title": "Trabajando con R",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nCrear un proyecto para el curso en RStudio\n\n\nen alguna ubicación fácil de encontrar (ej. Escritorio)\n“curso-PCB-R” como nombre\n\n\nLos proyectos en OneDrive pueden no funcionar correctamente"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#ejercicio-1",
+    "href": "presentaciones/01_trabajando-con-R.html#ejercicio-1",
+    "title": "Trabajando con R",
+    "section": "Ejercicio",
+    "text": "Ejercicio\n\nCrear nuevas carpetas en el directorio del proyecto\n\ndatos\nsalida\nR"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#guardar-la-fuente-y-no-el-entorno",
+    "href": "presentaciones/01_trabajando-con-R.html#guardar-la-fuente-y-no-el-entorno",
+    "title": "Trabajando con R",
+    "section": "Guardar la fuente y no el entorno",
+    "text": "Guardar la fuente y no el entorno\n\n\n\n\n\nExportar figuras y resultados a archivos\nEvitar rm(list = ls()).\n‘Hoja en blanco’ & reiniciar R seguido\n\n\n\nJenny Bryan & Jim Hester (2020)\nWhat they forgot to teach you about R\nJenny Bryan (2018)\nZen And The aRt Of Workflow Maintenance"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#hoja-en-blanco-blank-slate",
+    "href": "presentaciones/01_trabajando-con-R.html#hoja-en-blanco-blank-slate",
+    "title": "Trabajando con R",
+    "section": "Hoja en blanco (blank slate)",
+    "text": "Hoja en blanco (blank slate)\n\n\nNo se guarda el espacio de trabajo a un archivo .Rdata\nNo se carga el espacio de trabajo desde un archivo .Rdata al arrancar R"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#reiniciar-r",
+    "href": "presentaciones/01_trabajando-con-R.html#reiniciar-r",
+    "title": "Trabajando con R",
+    "section": "Reiniciar R",
+    "text": "Reiniciar R\nCtrl+Shift+F10\n(Windows y Linux)\nCommand+Shift+F10\n(Mac)"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#rutas-relativas",
+    "href": "presentaciones/01_trabajando-con-R.html#rutas-relativas",
+    "title": "Trabajando con R",
+    "section": "Rutas relativas",
+    "text": "Rutas relativas\nNo es lo mismo:\nC:\\luis\\proyecto\\respaldo\\12\\cursoR\\resultados\\\nque:\n\\cursoR\\resultados\\\n\nel paquete here nos sirve para trabajar con rutas a través de sistemas operativos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#importando-archivos-tablas",
+    "href": "presentaciones/01_trabajando-con-R.html#importando-archivos-tablas",
+    "title": "Trabajando con R",
+    "section": "Importando archivos (tablas)",
+    "text": "Importando archivos (tablas)\n\nCon el botón “Import Dataset”\nCon alguna función read\n\n\nes posible leer datos directamente desde un URL"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#readr-y-readxl",
+    "href": "presentaciones/01_trabajando-con-R.html#readr-y-readxl",
+    "title": "Trabajando con R",
+    "section": "readr y readxl",
+    "text": "readr y readxl\nPaquetes adicionales para importar datos rectangulares desde archivos de texto y hojas de cálculo\n\nMenos errores al importar\nMayor flexibilidad al leer archivos\nLectura más rápida\nFunciones adicionales para limpiar los valores en las columnas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#ejercicio-2",
+    "href": "presentaciones/01_trabajando-con-R.html#ejercicio-2",
+    "title": "Trabajando con R",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nImportar una tabla a R desde un archivo"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#principios-de-programación-en-r",
+    "href": "presentaciones/01_trabajando-con-R.html#principios-de-programación-en-r",
+    "title": "Trabajando con R",
+    "section": "Principios de programación en R",
+    "text": "Principios de programación en R\n\n\nTodo lo que existe es un objeto\nTodo lo que ocurre lo hace una función\n(Las funciones son objetos)\nLas funciones (generalmente) viven en paquetes"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#objetos",
+    "href": "presentaciones/01_trabajando-con-R.html#objetos",
+    "title": "Trabajando con R",
+    "section": "Objetos",
+    "text": "Objetos\n\nTablas con filas y columnas\nModelos\nListas\nGráficos\n\n\nTodos los objetos tienen clases y atributos y hay distintas formas de crearlos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-4",
+    "href": "presentaciones/01_trabajando-con-R.html#section-4",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "Vectores\n\nListas\n\n\nTablas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#vectores-1",
+    "href": "presentaciones/01_trabajando-con-R.html#vectores-1",
+    "title": "Trabajando con R",
+    "section": "Vectores",
+    "text": "Vectores\nNúmeros\n\n\nc(1,2,3,4)\n\n[1] 1 2 3 4\n\n\n\n\n\n\nc(22.1,0.006,4.1)\n\n[1] 22.100  0.006  4.100"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#vectores-2",
+    "href": "presentaciones/01_trabajando-con-R.html#vectores-2",
+    "title": "Trabajando con R",
+    "section": "Vectores",
+    "text": "Vectores\nCaracteres\n\n\nc(\"perro\",\"gato\",\"rata\",\"B\")\n\n[1] \"perro\" \"gato\"  \"rata\"  \"B\""
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#vectores-3",
+    "href": "presentaciones/01_trabajando-con-R.html#vectores-3",
+    "title": "Trabajando con R",
+    "section": "Vectores",
+    "text": "Vectores\nLógicos (verdadero/falso)\n\n\nc(TRUE,FALSE,FALSE,FALSE,TRUE)\n\n[1]  TRUE FALSE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#creando-objetos",
+    "href": "presentaciones/01_trabajando-con-R.html#creando-objetos",
+    "title": "Trabajando con R",
+    "section": "Creando objetos",
+    "text": "Creando objetos\n\n\nx &lt;- c(1, 2, 3)\n\n\nFunción c() para juntar elementos en un vector\n\n\nx &lt;- c(1,2,3)\ny &lt;- c(\"a\",\"G\",\"h\")\n\n\n\n\nx\n\n[1] 1 2 3\n\ny\n\n[1] \"a\" \"G\" \"h\""
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#los-objetos-tienen-clases",
+    "href": "presentaciones/01_trabajando-con-R.html#los-objetos-tienen-clases",
+    "title": "Trabajando con R",
+    "section": "Los objetos tienen clases",
+    "text": "Los objetos tienen clases\n\n\nclass(x)\n\n[1] \"numeric\"\n\nclass(y)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#los-vectores-solo-pueden-tener-objetos-de-la-misma-clase",
+    "href": "presentaciones/01_trabajando-con-R.html#los-vectores-solo-pueden-tener-objetos-de-la-misma-clase",
+    "title": "Trabajando con R",
+    "section": "Los vectores solo pueden tener objetos de la misma clase",
+    "text": "Los vectores solo pueden tener objetos de la misma clase\n\n\nc(1,\"a\",2)\n\n[1] \"1\" \"a\" \"2\"\n\n\n\nAl combinar caracteres y números hay conversión automática"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#vectores-numéricos",
+    "href": "presentaciones/01_trabajando-con-R.html#vectores-numéricos",
+    "title": "Trabajando con R",
+    "section": "Vectores numéricos",
+    "text": "Vectores numéricos"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#factores",
+    "href": "presentaciones/01_trabajando-con-R.html#factores",
+    "title": "Trabajando con R",
+    "section": "Factores",
+    "text": "Factores\n\n\n\n\n\nRepresentan datos categóricos\nLas etiquetas de cada valor se conocen como niveles, que pueden o no llevar un orden específico\nCrear con factor()"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#factores-1",
+    "href": "presentaciones/01_trabajando-con-R.html#factores-1",
+    "title": "Trabajando con R",
+    "section": "Factores",
+    "text": "Factores\n\n\nfactor(c(\"perro\",\"gato\",\"ave\",\"ninguno\",\n         \"perro\",\"ninguno\",\"perro\",\"perro\",\n         \"gato\",\"ave\",\"perro\"))\n\n [1] perro   gato    ave     ninguno perro   ninguno perro   perro   gato   \n[10] ave     perro  \nLevels: ave gato ninguno perro"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#dos-o-más-vectores-del-mismo-largo",
+    "href": "presentaciones/01_trabajando-con-R.html#dos-o-más-vectores-del-mismo-largo",
+    "title": "Trabajando con R",
+    "section": "Dos o más vectores del mismo largo…",
+    "text": "Dos o más vectores del mismo largo…\n\n\n\n\n\n¡Data frame!\n\nObjeto tabular con filas y columnas\nPuede almacenar objetos de distintas clases en las columnas\nNombres para cada columna"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#data-frames",
+    "href": "presentaciones/01_trabajando-con-R.html#data-frames",
+    "title": "Trabajando con R",
+    "section": "Data frames",
+    "text": "Data frames\nSe crean importando un archivo tabular o con data.frame()\n\n\nmi_tabla &lt;- \ndata.frame(id=c(\"rana\",\"pez\",\"nutria\",\"gusano\"),\n           ind_g=c(12,15,13,10),\n           listo=c(TRUE,TRUE,FALSE,TRUE))\n\n\n\ncada vector es una columna\nnombres de columnas sin comillas\nmismo largo para todos los vectores"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-5",
+    "href": "presentaciones/01_trabajando-con-R.html#section-5",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "Vectores\n\nListas\n\n\nTablas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#tibbles-tibls",
+    "href": "presentaciones/01_trabajando-con-R.html#tibbles-tibls",
+    "title": "Trabajando con R",
+    "section": "tibbles (/tibls/)",
+    "text": "tibbles (/tibls/)\n‘Modernizando’ el data.frame\nImplementado para todo el tidyverse a través del paquete 📦 tibble\n\ntibble(\n  x = c(\"a\", \"b\", \"c\"),\n  y = c(1, 2, 3)\n)\n\n# A tibble: 3 × 2\n  x         y\n  &lt;chr&gt; &lt;dbl&gt;\n1 a         1\n2 b         2\n3 c         3\n\n\n\nObjeto rectangular común para todos los paquetes del tidyverse"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#funciones-de-tidyverse",
+    "href": "presentaciones/01_trabajando-con-R.html#funciones-de-tidyverse",
+    "title": "Trabajando con R",
+    "section": "Funciones de tidyverse",
+    "text": "Funciones de tidyverse\n\n\nreciben un data.frame ➡️ regresan un data.frame\nreciben un tibble ➡️ regresan un tibble\ngeneran un objeto nuevo ➡️ crean un tibble"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#creando-tibbles",
+    "href": "presentaciones/01_trabajando-con-R.html#creando-tibbles",
+    "title": "Trabajando con R",
+    "section": "Creando tibbles",
+    "text": "Creando tibbles\n\nSalida predeterminada de funciones\nConvirtiendo otros objetos con as_tibble()\nConstruyendo a partir de vectores con tibble()"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#tibbles",
+    "href": "presentaciones/01_trabajando-con-R.html#tibbles",
+    "title": "Trabajando con R",
+    "section": "tibbles",
+    "text": "tibbles\nPara menos ambigüedad:\n\n\n\nNo asignan nombres a las filas\nNo modifican los nombres de las columnas\nNo convierten caracteres en factores"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#impresión-de-tibbles",
+    "href": "presentaciones/01_trabajando-con-R.html#impresión-de-tibbles",
+    "title": "Trabajando con R",
+    "section": "Impresión de tibbles",
+    "text": "Impresión de tibbles\nPara no saturar la consola, los métodos de impresión para tibbles muestran (se puede cambiar):\n\n\nLas primeras 10 filas\nCuántas filas y columnas no se imprimieron\nSolo las columnas que entran en el ancho de nuestra pantalla\nEl tipo de variable de todas las columnas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#prefijos",
+    "href": "presentaciones/01_trabajando-con-R.html#prefijos",
+    "title": "Trabajando con R",
+    "section": "Prefijos",
+    "text": "Prefijos\n:: es un operador especial (namespace) para acceder a objetos o funciones de un paquete sin tener que cargarlo\nCargando un paquete\n\nlibrary(dplyr)\nfilter(mis_datos)\n\nCon prefijo\n\ndplyr::filter(mis_datos)"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-2",
+    "href": "presentaciones/01_trabajando-con-R.html#section-2",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "R. Geert van den Berg [SPSS Tutorials]"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-6",
+    "href": "presentaciones/01_trabajando-con-R.html#section-6",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "Vectores\n\nListas\n\n\nTablas"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-3",
+    "href": "presentaciones/01_trabajando-con-R.html#section-3",
+    "title": "Trabajando con R",
+    "section": "::",
+    "text": "::\n\n¿Cuándo conviene usar este operador?\n¿Qué desventaja(s) tiene?"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-7",
+    "href": "presentaciones/01_trabajando-con-R.html#section-7",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "mi_tabla\n\n      id ind_g listo\n1   rana    12  TRUE\n2    pez    15  TRUE\n3 nutria    13 FALSE\n4 gusano    10  TRUE"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#section-8",
+    "href": "presentaciones/01_trabajando-con-R.html#section-8",
+    "title": "Trabajando con R",
+    "section": "",
+    "text": "as_tibble(datos::vehiculos)\n\n# A tibble: 33,442 × 12\n      id fabricante modelo       anio clase transmision traccion cilindros motor\n   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;\n 1 13309 Acura      2.2CL/3.0CL  1997 Auto… Automática… Delante…         4   2.2\n 2 13310 Acura      2.2CL/3.0CL  1997 Auto… Manual 5-v… Delante…         4   2.2\n 3 13311 Acura      2.2CL/3.0CL  1997 Auto… Automática… Delante…         6   3  \n 4 14038 Acura      2.3CL/3.0CL  1998 Auto… Automática… Delante…         4   2.3\n 5 14039 Acura      2.3CL/3.0CL  1998 Auto… Manual 5-v… Delante…         4   2.3\n 6 14040 Acura      2.3CL/3.0CL  1998 Auto… Automática… Delante…         6   3  \n 7 14834 Acura      2.3CL/3.0CL  1999 Auto… Automática… Delante…         4   2.3\n 8 14835 Acura      2.3CL/3.0CL  1999 Auto… Manual 5-v… Delante…         4   2.3\n 9 14836 Acura      2.3CL/3.0CL  1999 Auto… Automática… Delante…         6   3  \n10 11789 Acura      2.5TL        1995 Auto… Automática… Delante…         5   2.5\n# ℹ 33,432 more rows\n# ℹ 3 more variables: combustible &lt;chr&gt;, autopista &lt;dbl&gt;, ciudad &lt;dbl&gt;"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#la-ruta-de-búsqueda-search-path",
+    "href": "presentaciones/01_trabajando-con-R.html#la-ruta-de-búsqueda-search-path",
+    "title": "Trabajando con R",
+    "section": "La ruta de búsqueda (search path)",
+    "text": "La ruta de búsqueda (search path)\n\nsearch()\n\nObservemos como cambia al cargar y remover paquetes."
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#tidyverse",
+    "href": "presentaciones/01_trabajando-con-R.html#tidyverse",
+    "title": "Trabajando con R",
+    "section": "tidyverse",
+    "text": "tidyverse\n\n\n\n\n\n… una colección de paquetes de R diseñados para ciencia de datos. Todos los paquetes comparten una filosofía de diseño, gramática, y estructuras de datos. Su objetivo principal es de ‘facilitar una conversación sobre datos entre un humano y su computador’\n\n\n\n\n\nWickham et al. (2019)\nWelcome to the tidyverse\nhttps://www.tidyverse.org/"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#tidyverse-1",
+    "href": "presentaciones/01_trabajando-con-R.html#tidyverse-1",
+    "title": "Trabajando con R",
+    "section": "tidyverse",
+    "text": "tidyverse\n\nPara tareas comunes con datos: importar archivos, limpiar datos, transformar, visualizar, o programar nuevas funciones.\nDiseñado para facilitar su aprendizaje y que los usuarios vayan aprendiendo más funciones conforme interactuen con más elementos de este ‘ecosistema’.\n\n\n\nÇetinkaya-Rundel et al. (2021)\nAn educator’s perspective of the tidyverse"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#pipes",
+    "href": "presentaciones/02_preparacion-de-datos.html#pipes",
+    "title": "Preparación de datos",
+    "section": "Pipes",
+    "text": "Pipes\n\n\n\nMano izquiera\n(LHS)\n\noperador ‘pipe’\n\nMano derecha\n(RHS)\n\n\n\n\nToma un objeto a la izquerda del operador y lo inserta como argumento en la función que esté a su derecha\n\nPor defecto lo que esté a la izquierda del ‘pipe’ se inserta como el primer argumento de la función"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#código-anidado",
+    "href": "presentaciones/02_preparacion-de-datos.html#código-anidado",
+    "title": "Preparación de datos",
+    "section": "Código anidado",
+    "text": "Código anidado\n\n\n\nestaturas &lt;- c(7,8,8,10,6,9,5,9,8)\n\nround(mean(estaturas), digits = 2)\n\n[1] 7.78"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#objetos-intermedios",
+    "href": "presentaciones/02_preparacion-de-datos.html#objetos-intermedios",
+    "title": "Preparación de datos",
+    "section": "Objetos intermedios",
+    "text": "Objetos intermedios\n\n\n\nestatura_promedio &lt;- mean(estaturas)\n\nround(estatura_promedio,\n           digits = 2)\n\n[1] 7.78"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#pipes-1",
+    "href": "presentaciones/02_preparacion-de-datos.html#pipes-1",
+    "title": "Preparación de datos",
+    "section": "Pipes",
+    "text": "Pipes\n%&gt;% de 📦 magrittr\n|&gt; en R v &gt;= 4.1.0\n\nReducen la necesidad de guardar resultados intermedios o de anidar código\nCódigo más fácil de leer\nMás fácil quitar o agregar pasos a la secuencia\n\n\nInsertamos con ctrl + shift + M\n\n\n\nAdolfo Álvarez (2021)\nThe (updated) history of the pipe operator in R"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#pipes-2",
+    "href": "presentaciones/02_preparacion-de-datos.html#pipes-2",
+    "title": "Preparación de datos",
+    "section": "Pipes",
+    "text": "Pipes\n%&gt;% de 📦 magrittr\n|&gt; en R v &gt;= 4.1.0\n\nReducen la necesidad de guardar resultados intermedios o de anidar código\nCódigo más fácil de leer\nMás fácil quitar o agregar pasos a la secuencia\n\n\nInsertamos con ctrl + shift + M\n\n\n\nAdolfo Álvarez (2021)\nThe (updated) history of the pipe operator in R"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#qué-problemas-vemos-con-esta-presentación-de-datos",
+    "href": "presentaciones/02_preparacion-de-datos.html#qué-problemas-vemos-con-esta-presentación-de-datos",
+    "title": "Preparación de datos",
+    "section": "¿Qué problemas vemos con esta presentación de datos?",
+    "text": "¿Qué problemas vemos con esta presentación de datos?"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#más-utilizable",
+    "href": "presentaciones/02_preparacion-de-datos.html#más-utilizable",
+    "title": "Preparación de datos",
+    "section": "Más utilizable",
+    "text": "Más utilizable\n\n\n\n\n\n\n  \n    \n    \n      Nombre\n      Periodo\n      TipoViaje\n      PropositoViaje\n      Costo\n      Pais\n    \n  \n  \n    Miguel J.\n2022\nNacional\nSalida campo\n1000\nMX\n    Miguel J.\n2022\nNacional\nSalida campo\n1000\nMX\n    Miguel J.\n2022\nNacional\nCongreso\n500\nMX\n    Miguel J.\n2022\nNacional\nTaller\n500\nMX\n    Miguel J.\n2022\nInternacional\nCongreso\n2000\nEUA\n    Alejandra M.\n2022\nNA\nNA\nNA\nNA\n    Raul S.\n2022\nNacional\nSalida campo\n1000\nMX"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-bien-organizados",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-bien-organizados",
+    "title": "Preparación de datos",
+    "section": "Datos bien organizados",
+    "text": "Datos bien organizados\n\nMás fácil de importar y manipular\nMenos potencial de errores no replicables (alteraciones, omisiones, duplicaciones)\n\nSiguiendo buenos principios de organización producimos mejores datos y podremos identificar y resolver problemas en datos existentes"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#recomendaciones",
+    "href": "presentaciones/02_preparacion-de-datos.html#recomendaciones",
+    "title": "Preparación de datos",
+    "section": "Recomendaciones",
+    "text": "Recomendaciones\n\nUnidades, nombres, esquemas, fechas etc. consistentes\nNombres utilizables\nEstructuras rectangulares\n\n\n\n\n\nOpenscapes (2020)\nTidy data illustrated\n\nBroman and Woo (2018)\nOrganizing data in spreadsheets\n\nVerde Arregoita et al. (2018)\nGood practices for sharing analysis-ready data…"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#consistencia",
+    "href": "presentaciones/02_preparacion-de-datos.html#consistencia",
+    "title": "Preparación de datos",
+    "section": "Consistencia",
+    "text": "Consistencia\nTablas relacionadas con datos sobre seguimiento GPS de aves\n\n\n\n\n\n\n\n\n  \n    \n    \n      id\n      ave\n      edad\n      estado\n    \n  \n  \n    23\ngorrión\njuvenil\nVER\n    11\nbuho\nadulto\nVeracruz\n    7\nbuho\nj\nPuebla\n    40\ncodorniz\nADULTO\nPU\n    34\ngorrión\n1\nVER\n    30\npaloma\nA\nV\n  \n  \n  \n\n\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      ID_ave\n      num_rasteador\n      sexo\n    \n  \n  \n    23\nb452\nM\n    11\nb256\nM\n    7\na122\nF\n    40\nb889\nM\n    34\nd136\nF\n  \n  \n  \n\n\n\n\n\n\n\n¿Cuántas inconsistencias ven aquí?"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-rectangulares",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-rectangulares",
+    "title": "Preparación de datos",
+    "section": "Datos rectangulares",
+    "text": "Datos rectangulares\n\n\n\n\nObjetos con filas y columnas, en los cuales:\n\nCada fila tiene el mismo número de columnas\nCada columna tiene el mismo número de filas\nVectores o factores de la misma longitud entonces todas las columnas tienen la misma ‘altura’"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-rectangulares-rangos-de-celdas-en-una-hoja-de-cálculo",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-rectangulares-rangos-de-celdas-en-una-hoja-de-cálculo",
+    "title": "Preparación de datos",
+    "section": "datos rectangulares ~ rangos de celdas en una hoja de cálculo",
+    "text": "datos rectangulares ~ rangos de celdas en una hoja de cálculo\n\n\n\n\n\n\n\n\n\nDavis Vaughan (2018)\nTidying Excel cash flow spreadsheets"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section",
+    "href": "presentaciones/02_preparacion-de-datos.html#section",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "library(magrittr)\nestaturas %&gt;% \n  mean() %&gt;% \n  round(digits=2)\n\n[1] 7.78"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-1",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-1",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "estaturas |&gt; \n  mean() |&gt; \n  round(digits=2)\n\n[1] 7.78"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-listos-para-uso",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-listos-para-uso",
+    "title": "Preparación de datos",
+    "section": "¿Datos listos para uso?",
+    "text": "¿Datos listos para uso?\n\nAgrupar, transformar, ordenar, visualizar, modelar, compartir, etc."
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#no-se-puede",
+    "href": "presentaciones/02_preparacion-de-datos.html#no-se-puede",
+    "title": "Preparación de datos",
+    "section": "¿No se puede?",
+    "text": "¿No se puede?\n\nOrdenar para un manejo más fácil y eficiente"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-ordenados-tidy-data",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-ordenados-tidy-data",
+    "title": "Preparación de datos",
+    "section": "Datos ordenados (tidy data)",
+    "text": "Datos ordenados (tidy data)\nUna reinterpretación accesible de distintos principios y definiciones de estadística y ciencias de la computación\n\n\n\nWickham (2014)\nTidy Data - Journal of Statistical Software"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#tidy-data",
+    "href": "presentaciones/02_preparacion-de-datos.html#tidy-data",
+    "title": "Preparación de datos",
+    "section": "‘Tidy data’",
+    "text": "‘Tidy data’\n\nDatos acomodados en una matriz 2D con filas y columnas\nLas filas corresponden a observaciones\nLas columnas corresponden a variables\nUn solo valor por celda"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#para-qué",
+    "href": "presentaciones/02_preparacion-de-datos.html#para-qué",
+    "title": "Preparación de datos",
+    "section": "¿Para qué?",
+    "text": "¿Para qué?\nMás fácil de reacomodar y manejar"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#para-qué-1",
+    "href": "presentaciones/02_preparacion-de-datos.html#para-qué-1",
+    "title": "Preparación de datos",
+    "section": "¿Para qué?",
+    "text": "¿Para qué?\nTrabajando con filas\nLos valores de cada observación quedan juntos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-4",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-4",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "Las variables entran directemente como especificaciones para modelos y/o parámetros gráficos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#cuándo-no",
+    "href": "presentaciones/02_preparacion-de-datos.html#cuándo-no",
+    "title": "Preparación de datos",
+    "section": "Cuándo no",
+    "text": "Cuándo no\n\nLos datos ordenados son más repetitivos y pueden ocupar más espacio que otras representaciones más compactas\n\n\n\nNo es un formato ideal para la captura de datos, o para tablas que forman parte de algún texto que será impreso"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#variables-por-separado-para-definir-grupos",
+    "href": "presentaciones/02_preparacion-de-datos.html#variables-por-separado-para-definir-grupos",
+    "title": "Preparación de datos",
+    "section": "Variables por separado para definir grupos",
+    "text": "Variables por separado para definir grupos\nUsar ‘variables indicadoras’ en lugar de colapsar información entre dos o más variables.\n\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      Equipo\n      Liga\n      Victorias\n      Clasificado\n    \n  \n  \n    Osos\nPrimera\n8\nSI\n    Venados\nReservas\n2\nNO\n    Dragones\nPrimera\n12\nSI\n    Leones\nPrimera\n4\nNO\n    Fénix FC\nReservas\n7\nSI"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#valores-faltantes",
+    "href": "presentaciones/02_preparacion-de-datos.html#valores-faltantes",
+    "title": "Preparación de datos",
+    "section": "Valores faltantes",
+    "text": "Valores faltantes\nNo se registraron, no aplican, se perdieron, etc.\n\n Los datos faltantes siguen siendo datos \nEn R usamos NA, una constante especial que indica valores faltantes"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#datos-compartidos-adecuadamente",
+    "href": "presentaciones/02_preparacion-de-datos.html#datos-compartidos-adecuadamente",
+    "title": "Preparación de datos",
+    "section": "Datos compartidos adecuadamente",
+    "text": "Datos compartidos adecuadamente\nFáciles de interpretar (por humanos y por máquinas) y listos para analizar\n↘ Reduce la dependencia a software complejo o caro y disminuye la necesidad de saber programar para limpiar datos complejos\n↘ Reducir la interpretación que habrá que hacer para poder usar los datos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#formatos",
+    "href": "presentaciones/02_preparacion-de-datos.html#formatos",
+    "title": "Preparación de datos",
+    "section": "Formatos",
+    "text": "Formatos\n\n\n\nEl PDF no es un formato para datos\n\n\n\n\n\n\nMientras más simple mejor (ej: texto delimitado - csv, tsv, etc.)\nCompartir datos, guardar cálculos y resultados por separado"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#funciones-y-paquetes-para-preparar-transformar-y-estructurar-datos",
+    "href": "presentaciones/02_preparacion-de-datos.html#funciones-y-paquetes-para-preparar-transformar-y-estructurar-datos",
+    "title": "Preparación de datos",
+    "section": "Funciones y paquetes para preparar, transformar, y estructurar datos",
+    "text": "Funciones y paquetes para preparar, transformar, y estructurar datos\n\n\n📦 dplyr\n📦 tidyr\n\nFlexibles, pero desarrollados en torno a una filosofía común\n\nTrabas para no usar las funciones incorrectamente\n\nMenos código para lograr un resultado\nGrámatica y estructuras de datos compartidas\nTareas divididas entre funciones y paquetes\nUso de ‘pipes’"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#funciones-útiles-de-dplyr",
+    "href": "presentaciones/02_preparacion-de-datos.html#funciones-útiles-de-dplyr",
+    "title": "Preparación de datos",
+    "section": "Funciones útiles de 📦 dplyr",
+    "text": "Funciones útiles de 📦 dplyr\n\nFunciones separadas para las operaciones más comunes\nCada función solo hace una cosa pero la hace bien\n\n\n\nFunciones intuitivas para:\n\nCrear subconjuntos de filas y columnas\nCrear o modificar columnas"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-6",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-6",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "Las variables entran directemente como especificaciones para modelos y/o parámetros gráficos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#select",
+    "href": "presentaciones/02_preparacion-de-datos.html#select",
+    "title": "Preparación de datos",
+    "section": "select()",
+    "text": "select()\n\n\nSeleccionar columnas\n\npor nombre\n\npor posición\n\npor tipo\n\n\n\n\n\npaises_m %&gt;% \n  select(pais,\n         amenazadas) %&gt;% \n  head(4)\n\n# A tibble: 4 × 2\n  pais      amenazadas\n  &lt;chr&gt;          &lt;int&gt;\n1 Indonesia        191\n2 Brasil            80\n3 China             73\n4 Mexico            96"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#mutate",
+    "href": "presentaciones/02_preparacion-de-datos.html#mutate",
+    "title": "Preparación de datos",
+    "section": "mutate()",
+    "text": "mutate()\n\n\nCrea o modifica columnas\n\nCrear nuevas\n\n‘sobre-escribir’ existentes\n\n\n\n\npaises_m %&gt;%\n  select(pais, amenazadas) %&gt;% \n  mutate(amenazadas_log = log(amenazadas)) %&gt;% \n  head(5)\n\n# A tibble: 5 × 3\n  pais      amenazadas amenazadas_log\n  &lt;chr&gt;          &lt;int&gt;          &lt;dbl&gt;\n1 Indonesia        191           5.25\n2 Brasil            80           4.38\n3 China             73           4.29\n4 Mexico            96           4.56\n5 Peru              53           3.97\n\n\n\n\nPodemos contrar en dónde aparece la nueva columna con los argumentos .before y .after"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#filter",
+    "href": "presentaciones/02_preparacion-de-datos.html#filter",
+    "title": "Preparación de datos",
+    "section": "filter()",
+    "text": "filter()\nSeleccionar filas\nRetiene solamente las filas que cumplen una condición\n\n\npaises_m %&gt;% \n  select(pais, especies, amenazadas) %&gt;% \n  filter(amenazadas &gt; 75)\n\n# A tibble: 4 × 3\n  pais      especies amenazadas\n  &lt;chr&gt;        &lt;int&gt;      &lt;int&gt;\n1 Indonesia      670        191\n2 Brasil         648         80\n3 Mexico         523         96\n4 India          412         93"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#rename",
+    "href": "presentaciones/02_preparacion-de-datos.html#rename",
+    "title": "Preparación de datos",
+    "section": "rename()",
+    "text": "rename()\nCambiar nombres de columnas\nNombre nuevo primero luego variable objetivo\n\n\npaises_m %&gt;% \n  rename(country=pais,\n         species=especies, threatened=amenazadas) %&gt;% \n  head()\n\n# A tibble: 6 × 4\n  country   species threatened region \n  &lt;chr&gt;       &lt;int&gt;      &lt;int&gt; &lt;chr&gt;  \n1 Indonesia     670        191 Asia   \n2 Brasil        648         80 America\n3 China         551         73 Asia   \n4 Mexico        523         96 America\n5 Peru          467         53 America\n6 Congo         430         15 Africa"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-1",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-1",
+    "title": "Preparación de datos",
+    "section": "Ejercicio - Datos desde paquetes (1)",
+    "text": "Ejercicio - Datos desde paquetes (1)\n\ndata() carga o genera una lista de juegos de datos disponibles con los paquetes que tengamos instalados \ndata() sin ningún argumento muestra todos los datos disponibles"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-2",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-2",
+    "title": "Preparación de datos",
+    "section": "Ejercicio - Datos desde paquetes (2)",
+    "text": "Ejercicio - Datos desde paquetes (2)\nPodemos especificar de cuál paquete enlistar datos\ndata(package=\"ggplot2\")\ndata(package=\"datasets\")\ndata(package=\"tidyr\")"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-3",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio---datos-desde-paquetes-3",
+    "title": "Preparación de datos",
+    "section": "Ejercicio - Datos desde paquetes (3)",
+    "text": "Ejercicio - Datos desde paquetes (3)\n data() carga datos desde un paquete, como argumento usamos el nombre del juego de datos que necesitamos (con o sin comillas)\n\nDebe estar cargado el paquete que contiene los datos\n\n\nlibrary(ggplot2)\ndata(economics)"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio---manipulación-de-datos",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio---manipulación-de-datos",
+    "title": "Preparación de datos",
+    "section": "Ejercicio - manipulación de datos",
+    "text": "Ejercicio - manipulación de datos\n\nCargar el objeto pinguinos, se instala con el paquete datos\nCrear un subconjunto de datos que solo incluya especie, isla, y largo_aleta_mm\n¿Cuántos individuos tienen aletas &gt; a 195 mm?\nCrea una nueva columna con el largo de aleta en pulgadas"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#operaciones-con-varias-columnas-en-simultáneo",
+    "href": "presentaciones/02_preparacion-de-datos.html#operaciones-con-varias-columnas-en-simultáneo",
+    "title": "Preparación de datos",
+    "section": "Operaciones con varias columnas en simultáneo",
+    "text": "Operaciones con varias columnas en simultáneo\nacross()\nPara aplicar filter o mutate a varias columnas\n\nColumnas especificadas por posición (no es buena opción), nombre, o tipo\nSelecciones compuestas\n(ej: variables de tipo factor que contienen ‘temp’ en su nombre)"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#argumentos-de-across",
+    "href": "presentaciones/02_preparacion-de-datos.html#argumentos-de-across",
+    "title": "Preparación de datos",
+    "section": "argumentos de across():",
+    "text": "argumentos de across():\n.cols Columnas para transformar\n.fns Función a aplicarse a cada una\n\nacross espera una función entonces el nombre y sus argumentos se pueden pasar por separado"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#funciones-adicionales-para-referirnos-a-columnas",
+    "href": "presentaciones/02_preparacion-de-datos.html#funciones-adicionales-para-referirnos-a-columnas",
+    "title": "Preparación de datos",
+    "section": "Funciones adicionales para referirnos a columnas",
+    "text": "Funciones adicionales para referirnos a columnas\nExisten funciones auxiliares para especificar conjuntos de varaibles, se usan junto con o en lugar de across()\n\n\n\n[dplyr selection features and helpers"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#everything",
+    "href": "presentaciones/02_preparacion-de-datos.html#everything",
+    "title": "Preparación de datos",
+    "section": "everything()",
+    "text": "everything()\nTodas las variables\n\n\npaises_m %&gt;% \n  mutate(across(everything(), as.character)) %&gt;% head(3)\n\n# A tibble: 3 × 4\n  pais      especies amenazadas region \n  &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;  \n1 Indonesia 670      191        Asia   \n2 Brasil    648      80         America\n3 China     551      73         Asia"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-7",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-7",
+    "title": "Preparación de datos",
+    "section": "!",
+    "text": "!\nDevuelve el complemento de un conjunto de variables\n\n\npaises_m %&gt;% \n  select(!c(region,amenazadas)) %&gt;% head()\n\n# A tibble: 6 × 2\n  pais      especies\n  &lt;chr&gt;        &lt;int&gt;\n1 Indonesia      670\n2 Brasil         648\n3 China          551\n4 Mexico         523\n5 Peru           467\n6 Congo          430"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#where",
+    "href": "presentaciones/02_preparacion-de-datos.html#where",
+    "title": "Preparación de datos",
+    "section": "where()",
+    "text": "where()\nSelecciona las variables para las cuales alguna comparación regrese TRUE\n\nej: transformar todas las variables de tipo numérico, identificadas con is.numeric()\n\n\npaises_m %&gt;% \n  mutate(across(where(is.numeric), log2)) %&gt;% slice(1:3)\n\n# A tibble: 3 × 4\n  pais      especies amenazadas region \n  &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n1 Indonesia     9.39       7.58 Asia   \n2 Brasil        9.34       6.32 America\n3 China         9.11       6.19 Asia"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#matches",
+    "href": "presentaciones/02_preparacion-de-datos.html#matches",
+    "title": "Preparación de datos",
+    "section": "matches()",
+    "text": "matches()\nEncuentra nombres de variables con expresiones regulares\n\nej: quitar variables que coincidan con un patrón\n\n\npaises_m %&gt;% \n  mutate(across(matches(\"p..s\"), toupper)) %&gt;% head\n\n# A tibble: 6 × 4\n  pais      especies amenazadas region \n  &lt;chr&gt;        &lt;int&gt;      &lt;int&gt; &lt;chr&gt;  \n1 INDONESIA      670        191 Asia   \n2 BRASIL         648         80 America\n3 CHINA          551         73 Asia   \n4 MEXICO         523         96 America\n5 PERU           467         53 America\n6 CONGO          430         15 Africa"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-8",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-8",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "Países megadiversosDatos\n\n\n\n\n\n\n\n\n  \n    \n    \n      pais\n      especies\n      amenazadas\n      region\n    \n  \n  \n    Indonesia\n670\n191\nAsia\n    Brasil\n648\n80\nAmerica\n    China\n551\n73\nAsia\n    Mexico\n523\n96\nAmerica\n    Peru\n467\n53\nAmerica\n    Congo\n430\n15\nAfrica\n    India\n412\n93\nAsia\n    Kenya\n376\n30\nAfrica\n    Argentina\n374\n38\nAmerica\n    Ecuador\n372\n47\nAmerica\n    Venezuela\n363\n35\nAmerica\n    Tanzania\n359\n41\nAfrica\n  \n  \n  \n\n\n\n\n\n\n\npaises_m &lt;- \ntibble::tribble(\n        ~pais, ~especies, ~amenazadas,   ~region,\n  \"Indonesia\",      670L,        191L,    \"Asia\",\n     \"Brasil\",      648L,         80L, \"America\",\n      \"China\",      551L,         73L,    \"Asia\",\n     \"Mexico\",      523L,         96L, \"America\",\n       \"Peru\",      467L,         53L, \"America\",\n      \"Congo\",      430L,         15L,  \"Africa\",\n      \"India\",      412L,         93L,    \"Asia\",\n      \"Kenya\",      376L,         30L,  \"Africa\",\n  \"Argentina\",      374L,         38L, \"America\",\n    \"Ecuador\",      372L,         47L, \"America\",\n  \"Venezuela\",      363L,         35L, \"America\",\n   \"Tanzania\",      359L,         41L,  \"Africa\"\n  )"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-9",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-9",
+    "title": "Preparación de datos",
+    "section": "!",
+    "text": "!\nDevuelve el complemento de un conjunto de variables\n\n\npaises_m %&gt;% \n  select(!c(region,amenazadas)) %&gt;% head()\n\n# A tibble: 6 × 2\n  pais      especies\n  &lt;chr&gt;        &lt;int&gt;\n1 Indonesia      670\n2 Brasil         648\n3 China          551\n4 Mexico         523\n5 Peru           467\n6 Congo          430"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#across-sin-funciones-auxiliares",
+    "href": "presentaciones/02_preparacion-de-datos.html#across-sin-funciones-auxiliares",
+    "title": "Preparación de datos",
+    "section": "across sin funciones auxiliares",
+    "text": "across sin funciones auxiliares\nRaíz cuadarada (sqrt()) de especies y amenazadas\n\npaises_m %&gt;%  \n  mutate(across(c(especies, amenazadas), sqrt)) %&gt;% \n  head()\n\n# A tibble: 6 × 4\n  pais      especies amenazadas region \n  &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n1 Indonesia     25.9      13.8  Asia   \n2 Brasil        25.5       8.94 America\n3 China         23.5       8.54 Asia   \n4 Mexico        22.9       9.80 America\n5 Peru          21.6       7.28 America\n6 Congo         20.7       3.87 Africa"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#raíz-cuadrada-sqrt-de-todas-las-variables-numéricas",
+    "href": "presentaciones/02_preparacion-de-datos.html#raíz-cuadrada-sqrt-de-todas-las-variables-numéricas",
+    "title": "Preparación de datos",
+    "section": "Raíz cuadrada (sqrt()) de todas las variables numéricas",
+    "text": "Raíz cuadrada (sqrt()) de todas las variables numéricas\n\npaises_m %&gt;% \n  mutate(across(where(is.numeric), sqrt)) %&gt;% \n  head()\n\n# A tibble: 6 × 4\n  pais      especies amenazadas region \n  &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  \n1 Indonesia     25.9      13.8  Asia   \n2 Brasil        25.5       8.94 America\n3 China         23.5       8.54 Asia   \n4 Mexico        22.9       9.80 America\n5 Peru          21.6       7.28 America\n6 Congo         20.7       3.87 Africa"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#funciones-auxiliares-para-descartar-variables",
+    "href": "presentaciones/02_preparacion-de-datos.html#funciones-auxiliares-para-descartar-variables",
+    "title": "Preparación de datos",
+    "section": "Funciones auxiliares para descartar variables",
+    "text": "Funciones auxiliares para descartar variables\nDejar solo variables numéricas\n\npaises_m %&gt;% \n  select(where(is.numeric)) %&gt;% \n  head()\n\n# A tibble: 6 × 2\n  especies amenazadas\n     &lt;int&gt;      &lt;int&gt;\n1      670        191\n2      648         80\n3      551         73\n4      523         96\n5      467         53\n6      430         15"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-10",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-10",
+    "title": "Preparación de datos",
+    "section": ":",
+    "text": ":\nSelecciona variables contiguas\n\n\npaises_m %&gt;% \n  select(pais:amenazadas) %&gt;% head()\n\n# A tibble: 6 × 3\n  pais      especies amenazadas\n  &lt;chr&gt;        &lt;int&gt;      &lt;int&gt;\n1 Indonesia      670        191\n2 Brasil         648         80\n3 China          551         73\n4 Mexico         523         96\n5 Peru           467         53\n6 Congo          430         15"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#reestructurando-datos-con-tidyr",
+    "href": "presentaciones/02_preparacion-de-datos.html#reestructurando-datos-con-tidyr",
+    "title": "Preparación de datos",
+    "section": "Reestructurando datos con 📦 tidyr",
+    "text": "Reestructurando datos con 📦 tidyr\n ancho a largo: pivot_longer()\n\n\npivot_longer(data, cols, names_to, values_to)\n\n\n largo a ancho: pivot_wider()\n\n\npivot_longer(data, cols, \n             names_from, \n             values_from)"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-11",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-11",
+    "title": "Preparación de datos",
+    "section": "-",
+    "text": "-\nExcluir variables\n(devuleve todos los elementos excepto el que sigue el operador de resta)\n\n\npaises_m %&gt;% \n  select(-region) %&gt;% head()\n\n# A tibble: 6 × 3\n  pais      especies amenazadas\n  &lt;chr&gt;        &lt;int&gt;      &lt;int&gt;\n1 Indonesia      670        191\n2 Brasil         648         80\n3 China          551         73\n4 Mexico         523         96\n5 Peru           467         53\n6 Congo          430         15"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ancho-a-largo",
+    "href": "presentaciones/02_preparacion-de-datos.html#ancho-a-largo",
+    "title": "Preparación de datos",
+    "section": "Ancho a largo",
+    "text": "Ancho a largo\n\ncolonias_largo &lt;- colonias %&gt;%\n  pivot_longer(\n    cols = c(Abarrotes,Supermercado,Minisuper),\n    names_to = \"tipo_negocio\",\n    values_to = \"n_negocios\")\n\ncols Las columnas cuyos nombres son datos\nnames_to Nombre para la nueva varible que se crea a partir de los nombres de cada cols\nvalues_to Nombre para la variable que se crea a partir de los contenidos de cada columna especificada con cols"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-12",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-12",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "Datos anchos\nLectura y captura más fácil\nÚtil para edición interactiva en hojas de cálculo\n\n\nDatos largos\nTiende a seguir principios de Datos Ordenados\nListos para analizar\nSe vinculan directamente con parámetros estéticos en un gráfico"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-13",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-13",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "coloniasDatos\n\n\n\n\n\n\n\n\n  \n    \n    \n      Asentamiento\n      Tipo\n      CP\n      Abarrotes\n      Supermercado\n      Minisuper\n    \n  \n  \n    Arroyo Blanco\nColonia\n91025\n7\n2\n1\n    Atenas\nFraccionamiento\n91184\n1\n0\n2\n    Colibris\nColonia\n91067\n8\n3\n2\n    Del Valle\nUnidad Habitacional\n91097\n2\n1\n1\n    El Cafetal\nFraccionamiento\n91150\n2\n0\n0\n  \n  \n  \n\n\n\n\n\n\n\ncolonias &lt;- \ntibble::tribble(\n    ~Asentamiento,                 ~Tipo,    ~CP, ~Abarrotes, ~Supermercado, ~Minisuper,\n  \"Arroyo Blanco\",             \"Colonia\", 91025L,         7L,            2L,         1L,\n         \"Atenas\",     \"Fraccionamiento\", 91184L,         1L,            0L,         2L,\n       \"Colibris\",             \"Colonia\", 91067L,         8L,            3L,         2L,\n      \"Del Valle\", \"Unidad Habitacional\", 91097L,         2L,            1L,         1L,\n     \"El Cafetal\",     \"Fraccionamiento\", 91150L,         2L,            0L,         0L\n  )\n\n\n\n\nVariables:\ncolonia, tipo de asentamiento, Código Postal, Número de negocios"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#largo-a-ancho",
+    "href": "presentaciones/02_preparacion-de-datos.html#largo-a-ancho",
+    "title": "Preparación de datos",
+    "section": "Largo a ancho",
+    "text": "Largo a ancho\n\ncolonias_largo %&gt;% \n  pivot_wider(names_from = tipo_negocio, \n              values_from = n_negocios)\n\nnames_from De cuáles columnas vamos a tomar valores para los nombres de las nuevas variables\nvalues_from Cuál columna tiene los valores de celda para las nuevas variables creadas"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-14",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-14",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "colonias %&gt;%\n  pivot_longer(\n    cols = c(Abarrotes,Supermercado,Minisuper),\n    names_to = \"tipo_negocio\",\n    values_to = \"n_negocios\")"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio---pivot",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio---pivot",
+    "title": "Preparación de datos",
+    "section": "Ejercicio - pivot",
+    "text": "Ejercicio - pivot\n\nCarga el archivo “expresion_genes.csv”. Esta tabla contiene valores de expresión génica para cinco especies de peces, a partir de muestras tomadas en seis tiempos y de dos tejidos.\nTransforma los datos de ancho a largo y de regreso a ancho."
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-15",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-15",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "colonias %&gt;%\n  pivot_longer(\n    cols = c(Abarrotes,Supermercado,Minisuper),\n    names_to = \"tipo_negocio\",\n    values_to = \"n_negocios\")\n\n# A tibble: 15 × 5\n   Asentamiento  Tipo                   CP tipo_negocio n_negocios\n   &lt;chr&gt;         &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;             &lt;int&gt;\n 1 Arroyo Blanco Colonia             91025 Abarrotes             7\n 2 Arroyo Blanco Colonia             91025 Supermercado          2\n 3 Arroyo Blanco Colonia             91025 Minisuper             1\n 4 Atenas        Fraccionamiento     91184 Abarrotes             1\n 5 Atenas        Fraccionamiento     91184 Supermercado          0\n 6 Atenas        Fraccionamiento     91184 Minisuper             2\n 7 Colibris      Colonia             91067 Abarrotes             8\n 8 Colibris      Colonia             91067 Supermercado          3\n 9 Colibris      Colonia             91067 Minisuper             2\n10 Del Valle     Unidad Habitacional 91097 Abarrotes             2\n11 Del Valle     Unidad Habitacional 91097 Supermercado          1\n12 Del Valle     Unidad Habitacional 91097 Minisuper             1\n13 El Cafetal    Fraccionamiento     91150 Abarrotes             2\n14 El Cafetal    Fraccionamiento     91150 Supermercado          0\n15 El Cafetal    Fraccionamiento     91150 Minisuper             0"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#dplyrcoalesce",
+    "href": "presentaciones/02_preparacion-de-datos.html#dplyrcoalesce",
+    "title": "Preparación de datos",
+    "section": "dplyr::coalesce()",
+    "text": "dplyr::coalesce()\n\nEncuentra y regresa el primer valor que no sea NA en cada posición para un conjunto de vectores\n\n* las columnas en datos rectangulares son vectores\n\nDevuelve un solo vector con los valores que no sean NA que aparezcan primero."
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-16",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-16",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "colonias_largo %&gt;% \n  pivot_wider(names_from = tipo_negocio, \n              values_from = n_negocios)\n\n# A tibble: 5 × 6\n  Asentamiento  Tipo                   CP Abarrotes Supermercado Minisuper\n  &lt;chr&gt;         &lt;chr&gt;               &lt;int&gt;     &lt;int&gt;        &lt;int&gt;     &lt;int&gt;\n1 Arroyo Blanco Colonia             91025         7            2         1\n2 Atenas        Fraccionamiento     91184         1            0         2\n3 Colibris      Colonia             91067         8            3         2\n4 Del Valle     Unidad Habitacional 91097         2            1         1\n5 El Cafetal    Fraccionamiento     91150         2            0         0"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-17",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-17",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "coalesce() - Combina valores. A partir de dos o más vectores, retiene valores en orden y rellena datos faltantes con valores de los siguientes vectores.\n\nfill() Rellena valores adyacentes. Ayuda a evitar datos faltantes innecesarios. Similar a las funciones para rellenar valores contiguos en hojas de cálculo."
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-18",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-18",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "x &lt;- c(1, 2, NA, NA, 5)\ny &lt;- c(NA, NA, 3, 4, 5)\nz &lt;- c(1, 4, 3, 5, 3)\n\n\nVectores numéricos del mismo largo, hay valores faltantes.\n\n\ncoalesce(x, y, z)\n\n[1] 1 2 3 4 5\n\n\n\n\nEl orden de los argumentos importa"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-19",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-19",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "x &lt;- c(1, 2, NA, NA, 5)\ny &lt;- c(NA, NA, 3, 4, 5)\nz &lt;- c(1, 4, 3, 5, 3)\n\n\n\n\ncoalesce(z,x,y)\n\n[1] 1 4 3 5 3"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#tidyrfill",
+    "href": "presentaciones/02_preparacion-de-datos.html#tidyrfill",
+    "title": "Preparación de datos",
+    "section": "tidyr::fill()",
+    "text": "tidyr::fill()\n\n\n\n\n\n\n\n\n  \n    \n    \n      mamiferos\n      biomasa\n    \n  \n  \n    ganado\n21\n    NA\n5\n    NA\n7\n    NA\n23\n    NA\n74\n    silvestre\n23\n    NA\n65\n    NA\n12\n    NA\n5\n  \n  \n  \n\n\n\n\n\n\nRellena valores faltantes en una columna (por defecto de arriba a abajo)\nSe asume que los valores contiguos son los mismos hasta que aparece otro distinto en la misma columna\nRellena hasta el siguiente valor que no sea NA"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-20",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-20",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "humedad sueloDatos\n\n\n\n\n\n\n\n\n  \n    \n    \n      muestra\n      sensor_1\n      sensor_respaldo\n      literatura\n    \n  \n  \n    ladera sur\nNA\n4.9\n2.6\n    ladera norte\n2.2\nNA\n4.3\n    urbano\n4.5\n5.0\n3.4\n    invernadero A\nNA\n2.7\n3.5\n    invernadero B\n2.5\nNA\n2.3\n  \n  \n  \n\n\n\n\n\n\n\nhumedad &lt;- \ntibble::tribble(\n         ~muestra, ~sensor_1, ~sensor_respaldo, ~literatura,\n     \"ladera sur\",        NA,              4.9,         2.6,\n   \"ladera norte\",       2.2,               NA,         4.3,\n         \"urbano\",       4.5,                5,         3.4,\n  \"invernadero A\",        NA,              2.7,         3.5,\n  \"invernadero B\",       2.5,               NA,         2.3\n  )"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#valores-repetidos",
+    "href": "presentaciones/02_preparacion-de-datos.html#valores-repetidos",
+    "title": "Preparación de datos",
+    "section": "Valores repetidos",
+    "text": "Valores repetidos\n\nDefinición variable pero generalmente dos o más copias del mismo registro u observación\n\nProblemas posibles\n\nInflán datos\nCostos de repetición no intencional\nResultados imprecisos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#identificando-y-eliminando-duplicados",
+    "href": "presentaciones/02_preparacion-de-datos.html#identificando-y-eliminando-duplicados",
+    "title": "Preparación de datos",
+    "section": "Identificando y eliminando duplicados",
+    "text": "Identificando y eliminando duplicados\n\nIdentificar con get_dupes() del paquete 📦 janitor\nEliminar con distinct() de 📦 dplyr"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#repetición",
+    "href": "presentaciones/02_preparacion-de-datos.html#repetición",
+    "title": "Preparación de datos",
+    "section": "Repetición",
+    "text": "Repetición\n\nEn todas las variables (copias idénticas de una fila)\nEn las variables que definen nuestras unidades observacionales\nEn conjuntos arbitrarios de variables"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-21",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-21",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "humedad %&gt;% \n  mutate(val_completo = coalesce(sensor_1, sensor_respaldo, literatura))\n\n# A tibble: 5 × 5\n  muestra       sensor_1 sensor_respaldo literatura val_completo\n  &lt;chr&gt;            &lt;dbl&gt;           &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1 ladera sur        NA               4.9        2.6          4.9\n2 ladera norte       2.2            NA          4.3          2.2\n3 urbano             4.5             5          3.4          4.5\n4 invernadero A     NA               2.7        3.5          2.7\n5 invernadero B      2.5            NA          2.3          2.5"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#identificar-con-get_dupes",
+    "href": "presentaciones/02_preparacion-de-datos.html#identificar-con-get_dupes",
+    "title": "Preparación de datos",
+    "section": "Identificar con get_dupes()",
+    "text": "Identificar con get_dupes()\n\nordenes_pizza %&gt;%\n  get_dupes() # todas las variables (por defecto)\n\n# A tibble: 2 × 5\n  IDusuario Direccion   Colonia   Alcaldia   dupe_count\n  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;\n1 susana24  Fresnos 114 San Angel A. Obregón          2\n2 susana24  Fresnos 114 San Angel A. Obregón          2\n\n\n\nAñade una variable dupe_count que cuantifica las filas con valores duplicados\nAcomoda las variables de interés al principio del data frame resultante"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-22",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-22",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "carbon_mamiferos\n\n# A tibble: 9 × 2\n  mamiferos biomasa\n  &lt;chr&gt;       &lt;dbl&gt;\n1 ganado         21\n2 &lt;NA&gt;            5\n3 &lt;NA&gt;            7\n4 &lt;NA&gt;           23\n5 &lt;NA&gt;           74\n6 silvestre      23\n7 &lt;NA&gt;           65\n8 &lt;NA&gt;           12\n9 &lt;NA&gt;            5\n\n\n\n\ncarbon_mamiferos %&gt;% \n  fill(mamiferos)\n\n# A tibble: 9 × 2\n  mamiferos biomasa\n  &lt;chr&gt;       &lt;dbl&gt;\n1 ganado         21\n2 ganado          5\n3 ganado          7\n4 ganado         23\n5 ganado         74\n6 silvestre      23\n7 silvestre      65\n8 silvestre      12\n9 silvestre       5"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-23",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-23",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "ordenes_pizzadatos\n\n\n\n\n\n\n\n\n  \n    \n    \n      IDusuario\n      Direccion\n      Colonia\n      Alcaldia\n    \n  \n  \n    Pablitoo\nCafetal 395 Casa 2\nSan Angel\nA. Obregón\n    susana24\nFresnos 114\nSan Angel\nA. Obregón\n    susana24\nFresnos 114\nSan Angel\nA. Obregón\n    jd.adriana\nCafetal 395 Casa 8\nSan Angel\nA. Obregón\n    JuanManuel\nHidalgo 11 Depto 1B\nCampestre\nA. Obregón\n    JoaquinED\nHidalgo 11 Depto 1B\nCampestre\nA. Obregón\n    e_ric2\nHidalgo 11 Depto 1B\nCampestre\nA. Obregón\n  \n  \n  \n\n\n\n\n\n\n\nordenes_pizza &lt;- \ntibble::tribble(\n    ~IDusuario,            ~Direccion,    ~Colonia,    ~Alcaldia,\n    \"Pablitoo\",  \"Cafetal 395 Casa 2\", \"San Angel\", \"A. Obregón\",\n    \"susana24\",         \"Fresnos 114\", \"San Angel\", \"A. Obregón\",\n    \"susana24\",         \"Fresnos 114\", \"San Angel\", \"A. Obregón\",\n  \"jd.adriana\",  \"Cafetal 395 Casa 8\", \"San Angel\", \"A. Obregón\",\n  \"JuanManuel\", \"Hidalgo 11 Depto 1B\", \"Campestre\", \"A. Obregón\",\n   \"JoaquinED\", \"Hidalgo 11 Depto 1B\", \"Campestre\", \"A. Obregón\",\n      \"e_ric2\", \"Hidalgo 11 Depto 1B\", \"Campestre\", \"A. Obregón\"\n  )"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-24",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-24",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "get_dupes() asignando una variable para definir nuestra unidad observacional\n¿Alguien ordenó más de una vez?\n\nordenes_pizza %&gt;%\n  get_dupes(IDusuario)\n\n# A tibble: 2 × 5\n  IDusuario dupe_count Direccion   Colonia   Alcaldia  \n  &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;     \n1 susana24           2 Fresnos 114 San Angel A. Obregón\n2 susana24           2 Fresnos 114 San Angel A. Obregón"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-25",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-25",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "get_dupes() con combinaciones de variables\n\nFilas repetidas en dirección * colonia\n\n\naccepta funciones auxiliares de 📦 tidyselect\n\n\nordenes_pizza %&gt;%\n  get_dupes(Direccion, starts_with(\"Col\"))\n\n# A tibble: 5 × 5\n  Direccion           Colonia   dupe_count IDusuario  Alcaldia  \n  &lt;chr&gt;               &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     \n1 Hidalgo 11 Depto 1B Campestre          3 JuanManuel A. Obregón\n2 Hidalgo 11 Depto 1B Campestre          3 JoaquinED  A. Obregón\n3 Hidalgo 11 Depto 1B Campestre          3 e_ric2     A. Obregón\n4 Fresnos 114         San Angel          2 susana24   A. Obregón\n5 Fresnos 114         San Angel          2 susana24   A. Obregón"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-26",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-26",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "Descartar con distinct() de 📦 dplyr\n\n\nordenes_pizza %&gt;%\n  distinct() # todas las variables\n\n# A tibble: 6 × 4\n  IDusuario  Direccion           Colonia   Alcaldia  \n  &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;     \n1 Pablitoo   Cafetal 395 Casa 2  San Angel A. Obregón\n2 susana24   Fresnos 114         San Angel A. Obregón\n3 jd.adriana Cafetal 395 Casa 8  San Angel A. Obregón\n4 JuanManuel Hidalgo 11 Depto 1B Campestre A. Obregón\n5 JoaquinED  Hidalgo 11 Depto 1B Campestre A. Obregón\n6 e_ric2     Hidalgo 11 Depto 1B Campestre A. Obregón"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-27",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-27",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "distinct() con la variables que definen las unidades observacionales\n\nordenes_pizza %&gt;%\n  distinct(IDusuario, .keep_all = TRUE)\n\n# A tibble: 6 × 4\n  IDusuario  Direccion           Colonia   Alcaldia  \n  &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;     \n1 Pablitoo   Cafetal 395 Casa 2  San Angel A. Obregón\n2 susana24   Fresnos 114         San Angel A. Obregón\n3 jd.adriana Cafetal 395 Casa 8  San Angel A. Obregón\n4 JuanManuel Hidalgo 11 Depto 1B Campestre A. Obregón\n5 JoaquinED  Hidalgo 11 Depto 1B Campestre A. Obregón\n6 e_ric2     Hidalgo 11 Depto 1B Campestre A. Obregón\n\n\n\n.keep_all para retener o no las demás columnas"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#ejercicio",
+    "href": "presentaciones/02_preparacion-de-datos.html#ejercicio",
+    "title": "Preparación de datos",
+    "section": "Ejercicio",
+    "text": "Ejercicio\n\nCargar el archivo murcielagos.csv\n¿De cuántas localidades únicas provienen estos registros?\nExportar un archivo con las localidades únicas y nombres de columna en español"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#temas-de-hoy",
+    "href": "presentaciones/02_preparacion-de-datos.html#temas-de-hoy",
+    "title": "Preparación de datos",
+    "section": "Temas de hoy",
+    "text": "Temas de hoy\n\n‘pipes’ \nEstructuras y organización de datos\n\nMétodos para reestructurar tablas y archivos\n\nPrincipios de datos ordenados (tidy data) y herramientas del ‘tidyverse’ para ordenar datos"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#paquetes-para-preparar-transformar-y-estructurar-datos",
+    "href": "presentaciones/02_preparacion-de-datos.html#paquetes-para-preparar-transformar-y-estructurar-datos",
+    "title": "Preparación de datos",
+    "section": "Paquetes para preparar, transformar, y estructurar datos",
+    "text": "Paquetes para preparar, transformar, y estructurar datos\n\n\n📦 dplyr\n📦 tidyr\n\nFlexibles, pero desarrollados en torno a una filosofía común\n\nTrabas para no usar las funciones incorrectamente\n\nMenos código para lograr un resultado\nGrámatica y estructuras de datos compartidas\nTareas divididas entre funciones y paquetes\nUso de ‘pipes’"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#directorios-rutas-y-nombres-1",
+    "href": "presentaciones/01_trabajando-con-R.html#directorios-rutas-y-nombres-1",
+    "title": "Trabajando con R",
+    "section": "Directorios, rutas y nombres",
+    "text": "Directorios, rutas y nombres\n\n\n\n\nGuardar archivos en ubicaciones específicas, con nombres intencionales y útiles\n\nNombres cortos e informativos\nFáciles de ordenar y que cooperen con búsquedas parciales\nAtención con caracteres especiales y espacios"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#creando-objetos-1",
+    "href": "presentaciones/01_trabajando-con-R.html#creando-objetos-1",
+    "title": "Trabajando con R",
+    "section": "Creando objetos",
+    "text": "Creando objetos\n\n\nnombre_objeto &lt;- valor \n\n\n\nasignar vincula valores con nombres en el entorno de trabajo (environment)\npreferir &lt;-\n\n\nColin Fay (2018)\nWhy do we use arrow as an assignment operator?"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#pipes-paips",
+    "href": "presentaciones/02_preparacion-de-datos.html#pipes-paips",
+    "title": "Preparación de datos",
+    "section": "Pipes (\\paips\\)",
+    "text": "Pipes (\\paips\\)\nSi queremos hacer varias operaciones en secuencia:\n\n\nCódigo anidado (los resultados se evalúan de adentro hacia afuera)\nObjetos intermedios (creamos objetos con resultados intermedios para la siguiente función en la secuencia)\nPipes (estructuramos operaciones seriadas de izquierda a derecha)"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-2",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-2",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "LHS |&gt; RHS(argument = 12)\nse convierte en\nRHS(LHS, argument = 12)"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-3",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-3",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "but sometimes such data is “rectangular” in the same sense that this cat is “bowl-shaped” 😂 pic.twitter.com/ZmxvgcV57d\n\n— Jenny Bryan (@JennyBryan) May 9, 2019"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-28",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-28",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "distinct() con combinaciones de variables\n\nCombinaciones únicas de dirección * colonia\n\n\nordenes_pizza %&gt;%\n  distinct(Direccion,Colonia)\n\n# A tibble: 4 × 2\n  Direccion           Colonia  \n  &lt;chr&gt;               &lt;chr&gt;    \n1 Cafetal 395 Casa 2  San Angel\n2 Fresnos 114         San Angel\n3 Cafetal 395 Casa 8  San Angel\n4 Hidalgo 11 Depto 1B Campestre"
+  },
+  {
+    "objectID": "presentaciones/02_preparacion-de-datos.html#section-29",
+    "href": "presentaciones/02_preparacion-de-datos.html#section-29",
+    "title": "Preparación de datos",
+    "section": "",
+    "text": "⚠️ Si .keep_all = TRUE y hay valores duplicados en otras variables, distinct solo retiene la primera fila\n\n\nordenes_pizza %&gt;%\n  distinct(Direccion,Colonia, .keep_all = TRUE)\n\n# A tibble: 4 × 4\n  IDusuario  Direccion           Colonia   Alcaldia  \n  &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;     \n1 Pablitoo   Cafetal 395 Casa 2  San Angel A. Obregón\n2 susana24   Fresnos 114         San Angel A. Obregón\n3 jd.adriana Cafetal 395 Casa 8  San Angel A. Obregón\n4 JuanManuel Hidalgo 11 Depto 1B Campestre A. Obregón"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#principios-de-visualización",
+    "href": "presentaciones/03_visualización.html#principios-de-visualización",
+    "title": "Visualización",
+    "section": "Principios de visualización",
+    "text": "Principios de visualización\n\nIntroducción a ggplot2\n\nRepresentaciones gráficas de información\n\nPersonalización de elementos gráficos (ejes, colores, fuentes, leyendas)\n\nExportando gráficos de alta resolución\nPreparación de figuras científicas\n\nFiguras más complejas"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#paquetes-para-hoy",
+    "href": "presentaciones/03_visualización.html#paquetes-para-hoy",
+    "title": "Visualización",
+    "section": "Paquetes para hoy",
+    "text": "Paquetes para hoy\nPor si no los tienen:\n\n\ninstall.packages(\"ggplot2\")\ninstall.packages(\"ggthemes\") \ninstall.packages(\"ragg\")\ninstall.packages(\"patchwork\")\ninstall.packages(\"forcats\")"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section",
+    "href": "presentaciones/03_visualización.html#section",
+    "title": "Visualización",
+    "section": "",
+    "text": "The Grammar of Graphics\nWilkinson (1999, 2005)\nA Layered Grammar of Graphics\nHadley Wickham (2007)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-1",
+    "href": "presentaciones/03_visualización.html#section-1",
+    "title": "Visualización",
+    "section": "",
+    "text": "Una gramática puede ayudar a construir oraciones diferentes con una pequeña cantidad de verbos, sustantivos y adjetivos, en lugar de memorizar cada oración específica. Una pequeña cantidad de los componentes básicos de ggplot2 y de su gramática puede crear cientos de gráficos diferentes.\n\nIntroducción a la ciencia de datos\nRafael A. Irizarry (2020)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#gramática-de-gráficos",
+    "href": "presentaciones/03_visualización.html#gramática-de-gráficos",
+    "title": "Visualización",
+    "section": "Gramática de gráficos",
+    "text": "Gramática de gráficos\n\nModificado de Wickham (2007)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-3",
+    "href": "presentaciones/03_visualización.html#section-3",
+    "title": "Visualización",
+    "section": "",
+    "text": "ggplot(data, aes(x,y)) +\n  geom_point()\n\n\n  ggplot() crea el gráfico\naes() determina los vínculos entre las variables y las propiedades del gráfico (por eso es importante tener bien estructurados los datos)\ngeom_* define la capa con la representación visual de los datos"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-4",
+    "href": "presentaciones/03_visualización.html#section-4",
+    "title": "Visualización",
+    "section": "",
+    "text": "ggplot(data = peces,     \n  aes(x = largo,y = peso))+\n  geom_point()"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ejercicio",
+    "href": "presentaciones/03_visualización.html#ejercicio",
+    "title": "Visualización",
+    "section": "Ejercicio",
+    "text": "Ejercicio\n\nranas.csv\n01_armar-plots.R\n\n\n\n\n\n\n\n\n\n\n\nDatos sobre tamaño corporal, frecuencia dominante, y hábitat de 176 especies de ranas, tomados de Muñoz et al. (2020)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#modificando-elementos-gráficos",
+    "href": "presentaciones/03_visualización.html#modificando-elementos-gráficos",
+    "title": "Visualización",
+    "section": "Modificando elementos gráficos",
+    "text": "Modificando elementos gráficos\n\n\nlabs\nfill\ncolor\nsize\nthemes\nscale_fill_*\nscale_shape_*\nscale_color_*\n\nrótulos para ejes, títulos, subtítulos, etc. colores de rellenos\ncolores de bordes\ntamaño o grueso de elementos\napariencias predefinidas\ncontrol manual sobre mapeos estéticos (colores, rellenos, formas)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-6",
+    "href": "presentaciones/03_visualización.html#section-6",
+    "title": "Visualización",
+    "section": "",
+    "text": "ggplot2 cuenta con valores predeterminados para asignar formas y colores diferentes a diferentes niveles de variables categóricas"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-7",
+    "href": "presentaciones/03_visualización.html#section-7",
+    "title": "Visualización",
+    "section": "",
+    "text": "Podemos especificar manualmente las formas y colores para las categorías con un vector que se le da al argumento values\nPara dos categorías con dos niveles c/u:\n\n\naes(x,y, color = var1, shape = var2)+\n scale_color_manual(values=\n                      c('lightskyblue4','blue'))+\n scale_shape_manual(values=c\n                    (20,21))"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#colores",
+    "href": "presentaciones/03_visualización.html#colores",
+    "title": "Visualización",
+    "section": "Colores",
+    "text": "Colores\nnombres HTML"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#colores-1",
+    "href": "presentaciones/03_visualización.html#colores-1",
+    "title": "Visualización",
+    "section": "Colores",
+    "text": "Colores\nCódigos hexagesimales\n\nFree Color Picker (Windows); Gpick (Linux); ColorSlurp (Mac)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#paletas-de-color",
+    "href": "presentaciones/03_visualización.html#paletas-de-color",
+    "title": "Visualización",
+    "section": "Paletas de color",
+    "text": "Paletas de color\n\n\n\nEspecificar por nombre\n\nDefinir con un vector\n\n\n\n\n\n\n\n\n\n\n🔗 Galería de ejemplos de paletteer\n🔗 Pokepalettes"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-8",
+    "href": "presentaciones/03_visualización.html#section-8",
+    "title": "Visualización",
+    "section": "",
+    "text": "El argumento name modifica el título de la leyenda que se genera automáticamente para los mapeos\n\n\naes(x,y, color = var1, shape = var2)+\n    scale_shape_manual(values=c(20,21),\n                       name = 'Variable Dos')+\n    scale_color_manual(values=c('red','blue'), \n                       name= 'Variable Uno')"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#variables-cuantitativas-color",
+    "href": "presentaciones/03_visualización.html#variables-cuantitativas-color",
+    "title": "Visualización",
+    "section": "Variables cuantitativas + color:",
+    "text": "Variables cuantitativas + color:\n\nRampa de colores asignada automáticamente\nDefinir rampa con scale_x_gradient o asignar rampa predeterminada\n\n\n\nggplot(ranas,\n       aes(x=svl, y=freq_dom,\n           fill=svl))+\n  geom_point(size=4,color=\"white\",\n             pch=21)+\n  labs(x=\"Tamaño Corporal (SVL)\",\n       y=\"Frequencia Dominante (Hz)\",\n       title=\"Llamados Ranas\")"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ejercicio-1",
+    "href": "presentaciones/03_visualización.html#ejercicio-1",
+    "title": "Visualización",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nModificando parámetros gráficos\n\nranas.csv\n02_personalizar-figuras.R"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#temas-apariencias-predeterminadas",
+    "href": "presentaciones/03_visualización.html#temas-apariencias-predeterminadas",
+    "title": "Visualización",
+    "section": "Temas (apariencias predeterminadas)",
+    "text": "Temas (apariencias predeterminadas)\nControlan múltiples aspectos de la apariencia del gŕafico sin alterar los datos.\n\n8 disponibles con ggplot2\n\npaquetes con temas adicionales: ggthemes, artyfarty, hrbrthemes`\n\ncrear tema propio"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#otras-rampas-de-color",
+    "href": "presentaciones/03_visualización.html#otras-rampas-de-color",
+    "title": "Visualización",
+    "section": "Otras rampas de color",
+    "text": "Otras rampas de color\n\nPara poder percibir un valor central y acomodar valores de menor a mayor\n\n\n\n🔗 Fabio Crameri - Scientific Color Maps"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#rampas-de-color-uniformes-perceptualmente",
+    "href": "presentaciones/03_visualización.html#rampas-de-color-uniformes-perceptualmente",
+    "title": "Visualización",
+    "section": "Rampas de color uniformes (perceptualmente)",
+    "text": "Rampas de color uniformes (perceptualmente)\n\n\n \n\nviridis\n\ninstaladas con ggplot2\nusar con scale_x_viridis()\n\nscico\n\ninstaladas con scico\ndivergentes y secuenciales"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ejercicio-2",
+    "href": "presentaciones/03_visualización.html#ejercicio-2",
+    "title": "Visualización",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nVariables continuas y colores\n\nranas.csv\n03_rampas.R"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#opciones",
+    "href": "presentaciones/03_visualización.html#opciones",
+    "title": "Visualización",
+    "section": "Opciones",
+    "text": "Opciones\n\nCon botón ‘Export’ de RStudio\nCon dispositivos gráficos\nCon ggsave()\n\nFormato: png (preferible), jpg, pdf, etc."
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#exportando-con-dispositivo-gráfico",
+    "href": "presentaciones/03_visualización.html#exportando-con-dispositivo-gráfico",
+    "title": "Visualización",
+    "section": "Exportando con dispositivo gráfico",
+    "text": "Exportando con dispositivo gráfico\n\n\n\n\n\n\n\n\n\nLos gráficos se pueden asignar a objetos en el entorno de trabajo\n\n\n\n\nfigura_ranas &lt;- \nggplot(ranas,\n       aes(x=svl,y=freq_dom,fill=svl))+\n  geom_point(size=4,color=\"white\",pch=21)\n\npng(filename = \"mifigura.png\",\n    width = 10, \n    height = 10,\n    units =\"cm\",\n    res = 200)\nfigura_ranas\ndev.off()"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#dispositivos-gráficos-de-ragg",
+    "href": "presentaciones/03_visualización.html#dispositivos-gráficos-de-ragg",
+    "title": "Visualización",
+    "section": "Dispositivos gráficos de ragg",
+    "text": "Dispositivos gráficos de ragg\n\nMás rápidos y mejor resolución\nDisponibles instalando el paquete ragg\n\n\n\nfigura_ranas &lt;- \nggplot(ranas,aes(x=svl,y=freq_dom,fill=svl))+\n  geom_point(size=4,color=\"white\",pch=21)\n\nragg_png(filename = \"mifigura.png\",\n    width = 10, height = 10,\n    units =\"cm\",\n    res = 200)\nfigura_ranas\ndev.off()"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ggsave",
+    "href": "presentaciones/03_visualización.html#ggsave",
+    "title": "Visualización",
+    "section": "ggsave()",
+    "text": "ggsave()\n\nUsa ragg si lo encuentra instalado\n\n\n\nggsave(figura_ranas, \n  filename = \"mifigura.png\",\n    width = 10, \n    height = 10,\n    units =\"cm\",\n    dpi = 200)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#quedó-raro",
+    "href": "presentaciones/03_visualización.html#quedó-raro",
+    "title": "Visualización",
+    "section": "¿Quedó raro?",
+    "text": "¿Quedó raro?\n\nArgumento scale en ggsave() y scaling en dispositivos de ragg para ajustar"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#figuras-multipanel",
+    "href": "presentaciones/03_visualización.html#figuras-multipanel",
+    "title": "Visualización",
+    "section": "Figuras multipanel",
+    "text": "Figuras multipanel"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#funciones-facet",
+    "href": "presentaciones/03_visualización.html#funciones-facet",
+    "title": "Visualización",
+    "section": "Funciones facet()",
+    "text": "Funciones facet()\nfacet_wrap() para separar por una sola variable y ‘envolver’\nfacet_grid() para separar con combinaciones de variables"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ejercicio-3",
+    "href": "presentaciones/03_visualización.html#ejercicio-3",
+    "title": "Visualización",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nMúltiplos\n\ncafeteria.csv\n04_multipanel.R"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#reordenar-elementos-ejes-paneles",
+    "href": "presentaciones/03_visualización.html#reordenar-elementos-ejes-paneles",
+    "title": "Visualización",
+    "section": "Reordenar elementos (ejes, paneles)",
+    "text": "Reordenar elementos (ejes, paneles)\nOrden alfabético de los niveles de la variable tipo\n\nggplot(cafeteria,aes(carbohidratos,proteina))+\n  geom_point()+facet_wrap(\"tipo\")"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#factores",
+    "href": "presentaciones/03_visualización.html#factores",
+    "title": "Visualización",
+    "section": "Factores",
+    "text": "Factores\n\n\n\nVariables categóricas\nconjunto fijo y conocido de valores posibles\nmuy útiles para ordenar vectores en un orden distinto al alfabético"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#categorías",
+    "href": "presentaciones/03_visualización.html#categorías",
+    "title": "Visualización",
+    "section": "Categorías",
+    "text": "Categorías\n\n\ncafeteria$tipo"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#categorías-output",
+    "href": "presentaciones/03_visualización.html#categorías-output",
+    "title": "Visualización",
+    "section": "Categorías",
+    "text": "Categorías\n\n [1] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n [6] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[11] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[16] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[21] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[26] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[31] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[36] \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"     \"horneado\"    \n[41] \"horneado\"     \"almuerzo\"     \"almuerzo\"     \"almuerzo\"     \"almuerzo\"    \n[46] \"almuerzo\"     \"almuerzo\"     \"almuerzo\"     \"almuerzo\"     \"individuales\"\n[51] \"individuales\" \"individuales\" \"individuales\" \"individuales\" \"individuales\"\n[56] \"individuales\" \"individuales\" \"individuales\" \"desayuno\"     \"desayuno\"    \n[61] \"desayuno\"     \"desayuno\"     \"desayuno\"     \"desayuno\"     \"desayuno\"    \n[66] \"desayuno\"     \"ensalada\"     \"sandwich\"     \"sandwich\"     \"sandwich\"    \n[71] \"sandwich\"     \"sandwich\"     \"sandwich\"     \"sandwich\"     \"lácteos\"     \n[76] \"lácteos\"      \"lácteos\""
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-11",
+    "href": "presentaciones/03_visualización.html#section-11",
+    "title": "Visualización",
+    "section": "",
+    "text": "factor(cafeteria$tipo)"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-11-output",
+    "href": "presentaciones/03_visualización.html#section-11-output",
+    "title": "Visualización",
+    "section": "",
+    "text": "[1] horneado     horneado     horneado     horneado     horneado    \n [6] horneado     horneado     horneado     horneado     horneado    \n[11] horneado     horneado     horneado     horneado     horneado    \n[16] horneado     horneado     horneado     horneado     horneado    \n[21] horneado     horneado     horneado     horneado     horneado    \n[26] horneado     horneado     horneado     horneado     horneado    \n[31] horneado     horneado     horneado     horneado     horneado    \n[36] horneado     horneado     horneado     horneado     horneado    \n[41] horneado     almuerzo     almuerzo     almuerzo     almuerzo    \n[46] almuerzo     almuerzo     almuerzo     almuerzo     individuales\n[51] individuales individuales individuales individuales individuales\n[56] individuales individuales individuales desayuno     desayuno    \n[61] desayuno     desayuno     desayuno     desayuno     desayuno    \n[66] desayuno     ensalada     sandwich     sandwich     sandwich    \n[71] sandwich     sandwich     sandwich     sandwich     lácteos     \n[76] lácteos      lácteos     \n7 Levels: almuerzo desayuno ensalada horneado individuales ... sandwich"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-12",
+    "href": "presentaciones/03_visualización.html#section-12",
+    "title": "Visualización",
+    "section": "",
+    "text": "levels(factor(cafeteria$tipo))"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-12-output",
+    "href": "presentaciones/03_visualización.html#section-12-output",
+    "title": "Visualización",
+    "section": "",
+    "text": "[1] \"almuerzo\"     \"desayuno\"     \"ensalada\"     \"horneado\"     \"individuales\"\n[6] \"lácteos\"      \"sandwich\""
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#factores-1",
+    "href": "presentaciones/03_visualización.html#factores-1",
+    "title": "Visualización",
+    "section": "Factores",
+    "text": "Factores\nLos niveles de un factor se pueden especificar manualmente con un vector en el argumento levels\n\n\nPara cualquier otra manipulación de factores:\nforcats\n\n\n\n\n\nreordenar una variable según los valores de otra\nsuprimir orden alfabético\ninvertir orden de los niveles\nagrupar niveles\netc."
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#ejercicio-4",
+    "href": "presentaciones/03_visualización.html#ejercicio-4",
+    "title": "Visualización",
+    "section": "Ejercicio",
+    "text": "Ejercicio\n\nedad_gateo.csv\n05_reordenar.R\n\n\n\n\n\n\n\n\n\n\nDatos sobre la edad (semanas) de gateo en relación a temperatura y mes de nacimiento. Tomado de Benson (1993)."
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#patchwork",
+    "href": "presentaciones/03_visualización.html#patchwork",
+    "title": "Visualización",
+    "section": "patchwork",
+    "text": "patchwork\n\n\n\n\n\nSímbolo + para acomodar dos gráficos juntos\nSímbolo | para figuras lado a lado\nSímbolo / para apilar figuras\n\n\n\n\nÁlgebra simple para anidar y acomodar elementos\nplot_layout() para controlar la composición\nplot_annotation() para rotular elementos o agregar textos"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#anotaciones",
+    "href": "presentaciones/03_visualización.html#anotaciones",
+    "title": "Visualización",
+    "section": "Anotaciones",
+    "text": "Anotaciones\n\n((grasaCarb/protEnergia)|puntos_ranas)+\n  plot_annotation(title=\"Mi figura de tres elementos\",\n                  subtitle = \"ejemplo de patchwork\",\n                  tag_levels = \"A\")\n\n\ntag_levels genera diferentes secuencias alfabéticas o numéricas para identificar a cada elemento"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#texto-con-formato",
+    "href": "presentaciones/03_visualización.html#texto-con-formato",
+    "title": "Visualización",
+    "section": "Texto con formato",
+    "text": "Texto con formato\nPodemos usar markdown para darle formato al texto que aparece en diferentes elementos de nuestras gráficas, a través de la función element_markdown() del paquete ggtext\nDocumentación del paquete\n\nlibrary(ggtext)\nggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa))+\ngeom_point()+\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#section-14",
+    "href": "presentaciones/03_visualización.html#section-14",
+    "title": "Visualización",
+    "section": "",
+    "text": "ggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa))+\ngeom_point()+\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())"
+  },
+  {
+    "objectID": "presentaciones/03_visualización.html#extensiones-para-ggplot2",
+    "href": "presentaciones/03_visualización.html#extensiones-para-ggplot2",
+    "title": "Visualización",
+    "section": "Extensiones para ggplot2",
+    "text": "Extensiones para ggplot2\nTaller LatinR\nGalería oficial de extensiones"
+  },
+  {
+    "objectID": "materiales.html",
+    "href": "materiales.html",
+    "title": "Materiales del curso",
+    "section": "",
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n🗜️Descargar datos"
+  },
+  {
+    "objectID": "materiales.html#datos",
+    "href": "materiales.html#datos",
+    "title": "Materiales del curso",
+    "section": "",
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n🗜️Descargar datos"
+  },
+  {
+    "objectID": "materiales.html#presentaciones",
+    "href": "materiales.html#presentaciones",
+    "title": "Materiales del curso",
+    "section": "Presentaciones",
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (esquina inferior izquierda).\n\nLunes 23\nTrabajando con R\nPreparación de datos"
   }
 ]

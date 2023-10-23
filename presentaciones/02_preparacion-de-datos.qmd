@@ -1,0 +1,1448 @@
+---
+title: "Preparación de datos"
+author: Luis D. Verde Arregoitia
+format:
+  revealjs:
+    theme: curso_styles.scss
+    chalkboard: true
+    transition: fade
+    progress: true
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: printing
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 5
+  fig-height: 6
+---
+
+```{r setup}
+#| echo: false
+library(janitor)
+library(tidyr)
+library(stringr)
+library(dplyr)
+library(datos)
+library(gt)
+```
+
+
+Se estima que la limpieza y preparación de datos representa un 50-80% del tiempo de trabajo en 'Ciencia de datos'
+
+::: {style="text-align: right"}
+[The unreasonable importance of data preparation](https://www.oreilly.com/radar/the-unreasonable-importance-of-data-preparation/)\
+Hugo Browne Anderson
+:::
+
+. . .
+
+-   ¿Cuántas muestras tengo por especie?
+-   Cambiar las unidades de algunas de mis variables
+-   ¿Por qué no puedo hacer una figura simple?
+-   El modelo X pide una estructura de datos que tendré que hacer a mano
+
+## Temas de hoy
+
+-   'pipes' 
+-   Estructuras y organización de datos\
+-   Métodos para reestructurar tablas y archivos\
+-   Principios de datos ordenados (**tidy data**) y herramientas del '`tidyverse`' para ordenar datos\
+
+## Pipes (\\paips\\)
+
+Si queremos hacer varias operaciones en secuencia:
+
+::: incremental
+-   Código anidado (los resultados se evalúan de adentro hacia afuera)
+
+-   Objetos intermedios (creamos objetos con resultados intermedios para la siguiente función en la secuencia)
+
+-   Pipes (estructuramos operaciones seriadas de izquierda a derecha)
+:::
+
+## Código anidado
+
+</br>
+
+::: big-code
+```{r}
+#| eval: true
+#| echo: true
+
+estaturas <- c(7,8,8,10,6,9,5,9,8)
+
+round(mean(estaturas), digits = 2)
+```
+:::
+
+## Objetos intermedios
+
+</br>
+
+::: med-code
+```{r}
+#| eval: true
+#| echo: true
+estatura_promedio <- mean(estaturas)
+
+round(estatura_promedio,
+           digits = 2)
+
+```
+:::
+
+## Pipes
+
+::: fragment
+::: columns
+::: {.column width="30%"}
+Mano izquiera\
+(LHS)
+:::
+
+::: {.column width="40%"}
+operador 'pipe'
+:::
+
+::: {.column width="30%"}
+Mano derecha\
+(RHS)
+:::
+:::
+:::
+
+::: fragment
+Toma un objeto a la izquerda del operador y lo inserta como argumento en la función que esté a su derecha
+
+-   Por defecto lo que esté a la izquierda del 'pipe' se inserta como el primer argumento de la función
+:::
+
+## Pipes
+
+`%>%` de 📦 `magrittr`
+
+`|>` en R v \>= 4.1.0
+
+-   Reducen la necesidad de guardar resultados intermedios o de anidar código
+
+-   Código más fácil de leer
+
+-   Más fácil quitar o agregar pasos a la secuencia
+
+> Insertamos con `ctrl + shift + M`
+
+::: rightref
+::: refbox
+Adolfo Álvarez (2021)\
+[The (updated) history of the pipe operator in R](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/)
+:::
+:::
+
+##
+
+</br>
+
+::: big-code
+```{r}
+#| echo: true
+library(magrittr)
+estaturas %>% 
+  mean() %>% 
+  round(digits=2)
+```
+:::
+
+##
+
+</br>
+
+::: big-code
+```{r}
+#| echo: true
+estaturas |> 
+  mean() |> 
+  round(digits=2)
+```
+:::
+
+##
+
+</br>
+
+::: {style="text-align: center"}
+`LHS |> RHS(argument = 12)`
+
+*se convierte en*
+
+`RHS(LHS, argument = 12)`
+:::
+
+# Organizando información
+
+## ¿Qué problemas vemos con esta presentación de datos? {background-color="#a4c5ff"}
+
+![](imgs/datosWord.png)
+
+## Más utilizable
+
+```{r}
+#| echo: false
+tibble::tribble(
+         ~Nombre, ~Periodo,      ~TipoViaje, ~PropositoViaje, ~Costo, ~Pais,
+     "Miguel J.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX",
+     "Miguel J.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX",
+     "Miguel J.",    2022L,      "Nacional",      "Congreso",   500L,  "MX",
+     "Miguel J.",    2022L,      "Nacional",        "Taller",   500L,  "MX",
+     "Miguel J.",    2022L, "Internacional",      "Congreso",  2000L, "EUA",
+  "Alejandra M.",    2022L,              NA,              NA,     NA,    NA,
+       "Raul S.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX"
+  ) %>% gt() %>%
+    tab_style(
+    cell_text(size = "29px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+
+
+```
+
+## Datos bien organizados
+
+-   Más fácil de importar y manipular
+
+-   Menos potencial de errores no replicables (alteraciones, omisiones, duplicaciones)
+
+Siguiendo buenos principios de organización producimos mejores datos y podremos identificar y resolver problemas en datos existentes
+
+## Recomendaciones
+
+-   Unidades, nombres, esquemas, fechas etc. **consistentes**
+
+-   Nombres utilizables
+
+-   Estructuras rectangulares
+
+::: rightref
+::: refbox
+::: columns
+::: {.column width="33%"}
+Openscapes (2020)\
+[Tidy data illustrated](https://www.openscapes.org/blog/2020/10/12/tidy-data/)
+:::
+
+::: {.column width="33%"}
+Broman and Woo (2018)\
+[Organizing data in spreadsheets](https://doi.org/10.1080/00031305.2017.1375989)
+:::
+
+::: {.column width="33%"}
+Verde Arregoita et al. (2018)\
+[Good practices for sharing analysis-ready data...](https://doi.org/10.4404/hystrix-00133-2018)
+:::
+:::
+:::
+:::
+
+## Consistencia
+
+Tablas relacionadas con datos sobre seguimiento GPS de aves
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+tibble::tribble(
+  ~id,       ~ave,     ~edad,    ~estado,
+  23L,  "gorrión", "juvenil",      "VER",
+  11L,     "buho",  "adulto", "Veracruz",
+   7L,     "buho",       "j",   "Puebla",
+  40L, "codorniz",  "ADULTO",       "PU",
+  34L,  "gorrión",       "1",      "VER",
+  30L,   "paloma",       "A",        "V"
+  ) %>% gt() %>%  
+  tab_style(
+    cell_text(size = "26px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+tibble::tribble(
+  ~ID_ave, ~num_rasteador, ~sexo,
+      23L,         "b452",   "M",
+      11L,         "b256",   "M",
+       7L,         "a122",   "F",
+      40L,         "b889",   "M",
+      34L,         "d136",   "F"
+  ) %>% gt() %>% 
+  tab_style(
+    cell_text(size = "26px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    ))
+
+```
+:::
+:::
+
+::: {style="text-align: center"}
+¿Cuántas inconsistencias ven aquí?
+:::
+
+## Datos rectangulares
+
+::: columns
+::: {.column width="30%"}
+![](imgs/rectangle1.png)
+:::
+
+::: {.column width="70%"}
+Objetos con filas y columnas, en los cuales:
+
+-   Cada fila tiene el mismo número de columnas
+
+-   Cada columna tiene el mismo número de filas
+
+-   Vectores o factores de la misma longitud entonces todas las columnas tienen la misma 'altura'
+:::
+:::
+
+## datos rectangulares \~ rangos de celdas en una hoja de cálculo
+
+::: columns
+::: {.column width="50%"}
+![](imgs/cashflow.png){width="45%"}
+:::
+
+::: {.column width="50%"}
+![](imgs/rangespresp.png)
+:::
+:::
+
+::: rightref
+::: refbox
+Davis Vaughan (2018)\
+[Tidying Excel cash flow spreadsheets](https://blog.davisvaughan.com/2018/02/16/tidying-excel-cash-flow-spreadsheets-in-r/)
+:::
+:::
+
+## 
+
+<blockquote class="twitter-tweet tw-align-center" data-conversation="none">
+
+<p lang="en" dir="ltr">
+
+but sometimes such data is "rectangular" in the same sense that this cat is "bowl-shaped" 😂 <a href="https://t.co/ZmxvgcV57d">pic.twitter.com/ZmxvgcV57d</a>
+
+</p>
+
+--- Jenny Bryan (@JennyBryan) <a href="https://twitter.com/JennyBryan/status/1126582138344595456?ref_src=twsrc%5Etfw">May 9, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+
+# Estructurando datos
+
+## ¿Datos listos para uso?
+
+-   Agrupar, transformar, ordenar, visualizar, modelar, compartir, etc.
+
+![](imgs/data-science-communicate.svg){fig-align="center"}
+
+## ¿No se puede?
+
+-   Ordenar para un manejo más fácil y eficiente
+
+## Datos ordenados (*tidy data*)
+
+Una reinterpretación accesible de distintos principios y definiciones de estadística y ciencias de la computación
+
+</br>
+
+::: rightref
+::: refbox
+Wickham (2014)\
+[Tidy Data](https://www.jstatsoft.org/article/view/v059i10/) - Journal of Statistical Software
+:::
+:::
+
+## 'Tidy data'
+
+-   Datos acomodados en una matriz 2D con filas y columnas
+
+-   Las filas corresponden a observaciones
+
+-   Las columnas corresponden a variables
+
+-   Un solo valor por celda
+
+## 
+
+![](imgs/datosords.png){width="90%"}
+
+## 
+
+![](imgs/datosordslab.png)
+
+## ¿Para qué?
+
+Más fácil de reacomodar y manejar
+
+![](imgs/pivotingintro.gif)
+
+## ¿Para qué?
+
+### Trabajando con filas
+
+Los valores de cada observación quedan juntos
+
+![](imgs/descuentos.png)
+
+## 
+
+::: columns
+::: {.column width="40%"}
+![](imgs/mapeovarstidy.png)
+:::
+
+::: {.column width="60%"}
+</br> Las variables entran directemente como especificaciones para modelos y/o parámetros gráficos
+:::
+:::
+
+## Cuándo no
+
+-   Los datos ordenados son más repetitivos y pueden ocupar más espacio que otras representaciones más compactas
+
+</br>
+
+-   No es un formato ideal para la captura de datos, o para tablas que forman parte de algún texto que será impreso
+
+# Consejos rápidos de organización de datos
+
+## Variables por separado para definir grupos
+
+Usar 'variables indicadoras' en lugar de colapsar información entre dos o más variables.
+
+::: columns
+::: {.column width="37%"}
+![](imgs/gruposvars.png)
+:::
+
+::: {.column width="63%"}
+```{r}
+#| echo: false
+
+tibble::tribble(
+     ~Equipo,      ~Liga, ~Victorias, ~Clasificado,
+      "Osos",  "Primera",         8L,         "SI",
+   "Venados", "Reservas",         2L,         "NO",
+  "Dragones",  "Primera",        12L,         "SI",
+    "Leones",  "Primera",         4L,         "NO",
+  "Fénix FC", "Reservas",         7L,         "SI"
+  ) %>% gt()%>% 
+    tab_style(
+    cell_text(size = "32px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    ))
+
+```
+:::
+:::
+
+## Valores faltantes
+
+No se registraron, no aplican, se perdieron, etc.
+
+. . .
+
+</br> [Los datos faltantes siguen siendo datos]{style="font-size: 1.5em; text-align: center"} </br>
+
+En R usamos [NA]{style="color:red; font-family: Liberation Mono; font-weight: bold"}, una constante especial que indica valores faltantes
+
+------------------------------------------------------------------------
+
+-   Tratar los valores [NA]{style="color:red; font-family: Liberation Mono; font-weight: bold"} consistentemente
+
+-   Evitar ambigüedad
+
+> ¿Falta un valor, se dejó una celda en blanco intencionalmente, o la medición no aplica?
+
+-   No usar celdas vacías como relleno para alinear datos o con fines estéticos-estructurales
+
+-   Evitar valores [`NA`]{style="color:red"} en nombres de variables
+
+## 
+
+::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
+![](imgs/ambiguo.png)
+:::
+
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center"}
+![](imgs/mejor.png)
+:::
+:::
+
+# Compartiendo datos
+
+## Datos compartidos adecuadamente
+
+Fáciles de interpretar (por humanos y por máquinas) y listos para analizar
+
+↘ Reduce la dependencia a software complejo o caro y disminuye la necesidad de saber programar para limpiar datos complejos
+
+↘ Reducir la interpretación que habrá que hacer para poder usar los datos
+
+## Formatos
+
+::: columns
+::: {.column width="50%"}
+-   El PDF no es un formato para datos
+:::
+
+::: {.column width="50%"}
+![](imgs/pdfprision.jpg){width="80%"}
+:::
+:::
+
+-   Mientras más simple mejor (ej: texto delimitado - csv, tsv, etc.)
+
+-   Compartir datos, guardar cálculos y resultados por separado
+
+# Herramientas para manipular datos rectangulares
+
+## Paquetes para preparar, transformar, y estructurar datos
+
+::: columns
+::: {.column width="20%"}
+📦 **`dplyr`**\
+📦 **`tidyr`**
+:::
+
+::: {.column width="80%"}
+Flexibles, pero desarrollados en torno a una filosofía común
+
+-   Trabas para no usar las funciones incorrectamente\
+-   Menos código para lograr un resultado
+-   Grámatica y estructuras de datos compartidas
+-   Tareas divididas entre funciones y paquetes
+-   Uso de 'pipes'
+:::
+:::
+
+## Funciones útiles de 📦 `dplyr`
+
+-   Funciones separadas para las operaciones más comunes
+
+-   Cada función solo hace una cosa pero la hace bien
+
+</br>
+
+-   Funciones intuitivas para:
+
+    -   Crear subconjuntos de filas y columnas
+
+    -   Crear o modificar columnas
+
+## 
+
+```{r createsneakers}
+#| echo: false 
+#| eval: true
+
+paises_m <- 
+tibble::tribble(
+        ~pais, ~especies, ~amenazadas,   ~region,
+  "Indonesia",      670L,        191L,    "Asia",
+     "Brasil",      648L,         80L, "America",
+      "China",      551L,         73L,    "Asia",
+     "Mexico",      523L,         96L, "America",
+       "Peru",      467L,         53L, "America",
+      "Congo",      430L,         15L,  "Africa",
+      "India",      412L,         93L,    "Asia",
+      "Kenya",      376L,         30L,  "Africa",
+  "Argentina",      374L,         38L, "America",
+    "Ecuador",      372L,         47L, "America",
+  "Venezuela",      363L,         35L, "America",
+   "Tanzania",      359L,         41L,  "Africa"
+  )
+
+
+
+```
+
+::: panel-tabset
+### Países megadiversos
+
+```{r}
+#| echo: false 
+#| eval: true
+paises_m %>% gt() %>% 
+  tab_style(
+    cell_text(size = '21px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title()))
+```
+
+### Datos
+
+```{r}
+#| echo: true
+#| eval: false
+paises_m <- 
+tibble::tribble(
+        ~pais, ~especies, ~amenazadas,   ~region,
+  "Indonesia",      670L,        191L,    "Asia",
+     "Brasil",      648L,         80L, "America",
+      "China",      551L,         73L,    "Asia",
+     "Mexico",      523L,         96L, "America",
+       "Peru",      467L,         53L, "America",
+      "Congo",      430L,         15L,  "Africa",
+      "India",      412L,         93L,    "Asia",
+      "Kenya",      376L,         30L,  "Africa",
+  "Argentina",      374L,         38L, "America",
+    "Ecuador",      372L,         47L, "America",
+  "Venezuela",      363L,         35L, "America",
+   "Tanzania",      359L,         41L,  "Africa"
+  )
+
+```
+:::
+
+## `select()`
+
+::: columns
+::: {.column width="30%"}
+#### Seleccionar columnas
+
+-   por nombre\
+-   por posición\
+-   por tipo\
+:::
+
+::: {.column width="70%"}
+::: med-code
+```{r}
+paises_m %>% 
+  select(pais,
+         amenazadas) %>% 
+  head(4)
+```
+:::
+:::
+:::
+
+## `mutate()`
+
+::: columns
+::: {.column width="35%"}
+#### Crea o modifica columnas
+
+-   Crear nuevas\
+-   'sobre-escribir' existentes\
+:::
+
+::: {.column width="65%"}
+```{r}
+
+paises_m %>%
+  select(pais, amenazadas) %>% 
+  mutate(amenazadas_log = log(amenazadas)) %>% 
+  head(5)
+```
+:::
+:::
+
+Podemos contrar en dónde aparece la nueva columna con los argumentos `.before` y `.after`
+
+## `filter()`
+
+#### Seleccionar filas
+
+Retiene solamente las filas que cumplen una condición
+
+::: med-code
+```{r}
+paises_m %>% 
+  select(pais, especies, amenazadas) %>% 
+  filter(amenazadas > 75)
+```
+:::
+
+## `rename()`
+
+#### Cambiar nombres de columnas
+
+Nombre nuevo primero *luego* variable objetivo
+
+::: med-code
+```{r}
+paises_m %>% 
+  rename(country=pais,
+         species=especies, threatened=amenazadas) %>% 
+  head()
+
+```
+:::
+
+## Ejercicio - Datos desde paquetes (1) {background-color="#a4c5ff"}
+
+</br>
+
+[`data()`]{style="color:##7b7bb4; font-weight=bold"} carga o genera una lista de juegos de datos disponibles con los paquetes que tengamos instalados </br>
+
+[`data()`]{style="color:##7b7bb4; font-weight=bold"} sin ningún argumento muestra todos los datos disponibles
+
+## Ejercicio - Datos desde paquetes (2) {background-color="#a4c5ff"}
+
+Podemos especificar de cuál paquete enlistar datos
+
+[`data(package="ggplot2")`]{style="font-size: 1.5em; text-align: center"}
+
+[`data(package="datasets")`]{style="font-size: 1.5em; text-align: center"}
+
+[`data(package="tidyr")`]{style="font-size: 1.5em; text-align: center"}
+
+## Ejercicio - Datos desde paquetes (3) {background-color="#a4c5ff"}
+
+<br/> `data()` carga datos desde un paquete, como argumento usamos el nombre del juego de datos que necesitamos (con o sin comillas)
+
+> Debe estar cargado el paquete que contiene los datos
+
+```{r}
+#| eval: false
+#| echo: true
+
+library(ggplot2)
+data(economics)
+
+```
+
+## Ejercicio - manipulación de datos {background-color="#a4c5ff"}
+
+-   Cargar el objeto `pinguinos`, se instala con el paquete `datos`
+
+-   Crear un subconjunto de datos que solo incluya `especie`, `isla`, y `largo_aleta_mm`
+
+-   ¿Cuántos individuos tienen aletas \> a 195 mm?
+
+-   Crea una nueva columna con el largo de aleta en pulgadas
+
+# Trabajando con \> 1 columna con `across()`
+
+## Operaciones con varias columnas en simultáneo
+
+[`across()`]{style="font-size: 1.5em; text-align: center"}
+
+Para aplicar `filter` o `mutate` a varias columnas
+
+-   Columnas especificadas por posición (no es buena opción), nombre, o tipo
+
+-   Selecciones compuestas\
+    (ej: *variables de tipo factor* que contienen 'temp' en su nombre)
+
+## argumentos de `across()`:
+
+[.cols]{style="color:green font-size: 1.3em"} Columnas para transformar
+
+[.fns]{style="color:pink font-size: 1.3em"} Función a aplicarse a cada una
+
+> `across` espera una función entonces el nombre y sus argumentos se pueden pasar por separado
+
+------------------------------------------------------------------------
+
+<br/>
+
+```{r}
+#| echo: true
+paises_m %>% 
+  mutate(across(c(especies, amenazadas), `*`, 2)) %>% 
+  head(3)
+```
+
+-   `.cols` es un vector con los nombres de las dos columnas que nos interesan
+
+-   `*` es la función para aplicar, `2` es su argumento
+
+## Funciones adicionales para referirnos a columnas
+
+Existen funciones auxiliares para especificar conjuntos de varaibles, se usan junto con o en lugar de `across()`
+
+</br>
+
+::: rightref
+::: refbox
+[[dplyr selection features and helpers](https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html)
+:::
+:::
+
+## `everything()`
+
+Todas las variables
+
+::: med-code
+```{r}
+#| eval: true
+#| echo: true
+paises_m %>% 
+  mutate(across(everything(), as.character)) %>% head(3)
+```
+:::
+
+## `!`
+
+Devuelve el complemento de un conjunto de variables
+
+::: med-code
+```{r}
+#| eval: true
+#| echo: true
+paises_m %>% 
+  select(!c(region,amenazadas)) %>% head()
+```
+:::
+
+## `where()`
+
+Selecciona las variables para las cuales alguna comparación regrese `TRUE`
+
+> ej: transformar todas las variables de tipo numérico, identificadas con `is.numeric()`
+
+```{r}
+paises_m %>% 
+  mutate(across(where(is.numeric), log2)) %>% slice(1:3)
+```
+
+## `matches()`
+
+Encuentra nombres de variables con expresiones regulares
+
+> ej: quitar variables que coincidan con un patrón
+
+```{r}
+paises_m %>% 
+  mutate(across(matches("p..s"), toupper)) %>% head
+```
+
+## `:`
+
+Selecciona variables contiguas
+
+::: med-code
+```{r}
+paises_m %>% 
+  select(pais:amenazadas) %>% head()
+```
+:::
+
+## `-`
+
+Excluir variables
+
+(devuleve todos los elementos excepto el que sigue el operador de resta)
+
+::: med-code
+```{r}
+paises_m %>% 
+  select(-region) %>% head()
+```
+:::
+
+## `across` sin funciones auxiliares
+
+Raíz cuadarada (`sqrt()`) de `especies` y `amenazadas`
+
+```{r }
+#| eval: true
+#| echo: true
+paises_m %>%  
+  mutate(across(c(especies, amenazadas), sqrt)) %>% 
+  head()
+```
+
+## Raíz cuadrada (`sqrt()`) de todas las variables numéricas
+
+```{r}
+#| eval: true
+#| echo: true
+paises_m %>% 
+  mutate(across(where(is.numeric), sqrt)) %>% 
+  head()
+```
+
+## Funciones auxiliares para descartar variables
+
+Dejar solo variables numéricas
+
+```{r}
+#| eval: true
+#| echo: true
+ 
+paises_m %>% 
+  select(where(is.numeric)) %>% 
+  head()
+```
+
+# Pivotar/pivotear datos
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Datos anchos
+
+Lectura y captura más fácil\
+Útil para edición interactiva en hojas de cálculo\
+:::
+
+::: {.column width="50%"}
+### Datos largos
+
+Tiende a seguir principios de Datos Ordenados\
+Listos para analizar\
+Se vinculan directamente con parámetros estéticos en un gráfico
+:::
+:::
+
+![](imgs/widelong.png){width="80%" fig-align="left"}
+
+## Reestructurando datos con 📦 `tidyr`
+
+<br/> ancho a largo: `pivot_longer()`
+
+::: med-code
+```{r}
+#| eval: false
+#| echo: true
+ 
+pivot_longer(data, cols, names_to, values_to)
+```
+:::
+
+<br/> largo a ancho: `pivot_wider()`
+
+::: med-code
+```{r}
+#| echo: true
+#| eval: false
+ 
+pivot_longer(data, cols, 
+             names_from, 
+             values_from)
+```
+:::
+
+## 
+
+```{r}
+#| eval: true
+#| echo: false
+
+colonias <- 
+tibble::tribble(
+    ~Asentamiento,                 ~Tipo,    ~CP, ~Abarrotes, ~Supermercado, ~Minisuper,
+  "Arroyo Blanco",             "Colonia", 91025L,         7L,            2L,         1L,
+         "Atenas",     "Fraccionamiento", 91184L,         1L,            0L,         2L,
+       "Colibris",             "Colonia", 91067L,         8L,            3L,         2L,
+      "Del Valle", "Unidad Habitacional", 91097L,         2L,            1L,         1L,
+     "El Cafetal",     "Fraccionamiento", 91150L,         2L,            0L,         0L
+  )
+
+
+
+```
+
+::: panel-tabset
+## colonias
+
+```{r}
+#| eval: true
+#| echo: false
+
+colonias %>% gt() %>% 
+    tab_style(
+    cell_text(size = '24px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+
+## Datos
+
+```{r panel-chunk-cols}
+#| eval: false
+#| echo: true
+
+colonias <- 
+tibble::tribble(
+    ~Asentamiento,                 ~Tipo,    ~CP, ~Abarrotes, ~Supermercado, ~Minisuper,
+  "Arroyo Blanco",             "Colonia", 91025L,         7L,            2L,         1L,
+         "Atenas",     "Fraccionamiento", 91184L,         1L,            0L,         2L,
+       "Colibris",             "Colonia", 91067L,         8L,            3L,         2L,
+      "Del Valle", "Unidad Habitacional", 91097L,         2L,            1L,         1L,
+     "El Cafetal",     "Fraccionamiento", 91150L,         2L,            0L,         0L
+  )
+
+```
+:::
+
+[Variables:]{style="font-size: 1.2em; text-align: center"}
+
+colonia, tipo de asentamiento, Código Postal, Número de negocios
+
+## Ancho a largo
+
+```{r}
+#| eval: true
+#| echo: true
+
+colonias_largo <- colonias %>%
+  pivot_longer(
+    cols = c(Abarrotes,Supermercado,Minisuper),
+    names_to = "tipo_negocio",
+    values_to = "n_negocios")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+
+colonias_largo <- colonias %>%
+  pivot_longer(
+    cols = c(Abarrotes,Supermercado,Minisuper),
+    names_to = "tipo_negocio",
+    values_to = "n_negocios")
+```
+
+**`cols`** Las columnas cuyos nombres son datos
+
+**`names_to`** Nombre para la nueva varible que se crea a partir de los nombres de cada `cols`
+
+**`values_to`** Nombre para la variable que se crea a partir de los contenidos de cada columna especificada con **`cols`**
+
+## 
+
+```{r}
+#| eval: false
+#| echo: true
+
+colonias %>%
+  pivot_longer(
+    cols = c(Abarrotes,Supermercado,Minisuper),
+    names_to = "tipo_negocio",
+    values_to = "n_negocios")
+```
+
+## 
+
+```{r}
+colonias %>%
+  pivot_longer(
+    cols = c(Abarrotes,Supermercado,Minisuper),
+    names_to = "tipo_negocio",
+    values_to = "n_negocios")
+```
+
+## Largo a ancho
+
+```{r}
+#| eval: false
+#| echo: true
+
+colonias_largo %>% 
+  pivot_wider(names_from = tipo_negocio, 
+              values_from = n_negocios)
+```
+
+**`names_from`** De cuáles columnas vamos a tomar valores para los nombres de las nuevas variables
+
+**`values_from`** Cuál columna tiene los valores de celda para las nuevas variables creadas
+
+## 
+
+```{r}
+
+colonias_largo %>% 
+  pivot_wider(names_from = tipo_negocio, 
+              values_from = n_negocios)
+```
+
+## Ejercicio - pivot {background-color="#a4c5ff"}
+
+-   Carga el archivo "`expresion_genes.csv`". Esta tabla contiene valores de expresión génica para cinco especies de peces, a partir de muestras tomadas en seis tiempos y de dos tejidos.
+
+-   Transforma los datos de ancho a largo y de regreso a ancho.
+
+# Otras funciones útiles
+
+## 
+
+**`coalesce()`** - Combina valores. A partir de dos o más vectores, retiene valores en orden y rellena datos faltantes con valores de los siguientes vectores.
+
+</br>
+
+**`fill()`** Rellena valores adyacentes. Ayuda a evitar datos faltantes innecesarios. Similar a las funciones para rellenar valores contiguos en hojas de cálculo.
+
+## `dplyr::coalesce()`
+
+-   Encuentra y regresa el primer valor que no sea `NA` en cada posición para un conjunto de vectores
+
+\* *las columnas en datos rectangulares son vectores*
+
+-   Devuelve un solo vector con los valores que no sean `NA` que aparezcan primero.
+
+## 
+
+::: med-code
+```{r}
+x <- c(1, 2, NA, NA, 5)
+y <- c(NA, NA, 3, 4, 5)
+z <- c(1, 4, 3, 5, 3)
+```
+:::
+
+Vectores numéricos del mismo largo, hay valores faltantes.
+
+::: big-code
+```{r}
+coalesce(x, y, z)
+```
+:::
+
+> El orden de los argumentos importa
+
+## 
+
+::: big-code
+```{r}
+x <- c(1, 2, NA, NA, 5)
+y <- c(NA, NA, 3, 4, 5)
+z <- c(1, 4, 3, 5, 3)
+```
+:::
+
+::: big-code
+```{r}
+coalesce(z,x,y)
+```
+:::
+
+## 
+
+```{r}
+#| eval: true
+#| echo: false
+
+humedad <- 
+tibble::tribble(
+         ~muestra, ~sensor_1, ~sensor_respaldo, ~literatura,
+     "ladera sur",        NA,              4.9,         2.6,
+   "ladera norte",       2.2,               NA,         4.3,
+         "urbano",       4.5,                5,         3.4,
+  "invernadero A",        NA,              2.7,         3.5,
+  "invernadero B",       2.5,               NA,         2.3
+  )
+
+
+```
+
+::: panel-tabset
+### humedad suelo
+
+```{r}
+#| eval: true
+#| echo: false
+humedad %>% gt() %>% 
+    tab_style(
+    cell_text(size = '26px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+
+### Datos
+
+```{r}
+#| echo: true
+#| eval: false
+
+humedad <- 
+tibble::tribble(
+         ~muestra, ~sensor_1, ~sensor_respaldo, ~literatura,
+     "ladera sur",        NA,              4.9,         2.6,
+   "ladera norte",       2.2,               NA,         4.3,
+         "urbano",       4.5,                5,         3.4,
+  "invernadero A",        NA,              2.7,         3.5,
+  "invernadero B",       2.5,               NA,         2.3
+  )
+```
+:::
+
+## 
+
+</br>
+
+```{r}
+#| eval: true
+#| echo: true
+
+humedad %>% 
+  mutate(val_completo = coalesce(sensor_1, sensor_respaldo, literatura))
+  
+```
+
+## `tidyr::fill()`
+
+```{r}
+#| echo: false
+#| eval: true
+
+carbon_mamiferos <- tibble(mamiferos=c("ganado",NA,NA,NA,NA,"silvestre",NA,NA,NA),
+       biomasa=c(21,5,7,23,74,23,65,12,5))
+```
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| eval: true
+
+carbon_mamiferos %>% gt() %>% 
+    tab_style(
+    cell_text(size = '21px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+:::
+
+::: {.column width="60%"}
+-   Rellena valores faltantes en una columna (por defecto de arriba a abajo)
+
+-   Se asume que los valores contiguos son los mismos hasta que aparece otro distinto en la misma columna
+
+-   Rellena hasta el siguiente valor que no sea `NA`
+:::
+:::
+
+## 
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+carbon_mamiferos
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+
+carbon_mamiferos %>% 
+  fill(mamiferos)
+```
+:::
+:::
+
+# Información repetida
+
+## Valores repetidos
+
+-   Definición variable pero generalmente dos o más copias del mismo registro u observación
+
+### Problemas posibles
+
+-   Inflán datos
+
+-   Costos de repetición no intencional
+
+-   Resultados imprecisos
+
+## Identificando y eliminando duplicados
+
+-   Identificar con `get_dupes()` del paquete 📦 `janitor`
+
+-   Eliminar con `distinct()` de 📦 `dplyr`
+
+## Repetición
+
+-   En todas las variables (copias idénticas de una fila)
+
+-   En las variables que definen nuestras unidades observacionales
+
+-   En conjuntos arbitrarios de variables
+
+## 
+
+::: panel-tabset
+### ordenes_pizza
+
+```{r}
+#| eval: true
+#| echo: false
+
+tibble::tribble(
+    ~IDusuario,            ~Direccion,    ~Colonia,    ~Alcaldia,
+    "Pablitoo",  "Cafetal 395 Casa 2", "San Angel", "A. Obregón",
+    "susana24",         "Fresnos 114", "San Angel", "A. Obregón",
+    "susana24",         "Fresnos 114", "San Angel", "A. Obregón",
+  "jd.adriana",  "Cafetal 395 Casa 8", "San Angel", "A. Obregón",
+  "JuanManuel", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón",
+   "JoaquinED", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón",
+      "e_ric2", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón"
+  ) %>% 
+  gt() %>%
+  tab_style(
+    cell_text(size = "26px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+
+```
+
+### datos
+
+```{r}
+#| eval: true
+#| echo: true
+
+ordenes_pizza <- 
+tibble::tribble(
+    ~IDusuario,            ~Direccion,    ~Colonia,    ~Alcaldia,
+    "Pablitoo",  "Cafetal 395 Casa 2", "San Angel", "A. Obregón",
+    "susana24",         "Fresnos 114", "San Angel", "A. Obregón",
+    "susana24",         "Fresnos 114", "San Angel", "A. Obregón",
+  "jd.adriana",  "Cafetal 395 Casa 8", "San Angel", "A. Obregón",
+  "JuanManuel", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón",
+   "JoaquinED", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón",
+      "e_ric2", "Hidalgo 11 Depto 1B", "Campestre", "A. Obregón"
+  )
+```
+:::
+
+## Identificar con `get_dupes()`
+
+```{r}
+ordenes_pizza %>%
+  get_dupes() # todas las variables (por defecto)
+```
+
+-   Añade una variable `dupe_count` que cuantifica las filas con valores duplicados
+
+-   Acomoda las variables de interés al principio del data frame resultante
+
+## 
+
+`get_dupes()` asignando una variable para definir nuestra unidad observacional
+
+¿Alguien ordenó más de una vez?
+
+```{r}
+ordenes_pizza %>%
+  get_dupes(IDusuario)
+```
+
+## 
+
+`get_dupes()` con combinaciones de variables
+
+-   Filas repetidas en dirección \* colonia
+
+> accepta funciones auxiliares de 📦 `tidyselect`
+
+```{r}
+ordenes_pizza %>%
+  get_dupes(Direccion, starts_with("Col"))
+```
+
+## 
+
+Descartar con `distinct()` de 📦 `dplyr`
+
+. . .
+
+```{r}
+ordenes_pizza %>%
+  distinct() # todas las variables
+```
+
+## 
+
+`distinct()` con la variables que definen las unidades observacionales
+
+```{r}
+ordenes_pizza %>%
+  distinct(IDusuario, .keep_all = TRUE)
+```
+
+> `.keep_all` para retener o no las demás columnas
+
+## 
+
+`distinct()` con combinaciones de variables
+
+-   Combinaciones únicas de dirección \* colonia
+
+```{r, eval=TRUE}
+ordenes_pizza %>%
+  distinct(Direccion,Colonia)
+```
+
+## 
+
+> ⚠️ Si `.keep_all = TRUE` y hay valores duplicados en otras variables, `distinct` solo retiene la primera fila
+
+```{r}
+ordenes_pizza %>%
+  distinct(Direccion,Colonia, .keep_all = TRUE)
+```
+
+## Ejercicio {background-color="#a4c5ff"}
+
+-   Cargar el archivo `murcielagos.csv`
+
+-   ¿De cuántas localidades únicas provienen estos registros?
+
+-   Exportar un archivo con las localidades únicas y nombres de columna en español
