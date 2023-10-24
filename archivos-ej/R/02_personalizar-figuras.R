@@ -1,10 +1,10 @@
-#### Miércoles
+#### Martes 24
 # ejercicio 2, personalización
 library(ggplot2)
 library(readr)
 
 # Cargar los datos
-ranas <- read_csv("archivos-ej/ranas.csv")
+ranas <- read_csv("datos/ranas.csv")
 
 # ranas
 ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia, color=familia))+
@@ -13,7 +13,7 @@ ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia, color=familia))+
 # rótulos de los ejes
 ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia, color=familia))+
   geom_point()+
-  labs(x="Tamaño Corporal (SVL)", y="Frequencia Dominante (Hz)")
+  labs(x= "Tamaño Corporal (SVL)", y="Frequencia Dominante (Hz)")
 
 # titulo, tamaño de los puntos, y un "theme"
 ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia, color=familia))+

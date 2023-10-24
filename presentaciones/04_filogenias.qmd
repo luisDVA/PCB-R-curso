@@ -1,0 +1,636 @@
+---
+title: "Filogenias"
+author: Axel Arango & Luis D. Verde Arregoitia
+format:
+  revealjs:
+    theme: curso_styles.scss
+    chalkboard: true
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: pygments
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+---
+  
+  
+  
+```{r}
+#| echo: false
+library(ape)
+library(dplyr)
+library(here)
+
+```
+
+## Filogenias en R
+
+¿árbol filogenético?
+  
+ . . . 
+  
+Diagrama que muestra la relación evolutiva/similitud entre especies (o taxones)
+
+##
+
+<br/>
+
+Uno de los formatos más utilizados para representar filogenias son el *Newick*(.tree)  
+
+<br/><br/>
+
+El formato Newick es una notación para representar relaciones evolutivas utilizando paréntesis y comas.
+
+A y B se parecen más entre sí que a X
+  
+```{r prueba newick}
+#| eval: true
+#| echo: true
+
+"((A,B),X);"
+```
+
+##
+
+Para trabajar con esta notación, podemos usar `ape` (Analysis of Phylogenetics and Evolution):
+  
+```{r newick}
+#| echo: true
+#| eval: true
+
+library(ape)
+read.tree(text="((A,B),X);") %>% 
+  plot()
+```
+
+##
+
+El formato Newick es anidado:
+
+Los lobos, coyotes y zorros pertenecen a Canidae; los lobos y coyotes (género _Canis_) están más estrechamente relacionados
+
+```{r canii}
+#| eval: true
+#| echo: true
+Canidae <-"(Vulpes_vulpes,(Canis_lupus,Canis_latrans));"
+read.tree(text=Canidae) %>% 
+  plot()
+
+```
+
+
+##
+
+Si agregamos murciélagos, todos pertenecen a los mamíferos:
+  
+```{r}
+#| echo: true
+#| eval: true
+
+Mammalia <-"(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)));"
+read.tree(text=Mammalia) %>% 
+  plot()
+```
+
+
+##
+
+Si quisieramos agregar cuervos y zanates. ¿Éstos dónde irían?
+  
+```{r}
+#| echo: true
+#| eval: true
+
+tetrapoda<-"((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans))));"
+
+read.tree(text=tetrapoda) %>% 
+  plot()
+```
+
+##
+
+Agregando una planta, los mamíferos y las aves se anidan
+
+```{r}
+#| eval: true
+#| echo: true
+#| label: planta
+
+Eukarya<-"(Sideroxylon_celastrinum,((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)))));"
+
+Nktree<-read.tree(text=Eukarya)
+plot(Nktree)
+```
+
+## Graficando filogenias con `ggtree`
+
+`ggtree` nos permite graficar, personalizar, anotar árboles filogenéticos usando la gramática de gráficos
+
+## Paquetes necesarios:
+
+```{r}
+#| eval: true
+#| echo: true
+#| message: false
+#| warning: false
+
+library(ape)
+library(ggtree)
+library(deeptime)
+library(tidytree)
+library(ggimage)
+```
+
+## Icteridae
+
+
+```{r}
+#| eval: true
+#| echo: true
+
+ictree <-read.tree(here("data","Icteridae_tree.txt"))
+ictree
+```
+
+## 
+
+Visualizando el objeto con `ape`
+
+```{r}
+#| eval: true
+#| echo: true
+
+plot(ictree, show.tip.label=F)
+```
+
+## 
+
+Con `ggtree`
+
+> Asignamos la figura al objeto `p1`
+  
+```{r}
+#| eval: true
+#| echo: true
+
+p1<-ggtree(ictree,color="black",size=0.5)
+p1
+```
+
+## 
+
+El argumento/función `layout` cambia la disposición del árbol:
+
+  
+```{r}
+#| eval: true
+#| echo: true
+
+p1+layout_dendrogram()+
+  p1+layout_fan()+
+  p1+layout_circular()
+```
+
+## 
+Cambiar el color del fondo:
+
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  theme_tree(bgcolor="lightblue")
+```
+
+## 
+
+Agregar las etiquetas de las puntas:
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  geom_tiplab(size=1,color="darkblue",angle=10)
+```
+
+## 
+
+Formas en cada punta
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  geom_tippoint(size=1,color="brown",shape=10)
+```
+
+## 
+
+Rotular nodos:
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+ 
+  geom_nodelab(size=1,color="purple")
+```
+
+## 
+
+Puntos en cada nodo:
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+ 
+  geom_nodepoint(size=2,color="red",shape=16)
+```
+
+## 
+A gregar una escala temporal a la filogenia, con el paquete `deeptime`
+
+```{r}
+#| eval: true
+#| echo: true
+py<-revts(p1)
+py+coord_geo(xlim=c(-10,-1),abbrv = F,neg=T,skip=NULL,dat="stage",size=1.5)+
+  theme_tree2()
+```
+
+## 
+
+Combinando `geoms`
+
+```{r}
+#| eval: true
+#| echo: true
+p1+ 
+  layout_dendrogram()+
+  theme_tree(bgcolor="#e9f0ea")+
+  geom_tiplab(size=0.5,color="darkblue",angle=45)+
+  geom_tippoint(size=1,color="brown",shape=10)+
+  geom_nodelab(size=1,color="purple")+
+  geom_nodepoint(size=2,color="red",alpha=0.3,shape=16)
+```
+
+## Anotaciones 
+
+> ej: destacar el género *Quiscalus*
+
+
+- encontrar el nodo del ancestro en común más reciente
+- crear un *tibble* con la información del árbol
+- buscar las especies de *Quiscalus*:
+  
+```{r}
+#| eval: true
+#| echo: true
+ictree %>%
+  as_tibble %>%
+  filter(grepl("Quiscalus",label))
+```
+
+## 
+
+Ancestro común más reciente (`MRCA()`) de las dos especies en el género con la longitud de rama más larga y más corta
+  
+```{r}
+#| eval: true
+#| echo: true
+ictree %>%
+  as_tibble %>%
+  MRCA(41,43)
+```
+
+. . .
+
+```{r}
+#| eval: true
+#| echo: true
+ictree %>%
+  as_tibble %>%
+  MRCA("Quiscalus_quiscula","Quiscalus_mexicanus")
+```
+
+## 
+
+Anotar el género *Quiscalus* en la filogenia utilizando `geom_cladelab` (nodo 146)
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  geom_cladelab(node=146,label = "Quiscalus",offset=0,
+                barcolor="red",textcolor="brown",
+                angle=-90, offset.text=0.1,hjust=0.5)
+```
+
+## 
+
+Destacar el género*Icterus*:
+  
+```{r}
+#| eval: true
+#| echo: true
+ictree %>%
+  as_tibble %>%
+  filter(grepl("Icterus",label))
+```
+
+##
+
+```{r}
+#| eval: true
+#| echo: true
+ictree %>%
+  as_tibble %>%
+  MRCA(25,14)
+```
+
+## 
+
+```{r}
+#| eval: true
+#| echo: true
+p1+xlim(0,11)+
+  geom_cladelab(node=104,label="Icterus",geom="label",
+                fill="yellow",textcolor="red", barcolor="gray",angle=90,size=19)
+```
+
+## 
+
+`geom_strip()` para dibujar líneas entre dos puntas arbitrarias
+
+```{r}
+#| eval: true
+#| echo: true
+p1+xlim(0,15)+
+  geom_strip("Quiscalus_quiscula","Icterus_icterus",
+             label=" un clado polifilético", barsize = 2, offset.text = 0.2,size=15)
+```
+
+## 
+
+`geom_highlight` para destacar clados sobre las mismas ramas:
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  geom_highlight(node=146,alpha=0.5,fill="purple",type = "rect")
+```
+
+## 
+
+highlight + rótulo
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+
+  geom_highlight(node=146,alpha=0.5,fill="purple",type = "rect")+
+  geom_cladelab(node=146,label = "Quiscalus",offset=0,barcolor="#9418f2",textcolor="#4c0980", offset.text=0)+
+  xlim(0,11.5)
+```
+
+## 
+
+### Enriquecer figuras con imágenes 
+
+- siluetas desde [phylopic](https://www.phylopic.org/) o imagenes propias. 
+
+- Es necesario cargar `rsvg` primero
+```{r}
+#| eval: true
+#| echo: true
+library("rsvg")
+```
+
+
+### Requisitos
+
+- tabla con nodos, especies o clados a anotar, y el identificador de los mismos en Phylopic (_phylopic_id_)
+
+## 
+
+*Quiscalus* y *Agelaius* tienen imagenes indexadas en *phylopic*
+
+Encontrar los identificadores con  `phylopic_uid()`
+  
+```{r}
+#| eval: true
+#| echo: true
+ids<-phylopic_uid(c("Quiscalus","Agelaius"))
+ids
+```
+
+## 
+
+Tabla con los datos necesarios para anotar nuestra filogenia:
+  
+```{r}
+#| eval: true
+#| echo: true
+dt<-data.frame(node=c(146,136),image=ids$uid,genus=c("Quiscalus","Agelaius"))
+dt
+```
+
+## 
+
+```{r}
+#| eval: true
+#| echo: true
+p1+ geom_cladelab(data = dt, 
+                  mapping = aes(node = node, label = genus, 
+                                image = image, color = genus), 
+                  geom = "phylopic", offset = 0, offset.text=0.5)
+```
+
+## 
+
+Cambiando los colores de las figuras siguiendo gramática de gráficos:
+  
+```{r}
+#| eval: true
+#| echo: true
+p1+ geom_cladelab(data = dt, 
+                  mapping = aes(node = node, label = genus, 
+                                image = image, color = genus), 
+                  geom = "phylopic", offset = 0, offset.text=0.5)+ scale_color_manual(values=c("#f75419","purple"))
+```
+
+## 
+
+Más `geoms`
+  
+```{r}
+#| eval: true
+#| echo: true
+pr<-p1+ geom_cladelab(data = dt, 
+                      mapping = aes(node = node, label = genus, 
+                                    image = image, color = genus), 
+                      geom = "phylopic", offset = 0, offset.text=0.5)+
+  scale_color_manual(values=c("#f75419","purple"))+
+  geom_highlight(node=146,alpha=0.5,fill="purple",type = "rect")+
+  geom_highlight(node=136,alpha=0.5,fill="#f75419",type = "rect")
+pr
+```
+
+## 
+
+Ejemplo con múltiples anotaciones por Axel Arango:
+  
+```{r}
+#| eval: true
+#| echo: false
+tree<-read.tree(here("data","nodedtree.txt"))
+nodes<-c(825,725,921,1042,1080,1375,707)
+labels<-c("Parulidae","Icteridae","Passerellidae","Cardinalidae","Thraupidae","Emberizidae","Calcariidae")
+#
+
+iu2<-phylopic_uid(c("Setophaga","Quiscalus","Passerellidae","Cardinalis","Thraupidae","Emberizidae","Emberiza"),seed=1)
+
+dt<-data.frame(node=nodes,name=labels,image=iu2$uid)
+
+p2<-ggtree(tree,layout="circular",color="white")+theme_tree("black")
+
+p3<-p2+
+  geom_highlight(node=825,fill="yellow")+
+  geom_cladelab(node=825,label="Parulidae",barcolor="yellow",textcolor="white",offset.text=4, fontsize=4)+
+  
+  geom_highlight(node=725,fill="orange")+
+  geom_cladelab(node=725,label="Icteridae",barcolor="orange",textcolor="white",offset.text=5, fontsize=4,angle=45)+
+  
+  geom_highlight(node=921,fill="brown")+
+  geom_cladelab(node=921,label="Passerellidae",barcolor="brown",textcolor="white",offset.text=1, fontsize=4)+
+  
+  geom_highlight(node=1042,fill="red")+
+  geom_cladelab(node=1042,label="Cardinalidae",barcolor="red",textcolor="white",offset.text=7, fontsize=4,angle=-45,align=T)+
+  
+  geom_highlight(node=1079,fill="lightgreen")+
+  geom_cladelab(node=1079,label="Thraupidae",barcolor="lightgreen",textcolor="white",offset.text=2, fontsize=4)+
+  
+  geom_highlight(node=1375,fill="magenta")+
+  geom_cladelab(node=1375,label="Emberizidae",barcolor="magenta",textcolor="white",offset.text=1, fontsize=4,align=T)+
+  
+  geom_highlight(node=707,fill="blue")+
+  geom_cladelab(node=707,label="Calcariidae",barcolor="blue",textcolor="white",offset.text=1, fontsize=4,align=T)
+
+
+
+```
+
+## 
+
+```{r}
+#| eval: true
+#| echo: false
+p3+
+  geom_cladelab(data = dt, 
+                mapping = aes(node = node, label = name, 
+                              image = image, color = name), 
+                geom = "phylopic", offset.text=c(10,7,6,5,9,4,10))+
+  scale_colour_manual(values=c("blue","red","magenta","orange","yellow","brown","lightgreen"))
+```
+
+
+## Graficando atributos de las especies en la filogenia.
+
+Cargar los atributos, en este caso Hand Wing Index (HWI) y el hábito migratorio:
+  
+```{r}
+#| eval: true
+#| echo: true
+
+hwi<-read.csv(here("data","hwi_icteridae.csv"),header=T)
+head(hwi)
+```
+
+## 
+
+```{r}
+#| eval: true
+#| echo: true
+migrants<-read.csv(here("data","icterimigrants.csv"),header=T)
+head(migrants)
+```
+
+## 
+
+Unienr con la filogenia (es importante que las especies estén rotuladas como label)
+
+```{r}
+#| eval: true
+#| echo: true
+
+names(hwi)<-c("label","hwi")
+names(migrants)<-c("label","migratory")
+
+hwimigrants<-hwi%>%
+  left_join(migrants,by="label")
+datatree<-full_join(ictree,hwimigrants,by="label")
+datatree
+```
+
+## Filogenia con atributos
+
+- Valores continuos del HWI sobre las puntas del árbol en una escala de colores:
+  
+```{r}
+#| eval: true
+#| echo: true
+
+p5<-ggtree(datatree)
+p5+
+  geom_tippoint(aes(color=hwi))
+```
+
+## 
+
+podemos también personalizar esta escala:
+  
+```{r}
+#| eval: true
+#| echo: true
+
+p5+
+  geom_tippoint(aes(color=hwi),shape=15)+
+  scale_colour_gradient(low='blue', high='red',breaks= c(15,20,25,30,35))
+```
+
+## Datos binarios
+  
+```{r}
+#| eval: true
+#| echo: true
+
+p5+
+  geom_tippoint(aes(color=migratory),shape=15)+
+  scale_colour_manual(values = c("green","orange"))
+```
+
+## Combinando atributos
+
+  
+```{r}
+#| eval: true
+#| echo: true
+
+px<- py%<+% migrants + geom_tippoint(aes(color=migratory),shape=15)+
+  scale_color_manual(values = c("#961d29","#1420a3"))+
+  scale_fill_manual(values = c("#961d29","#1420a3"))
+
+px+ geom_facet(panel="HWI",data = hwi,geom=geom_col,mapping=aes(x=hwi,color=migratory,fill=migratory),orientation='y')+
+  theme_tree2()
+```
+

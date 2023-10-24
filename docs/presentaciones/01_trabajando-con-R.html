@@ -1180,14 +1180,38 @@ Levels: ave gato ninguno perro</code></pre>
 <section id="ejercicio-2" class="slide level2" data-background-color="#a4c5ff">
 <h2>Ejercicio</h2>
 <p>Importar una tabla a R desde un archivo</p>
-</section></section>
-<section id="dudas" class="title-slide slide level1 center">
-<h1>¿Dudas?</h1>
+</section>
+<section id="exportando-objetos" class="slide level2">
+<h2>Exportando objetos</h2>
+<p>Exportamos objetos con funciones <code>write</code> que guardan un objeto como archivo en el disco.</p>
+<ul>
+<li>Objetos tabulares se pueden exportar a archivos de texto</li>
+</ul>
+<div class="cell" data-hash="01_trabajando-con-R_cache/revealjs/unnamed-chunk-20_b243727d2a51cfc50880b7276386088c">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">write.csv</span>(miobjeto,<span class="st">"carpeta-salida/datosLunes.txt"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co"># con readr</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>readr<span class="sc">::</span><span class="fu">write_tsv</span>(miobjeto,<span class="st">"carpeta-salida/datosLunes.tsv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exportando-objetos-1" class="slide level2">
+<h2>Exportando objetos</h2>
+<p>Es posible guardar la imagen del entorno de trabajo</p>
+<div class="cell" data-hash="01_trabajando-con-R_cache/revealjs/unnamed-chunk-21_b0821e64a4ba605d918467b32fe88241">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"mis_objetos.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Función <code>save()</code> para exportar algunos objetos</p>
+<div class="cell" data-hash="01_trabajando-con-R_cache/revealjs/unnamed-chunk-22_1c080d314f9ba6f026344e2150610e30">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">save</span>(x, y, <span class="at">file =</span> <span class="st">"dos_objetos.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Guardar 1 objeto en RDS</p>
+<div class="cell" data-hash="01_trabajando-con-R_cache/revealjs/unnamed-chunk-23_4ba636dec8ed00b19f52718d3bfd82c7">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">saveRDS</span>(x, <span class="at">file =</span> <span class="st">"mi_objeto.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

@@ -1383,20 +1383,496 @@
     "href": "materiales.html",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n🗜️Descargar datos"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n️Descargar datos\n️Archivos oct24"
   },
   {
     "objectID": "materiales.html#datos",
     "href": "materiales.html#datos",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n🗜️Descargar datos"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\n️Descargar datos\n️Archivos oct24"
   },
   {
     "objectID": "materiales.html#presentaciones",
     "href": "materiales.html#presentaciones",
     "title": "Materiales del curso",
     "section": "Presentaciones",
-    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (esquina inferior izquierda).\n\nLunes 23\nTrabajando con R\nPreparación de datos"
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (esquina inferior izquierda).\n\nLunes 23\nTrabajando con R\nPreparación de datos\nVisualización\nFilogenias"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#filogenias-en-r",
+    "href": "presentaciones/04_filogenias.html#filogenias-en-r",
+    "title": "Filogenias",
+    "section": "Filogenias en R",
+    "text": "Filogenias en R\n¿árbol filogenético?\n. . .\nDiagrama que muestra la relación evolutiva/similitud entre especies (o taxones)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section",
+    "href": "presentaciones/04_filogenias.html#section",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Uno de los formatos más utilizados para representar filogenias son el Newick(.tree)\n\nEl formato Newick es una notación para representar relaciones evolutivas utilizando paréntesis y comas.\nA y B se parecen más entre sí que a X\n\n\"((A,B),X);\"\n\n[1] \"((A,B),X);\""
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-1",
+    "href": "presentaciones/04_filogenias.html#section-1",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Para trabajar con esta notación, podemos usar ape (Analysis of Phylogenetics and Evolution):\n\nlibrary(ape)\nread.tree(text=\"((A,B),X);\") %&gt;% \n  plot()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-2",
+    "href": "presentaciones/04_filogenias.html#section-2",
+    "title": "Filogenias",
+    "section": "",
+    "text": "El formato Newick es anidado:\nLos lobos, coyotes y zorros pertenecen a Canidae; los lobos y coyotes (género Canis) están más estrechamente relacionados\n\nCanidae &lt;-\"(Vulpes_vulpes,(Canis_lupus,Canis_latrans));\"\nread.tree(text=Canidae) %&gt;% \n  plot()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#dicotomías",
+    "href": "presentaciones/04_filogenias.html#dicotomías",
+    "title": "Filogenias",
+    "section": "Dicotomías",
+    "text": "Dicotomías\n\n\"((A,B),X);\"\n\n[1] \"((A,B),X);\""
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-3",
+    "href": "presentaciones/04_filogenias.html#section-3",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Si agregamos murciélagos, todos pertenecen a los mamíferos:\n\nMammalia &lt;-\"(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)));\"\nread.tree(text=Mammalia) %&gt;% \n  plot()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-4",
+    "href": "presentaciones/04_filogenias.html#section-4",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Si quisieramos agregar cuervos y zanates. ¿Éstos dónde irían?\n\ntetrapoda&lt;-\"((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans))));\"\n\nread.tree(text=tetrapoda) %&gt;% \n  plot()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-5",
+    "href": "presentaciones/04_filogenias.html#section-5",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Agregando una planta, los mamíferos y las aves se anidan\n\nEukarya&lt;-\"(Sideroxylon_celastrinum,((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)))));\"\n\nNktree&lt;-read.tree(text=Eukarya)\nplot(Nktree)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-6",
+    "href": "presentaciones/04_filogenias.html#section-6",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Visualizando el objeto con ape\n\nplot(ictree, show.tip.label=F)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-7",
+    "href": "presentaciones/04_filogenias.html#section-7",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Con ggtree\n\nAsignamos la figura al objeto p1\n\n\np1&lt;-ggtree(ictree,color=\"black\",size=0.5)\np1"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#graficando-filogenias-con-ggtree",
+    "href": "presentaciones/04_filogenias.html#graficando-filogenias-con-ggtree",
+    "title": "Filogenias",
+    "section": "Graficando filogenias con ggtree",
+    "text": "Graficando filogenias con ggtree\nggtree nos permite graficar, personalizar, anotar árboles filogenéticos usando la gramática de gráficos"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#paquetes-necesarios",
+    "href": "presentaciones/04_filogenias.html#paquetes-necesarios",
+    "title": "Filogenias",
+    "section": "Paquetes necesarios:",
+    "text": "Paquetes necesarios:\n\nlibrary(ape)\nlibrary(ggtree)\nlibrary(deeptime)\nlibrary(tidytree)\nlibrary(ggimage)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-8",
+    "href": "presentaciones/04_filogenias.html#section-8",
+    "title": "Filogenias",
+    "section": "",
+    "text": "El argumento/función layout cambia la disposición del árbol:\n\np1+layout_dendrogram()+\n  p1+layout_fan()+\n  p1+layout_circular()\n\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale.\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale.\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale."
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-9",
+    "href": "presentaciones/04_filogenias.html#section-9",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Cambiar el color del fondo:\n\np1+\n  theme_tree(bgcolor=\"lightblue\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-10",
+    "href": "presentaciones/04_filogenias.html#section-10",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Agregar las etiquetas de las puntas:\n\np1+\n  geom_tiplab(size=1,color=\"darkblue\",angle=10)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-11",
+    "href": "presentaciones/04_filogenias.html#section-11",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Formas en cada punta\n\np1+\n  geom_tippoint(size=1,color=\"brown\",shape=10)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-12",
+    "href": "presentaciones/04_filogenias.html#section-12",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Rotular nodos:\n\np1+ \n  geom_nodelab(size=1,color=\"purple\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-13",
+    "href": "presentaciones/04_filogenias.html#section-13",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Puntos en cada nodo:\n\np1+ \n  geom_nodepoint(size=2,color=\"red\",shape=16)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-14",
+    "href": "presentaciones/04_filogenias.html#section-14",
+    "title": "Filogenias",
+    "section": "",
+    "text": "A gregar una escala temporal a la filogenia, con el paquete deeptime\n\npy&lt;-revts(p1)\npy+coord_geo(xlim=c(-10,-1),abbrv = F,neg=T,skip=NULL,dat=\"stage\",size=1.5)+\n  theme_tree2()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-15",
+    "href": "presentaciones/04_filogenias.html#section-15",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Combinando geoms\n\np1+ \n  layout_dendrogram()+\n  theme_tree(bgcolor=\"#e9f0ea\")+\n  geom_tiplab(size=0.5,color=\"darkblue\",angle=45)+\n  geom_tippoint(size=1,color=\"brown\",shape=10)+\n  geom_nodelab(size=1,color=\"purple\")+\n  geom_nodepoint(size=2,color=\"red\",alpha=0.3,shape=16)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-16",
+    "href": "presentaciones/04_filogenias.html#section-16",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Ancestro común más reciente (MRCA()) de las dos especies en el género con la longitud de rama más larga y más corta\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(41,43)\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806  \n\n\n. . .\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(\"Quiscalus_quiscula\",\"Quiscalus_mexicanus\")\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-17",
+    "href": "presentaciones/04_filogenias.html#section-17",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Anotar el género Quiscalus en la filogenia utilizando geom_cladelab (nodo 146)\n\np1+\n  geom_cladelab(node=146,label = \"Quiscalus\",offset=0,\n                barcolor=\"red\",textcolor=\"brown\",\n                angle=-90, offset.text=0.1,hjust=0.5)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-18",
+    "href": "presentaciones/04_filogenias.html#section-18",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Destacar el géneroIcterus:\n\nictree %&gt;%\n  as_tibble %&gt;%\n  filter(grepl(\"Icterus\",label))\n\n# A tibble: 31 × 4\n   parent  node branch.length label                \n    &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;                \n 1    111     1         0.193 Icterus_melanopsis   \n 2    111     2         0.193 Icterus_northropi    \n 3    114     3         1.47  Icterus_laudabilis   \n 4    114     4         1.47  Icterus_dominicensis \n 5    116     5         0.197 Icterus_cayanensis   \n 6    116     6         0.197 Icterus_pyrrhopterus \n 7    115     7         0.943 Icterus_auricapillus \n 8    117     8         1.49  Icterus_bonana       \n 9    117     9         1.49  Icterus_portoricensis\n10    118    10         2.24  Icterus_prosthemelas \n# ℹ 21 more rows"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-19",
+    "href": "presentaciones/04_filogenias.html#section-19",
+    "title": "Filogenias",
+    "section": "",
+    "text": "ictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(25,14)\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    103   104          2.92 764"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-20",
+    "href": "presentaciones/04_filogenias.html#section-20",
+    "title": "Filogenias",
+    "section": "",
+    "text": "p1+xlim(0,11)+\n  geom_cladelab(node=104,label=\"Icterus\",geom=\"label\",\n                fill=\"yellow\",textcolor=\"red\", barcolor=\"gray\",angle=90,size=19)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-21",
+    "href": "presentaciones/04_filogenias.html#section-21",
+    "title": "Filogenias",
+    "section": "",
+    "text": "geom_strip() para dibujar líneas entre dos puntas arbitrarias\n\np1+xlim(0,15)+\n  geom_strip(\"Quiscalus_quiscula\",\"Icterus_icterus\",\n             label=\" un clado polifilético\", barsize = 2, offset.text = 0.2,size=15)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-22",
+    "href": "presentaciones/04_filogenias.html#section-22",
+    "title": "Filogenias",
+    "section": "",
+    "text": "geom_highlight para destacar clados sobre las mismas ramas:\n\np1+\n  geom_highlight(node=146,alpha=0.5,fill=\"purple\",type = \"rect\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-23",
+    "href": "presentaciones/04_filogenias.html#section-23",
+    "title": "Filogenias",
+    "section": "",
+    "text": "highlight + rótulo\n\np1+\n  geom_highlight(node=146,alpha=0.5,fill=\"purple\",type = \"rect\")+\n  geom_cladelab(node=146,label = \"Quiscalus\",offset=0,barcolor=\"#9418f2\",textcolor=\"#4c0980\", offset.text=0)+\n  xlim(0,11.5)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-24",
+    "href": "presentaciones/04_filogenias.html#section-24",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Enriquecer figuras con imágenes\n\nsiluetas desde phylopic o imagenes propias.\nEs necesario cargar rsvg primero\n\n\nlibrary(\"rsvg\")\n\nLinking to librsvg 2.48.9\n\n\n\n\nRequisitos\n\ntabla con nodos, especies o clados a anotar, y el identificador de los mismos en Phylopic (phylopic_id)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-25",
+    "href": "presentaciones/04_filogenias.html#section-25",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Quiscalus y Agelaius tienen imagenes indexadas en phylopic\nEncontrar los identificadores con phylopic_uid()\n\nids&lt;-phylopic_uid(c(\"Quiscalus\",\"Agelaius\"))\nids\n\n               name                                  uid\nQuiscalus Quiscalus 2ada4e2f-35ab-48d2-b32e-3bad57033dd4\nAgelaius   Agelaius 2a48d7c6-5e9d-4d71-9291-ff4c68643cdf"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-26",
+    "href": "presentaciones/04_filogenias.html#section-26",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Tabla con los datos necesarios para anotar nuestra filogenia:\n\ndt&lt;-data.frame(node=c(146,136),image=ids$uid,genus=c(\"Quiscalus\",\"Agelaius\"))\ndt\n\n  node                                image     genus\n1  146 2ada4e2f-35ab-48d2-b32e-3bad57033dd4 Quiscalus\n2  136 2a48d7c6-5e9d-4d71-9291-ff4c68643cdf  Agelaius"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-27",
+    "href": "presentaciones/04_filogenias.html#section-27",
+    "title": "Filogenias",
+    "section": "",
+    "text": "p1+ geom_cladelab(data = dt, \n                  mapping = aes(node = node, label = genus, \n                                image = image, color = genus), \n                  geom = \"phylopic\", offset = 0, offset.text=0.5)"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-28",
+    "href": "presentaciones/04_filogenias.html#section-28",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Cambiando los colores de las figuras siguiendo gramática de gráficos:\n\np1+ geom_cladelab(data = dt, \n                  mapping = aes(node = node, label = genus, \n                                image = image, color = genus), \n                  geom = \"phylopic\", offset = 0, offset.text=0.5)+ scale_color_manual(values=c(\"#f75419\",\"purple\"))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-29",
+    "href": "presentaciones/04_filogenias.html#section-29",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Más geoms\n\npr&lt;-p1+ geom_cladelab(data = dt, \n                      mapping = aes(node = node, label = genus, \n                                    image = image, color = genus), \n                      geom = \"phylopic\", offset = 0, offset.text=0.5)+\n  scale_color_manual(values=c(\"#f75419\",\"purple\"))+\n  geom_highlight(node=146,alpha=0.5,fill=\"purple\",type = \"rect\")+\n  geom_highlight(node=136,alpha=0.5,fill=\"#f75419\",type = \"rect\")\npr"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-30",
+    "href": "presentaciones/04_filogenias.html#section-30",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Ejemplo con múltiples anotaciones por Axel Arango:"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-31",
+    "href": "presentaciones/04_filogenias.html#section-31",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Utilizando estas parametrizaciones, podemos crear una filogenia bastante atractiva:\n\npr&lt;-p1+ geom_cladelab(data = dt, \n                      mapping = aes(node = node, label = genus, \n                                    image = image, color = genus), \n                      geom = \"phylopic\", offset = 0, offset.text=0.5)+\n  scale_color_manual(values=c(\"#f75419\",\"purple\"))+\n  geom_highlight(node=146,alpha=0.5,fill=\"purple\",type = \"rect\")+\n  geom_highlight(node=136,alpha=0.5,fill=\"#f75419\",type = \"rect\")\npr"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-32",
+    "href": "presentaciones/04_filogenias.html#section-32",
+    "title": "Filogenias",
+    "section": "",
+    "text": "migrants&lt;-read.csv(here(\"data\",\"icterimigrants.csv\"),header=T)\nhead(migrants)\n\n                   sp  migratory\n1  Agelaioides_badius No-migrant\n2  Agelaius_assimilis No-migrant\n3  Agelaius_humeralis No-migrant\n4 Agelaius_phoeniceus    Migrant\n5   Agelaius_tricolor No-migrant\n6  Agelaius_xanthomus No-migrant"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-33",
+    "href": "presentaciones/04_filogenias.html#section-33",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Unienr con la filogenia (es importante que las especies estén rotuladas como label)\n\nnames(hwi)&lt;-c(\"label\",\"hwi\")\nnames(migrants)&lt;-c(\"label\",\"migratory\")\n\nhwimigrants&lt;-hwi%&gt;%\n  left_join(migrants,by=\"label\")\ndatatree&lt;-full_join(ictree,hwimigrants,by=\"label\")\ndatatree\n\n'treedata' S4 object'.\n\n...@ phylo:\n\nPhylogenetic tree with 100 tips and 99 internal nodes.\n\nTip labels:\n  Icterus_melanopsis, Icterus_northropi, Icterus_laudabilis,\nIcterus_dominicensis, Icterus_cayanensis, Icterus_pyrrhopterus, ...\nNode labels:\n  761, 762, 763, 764, 765, 766, ...\n\nRooted; includes branch lengths.\n\nwith the following features available:\n  '', 'hwi', 'migratory'.\n\n# The associated data tibble abstraction: 199 × 5\n# The 'node', 'label' and 'isTip' are from the phylo tree.\n    node label                 isTip   hwi migratory \n   &lt;int&gt; &lt;chr&gt;                 &lt;lgl&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1     1 Icterus_melanopsis    TRUE   26.5 No-migrant\n 2     2 Icterus_northropi     TRUE   21.0 No-migrant\n 3     3 Icterus_laudabilis    TRUE   22.2 No-migrant\n 4     4 Icterus_dominicensis  TRUE   26.5 No-migrant\n 5     5 Icterus_cayanensis    TRUE   26.3 No-migrant\n 6     6 Icterus_pyrrhopterus  TRUE   17.8 No-migrant\n 7     7 Icterus_auricapillus  TRUE   17.3 No-migrant\n 8     8 Icterus_bonana        TRUE   16.9 No-migrant\n 9     9 Icterus_portoricensis TRUE   22.3 No-migrant\n10    10 Icterus_prosthemelas  TRUE   24.1 No-migrant\n# ℹ 189 more rows"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-34",
+    "href": "presentaciones/04_filogenias.html#section-34",
+    "title": "Filogenias",
+    "section": "",
+    "text": "podemos también personalizar esta escala:\n\np5+\n  geom_tippoint(aes(color=hwi),shape=15)+\n  scale_colour_gradient(low='blue', high='red',breaks= c(15,20,25,30,35))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-35",
+    "href": "presentaciones/04_filogenias.html#section-35",
+    "title": "Filogenias",
+    "section": "",
+    "text": "¡Listo! Ahora tenemos una filogenia con atributos y podemos gráficarlos juntos\nPrimero gráficaremos los valores continuos del HWI sobre las puntas del árbol en una escala de colores:\n\np5&lt;-ggtree(datatree)\np5+\n  geom_tippoint(aes(color=hwi))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-36",
+    "href": "presentaciones/04_filogenias.html#section-36",
+    "title": "Filogenias",
+    "section": "",
+    "text": "podemos también personalizar esta escala:\n\np5+\n  geom_tippoint(aes(color=hwi),shape=15)+\n  scale_colour_gradient(low='blue', high='red',breaks= c(15,20,25,30,35))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-37",
+    "href": "presentaciones/04_filogenias.html#section-37",
+    "title": "Filogenias",
+    "section": "",
+    "text": "¿Y cómo se verían los datos binarios?\n\np5+\n  geom_tippoint(aes(color=migratory),shape=15)+\n  scale_colour_manual(values = c(\"green\",\"orange\"))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-39",
+    "href": "presentaciones/04_filogenias.html#section-39",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Volveremos a usar nuestra filogenia de grupos y le agregaremos dos especies de Icterus y una especie de Quiscalus\n\ngrouptree&lt;-ictree %&gt;%\n  keep.tip(c(\"Quiscalus_mexicanus\", \"Icterus_galbula\",\"Molothrus_aeneus\",\"Agelaius_phoeniceus\",\"Psarocolius_montezuma\"))\nggtree(grouptree)+\n  xlim(0,15)+\n  geom_tiplab(color=\"blue\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-40",
+    "href": "presentaciones/04_filogenias.html#section-40",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Para agregar las especies, utilizamos la función add.species.to.genus de phytools:\n\ngrouptree2&lt;-grouptree\ngrouptree2&lt;-add.species.to.genus(grouptree2,\"Quiscalus_quiscula\")\ngrouptree2&lt;-add.species.to.genus(grouptree2,\"Icterus_bullocki\")\ngrouptree2&lt;-add.species.to.genus(grouptree2,\"Icterus_gullaris\")\nggtree(grouptree2)+\n  xlim(0,20)+\n  geom_tiplab(color=\"blue\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-41",
+    "href": "presentaciones/04_filogenias.html#section-41",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Finalmente, se puede usar ggtree, para graficar atributos de las especies en la filogenia.\nPara hacer esto, primero debemos cargar los atributos de los Icteridos, en este caso usaremos el Hand Wing Index (HWI) y el hábito migratorio:\n\nhwi&lt;-read.csv(here(\"data\",\"hwi_icteridae.csv\"),header=T)\nhead(hwi)\n\n                     X      HWI\n1   Icterus_melanopsis 26.51912\n2    Icterus_northropi 21.02135\n3   Icterus_laudabilis 22.22500\n4 Icterus_dominicensis 26.52877\n5   Icterus_cayanensis 26.26213\n6 Icterus_pyrrhopterus 17.75463"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-42",
+    "href": "presentaciones/04_filogenias.html#section-42",
+    "title": "Filogenias",
+    "section": "",
+    "text": "migrants&lt;-read.csv(here(\"data\",\"icterimigrants.csv\"),header=T)\nhead(migrants)\n\n                   sp  migratory\n1  Agelaioides_badius No-migrant\n2  Agelaius_assimilis No-migrant\n3  Agelaius_humeralis No-migrant\n4 Agelaius_phoeniceus    Migrant\n5   Agelaius_tricolor No-migrant\n6  Agelaius_xanthomus No-migrant"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-43",
+    "href": "presentaciones/04_filogenias.html#section-43",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Una vez cargados los datos, la manera más fácil de utilizarlos es uniendolos a la filogenia usando la funcion full_join, es importante que las especies estén etiquetadas como label, para que la función las reconozca:\n\nnames(hwi)&lt;-c(\"label\",\"hwi\")\nnames(migrants)&lt;-c(\"label\",\"migratory\")\n\nhwimigrants&lt;-hwi%&gt;%\n  left_join(migrants,by=\"label\")\ndatatree&lt;-full_join(ictree,hwimigrants,by=\"label\")\ndatatree\n\n'treedata' S4 object'.\n\n...@ phylo:\n\nPhylogenetic tree with 100 tips and 99 internal nodes.\n\nTip labels:\n  Icterus_melanopsis, Icterus_northropi, Icterus_laudabilis,\nIcterus_dominicensis, Icterus_cayanensis, Icterus_pyrrhopterus, ...\nNode labels:\n  761, 762, 763, 764, 765, 766, ...\n\nRooted; includes branch lengths.\n\nwith the following features available:\n  '', 'hwi', 'migratory'.\n\n# The associated data tibble abstraction: 199 × 5\n# The 'node', 'label' and 'isTip' are from the phylo tree.\n    node label                 isTip   hwi migratory \n   &lt;int&gt; &lt;chr&gt;                 &lt;lgl&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1     1 Icterus_melanopsis    TRUE   26.5 No-migrant\n 2     2 Icterus_northropi     TRUE   21.0 No-migrant\n 3     3 Icterus_laudabilis    TRUE   22.2 No-migrant\n 4     4 Icterus_dominicensis  TRUE   26.5 No-migrant\n 5     5 Icterus_cayanensis    TRUE   26.3 No-migrant\n 6     6 Icterus_pyrrhopterus  TRUE   17.8 No-migrant\n 7     7 Icterus_auricapillus  TRUE   17.3 No-migrant\n 8     8 Icterus_bonana        TRUE   16.9 No-migrant\n 9     9 Icterus_portoricensis TRUE   22.3 No-migrant\n10    10 Icterus_prosthemelas  TRUE   24.1 No-migrant\n# ℹ 189 more rows"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-44",
+    "href": "presentaciones/04_filogenias.html#section-44",
+    "title": "Filogenias",
+    "section": "",
+    "text": "¡Listo! Ahora tenemos una filogenia con atributos y podemos gráficarlos juntos\nPrimero gráficaremos los valores continuos del HWI sobre las puntas del árbol en una escala de colores:\n\np5&lt;-ggtree(datatree)\np5+\n  geom_tippoint(aes(color=hwi))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-45",
+    "href": "presentaciones/04_filogenias.html#section-45",
+    "title": "Filogenias",
+    "section": "",
+    "text": "podemos también personalizar esta escala:\n\np5+\n  geom_tippoint(aes(color=hwi),shape=15)+\n  scale_colour_gradient(low='blue', high='red',breaks= c(15,20,25,30,35))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-46",
+    "href": "presentaciones/04_filogenias.html#section-46",
+    "title": "Filogenias",
+    "section": "",
+    "text": "¿Y cómo se verían los datos binarios?\n\np5+\n  geom_tippoint(aes(color=migratory),shape=15)+\n  scale_colour_manual(values = c(\"green\",\"orange\"))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-47",
+    "href": "presentaciones/04_filogenias.html#section-47",
+    "title": "Filogenias",
+    "section": "",
+    "text": "y ¿Pueden combinarse?\nEsto puede hacerse con un lenguaje de dplyr\n\npx&lt;- py%&lt;+% migrants + geom_tippoint(aes(color=migratory),shape=15)+\n  scale_color_manual(values = c(\"#961d29\",\"#1420a3\"))+\n  scale_fill_manual(values = c(\"#961d29\",\"#1420a3\"))\n\n\npx+ geom_facet(panel=\"HWI\",data = hwi,geom=geom_col,mapping=aes(x=hwi,color=migratory,fill=migratory),orientation='y')+\n  theme_tree2()"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-48",
+    "href": "presentaciones/04_filogenias.html#section-48",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Pero, ¿Qué pasa si no me sé la taxonomía o no tengo la filogenía del grupo que estoy estudiando?"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-49",
+    "href": "presentaciones/04_filogenias.html#section-49",
+    "title": "Filogenias",
+    "section": "",
+    "text": "¿Se acuerdan de esta filogenia?\n\nphylopicNK"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-50",
+    "href": "presentaciones/04_filogenias.html#section-50",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Haciendo uso de recursos en línea como Open tree of Life(OTL), podemoos obtener una filogenia utilizando las especies que necesitemos."
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-51",
+    "href": "presentaciones/04_filogenias.html#section-51",
+    "title": "Filogenias",
+    "section": "",
+    "text": "OTL tiene un útil paquete en R (rotl), que usaremos para obtener la filogenia con la planta, aves y mamiferos.\n\nlibrary(\"rotl\")\notl_tree&lt;-rotl::tnrs_match_names(c(\"Quiscalus mexicanus\",\"Canis lupus\",\"Corvus corax\",\"Canis latrans\",\"Vulpes vulpes\",\"Desmodus rotundus\",\"Sideroxylon celastrinum\")) %&gt;% \n  pull(ott_id) %&gt;% \n  tol_induced_subtree(label_format=\"name\")\n\n\nProgress [---------------------------------] 0/209 (  0%) ?s\nProgress [==============================] 209/209 (100%)  0s"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-52",
+    "href": "presentaciones/04_filogenias.html#section-52",
+    "title": "Filogenias",
+    "section": "",
+    "text": "p_ott&lt;-ggtree(otl_tree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"blue\")\np_ott"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-53",
+    "href": "presentaciones/04_filogenias.html#section-53",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Para la función de rtol, no es necesario introducir las especies en orden, ya que ésta recuperará la taxonomia válida y nos arrojará una filogenia podada.\nEn este caso, OTL nos regresó exactamente la misma filogenia que creamos al principio:\n\np_nk&lt;-ggtree(Nktree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"red\")\n\np_ott/p_nk"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-54",
+    "href": "presentaciones/04_filogenias.html#section-54",
+    "title": "Filogenias",
+    "section": "",
+    "text": "Para la función de rtol, no es necesario introducir las especies en orden, ya que ésta recuperará la taxonomia válida y nos arrojará una filogenia podada.\nEn este caso, OTL nos regresó exactamente la misma filogenia que creamos al principio:\n\np_nk&lt;-ggtree(Nktree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"red\")\n\np_ott/p_nk"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#icteridae",
+    "href": "presentaciones/04_filogenias.html#icteridae",
+    "title": "Filogenias",
+    "section": "Icteridae",
+    "text": "Icteridae\n\nictree &lt;-read.tree(here(\"data\",\"Icteridae_tree.txt\"))\nictree\n\n\nPhylogenetic tree with 100 tips and 99 internal nodes.\n\nTip labels:\n  Icterus_melanopsis, Icterus_northropi, Icterus_laudabilis, Icterus_dominicensis, Icterus_cayanensis, Icterus_pyrrhopterus, ...\nNode labels:\n  761, 762, 763, 764, 765, 766, ...\n\nRooted; includes branch lengths."
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#section-38",
+    "href": "presentaciones/04_filogenias.html#section-38",
+    "title": "Filogenias",
+    "section": "",
+    "text": "y ¿Pueden combinarse?\nEsto puede hacerse con un lenguaje de dplyr\n\npx&lt;- py%&lt;+% migrants + geom_tippoint(aes(color=migratory),shape=15)+\n  scale_color_manual(values = c(\"#961d29\",\"#1420a3\"))+\n  scale_fill_manual(values = c(\"#961d29\",\"#1420a3\"))\n\n\npx+ geom_facet(panel=\"HWI\",data = hwi,geom=geom_col,mapping=aes(x=hwi,color=migratory,fill=migratory),orientation='y')+\n  theme_tree2()"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#exportando-objetos",
+    "href": "presentaciones/01_trabajando-con-R.html#exportando-objetos",
+    "title": "Trabajando con R",
+    "section": "Exportando objetos",
+    "text": "Exportando objetos\nExportamos objetos con funciones write que guardan un objeto como archivo en el disco.\n\nObjetos tabulares se pueden exportar a archivos de texto\n\n\nwrite.csv(miobjeto,\"carpeta-salida/datosLunes.txt\")\n# con readr\nreadr::write_tsv(miobjeto,\"carpeta-salida/datosLunes.tsv\")"
+  },
+  {
+    "objectID": "presentaciones/01_trabajando-con-R.html#exportando-objetos-1",
+    "href": "presentaciones/01_trabajando-con-R.html#exportando-objetos-1",
+    "title": "Trabajando con R",
+    "section": "Exportando objetos",
+    "text": "Exportando objetos\nEs posible guardar la imagen del entorno de trabajo\n\nsave.image(file = \"mis_objetos.RData\")\n\nFunción save() para exportar algunos objetos\n\nsave(x, y, file = \"dos_objetos.RData\")\n\nGuardar 1 objeto en RDS\n\nsaveRDS(x, file = \"mi_objeto.rds\")"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#anotaciones",
+    "href": "presentaciones/04_filogenias.html#anotaciones",
+    "title": "Filogenias",
+    "section": "Anotaciones",
+    "text": "Anotaciones\n\nej: destacar el género Quiscalus\n\n\nencontrar el nodo del ancestro en común más reciente\ncrear un tibble con la información del árbol\nbuscar las especies de Quiscalus:\n\n\nictree %&gt;%\n  as_tibble %&gt;%\n  filter(grepl(\"Quiscalus\",label))\n\n# A tibble: 6 × 4\n  parent  node branch.length label                  \n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;                  \n1    146    41         1.82  Quiscalus_quiscula     \n2    148    42         0.851 Quiscalus_niger        \n3    149    43         0.335 Quiscalus_major        \n4    149    44         0.335 Quiscalus_mexicanus    \n5    150    45         1.02  Quiscalus_nicaraguensis\n6    150    46         1.02  Quiscalus_lugubris"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html",
+    "href": "presentaciones/04_filogenias.html",
+    "title": "Filogenias",
+    "section": "",
+    "text": "here() starts at /media/luisd/H/sync/Dropbox/darcyDB/PDRF/PCB-R-curso"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#graficando-atributos-de-las-especies-en-la-filogenia.",
+    "href": "presentaciones/04_filogenias.html#graficando-atributos-de-las-especies-en-la-filogenia.",
+    "title": "Filogenias",
+    "section": "Graficando atributos de las especies en la filogenia.",
+    "text": "Graficando atributos de las especies en la filogenia.\nCargar los atributos, en este caso Hand Wing Index (HWI) y el hábito migratorio:\n\nhwi&lt;-read.csv(here(\"data\",\"hwi_icteridae.csv\"),header=T)\nhead(hwi)\n\n                     X      HWI\n1   Icterus_melanopsis 26.51912\n2    Icterus_northropi 21.02135\n3   Icterus_laudabilis 22.22500\n4 Icterus_dominicensis 26.52877\n5   Icterus_cayanensis 26.26213\n6 Icterus_pyrrhopterus 17.75463"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#filogenia-con-atributos",
+    "href": "presentaciones/04_filogenias.html#filogenia-con-atributos",
+    "title": "Filogenias",
+    "section": "Filogenia con atributos",
+    "text": "Filogenia con atributos\n\nValores continuos del HWI sobre las puntas del árbol en una escala de colores:\n\n\np5&lt;-ggtree(datatree)\np5+\n  geom_tippoint(aes(color=hwi))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#datos-binarios",
+    "href": "presentaciones/04_filogenias.html#datos-binarios",
+    "title": "Filogenias",
+    "section": "Datos binarios",
+    "text": "Datos binarios\n\np5+\n  geom_tippoint(aes(color=migratory),shape=15)+\n  scale_colour_manual(values = c(\"green\",\"orange\"))"
+  },
+  {
+    "objectID": "presentaciones/04_filogenias.html#combinando-atributos",
+    "href": "presentaciones/04_filogenias.html#combinando-atributos",
+    "title": "Filogenias",
+    "section": "Combinando atributos",
+    "text": "Combinando atributos\n\npx&lt;- py%&lt;+% migrants + geom_tippoint(aes(color=migratory),shape=15)+\n  scale_color_manual(values = c(\"#961d29\",\"#1420a3\"))+\n  scale_fill_manual(values = c(\"#961d29\",\"#1420a3\"))\n\npx+ geom_facet(panel=\"HWI\",data = hwi,geom=geom_col,mapping=aes(x=hwi,color=migratory,fill=migratory),orientation='y')+\n  theme_tree2()"
   }
 ]

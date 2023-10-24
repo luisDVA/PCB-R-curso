@@ -686,7 +686,7 @@ paises_m %>%
 :::
 :::
 
-Podemos contrar en dónde aparece la nueva columna con los argumentos `.before` y `.after`
+Podemos controlar en dónde aparece la nueva columna con los argumentos `.before` y `.after`
 
 ## `filter()`
 
@@ -1438,6 +1438,7 @@ ordenes_pizza %>%
 ordenes_pizza %>%
   distinct(Direccion,Colonia, .keep_all = TRUE)
 ```
+
 
 ## Ejercicio {background-color="#a4c5ff"}
 

@@ -1,12 +1,12 @@
 library(ggplot2)
 library(readr)
 
-#### Miércoles
+#### Martes 24
 #### Ejercicio 1
 
 
 # Cargar los datos
-ranas <- read_csv("archivos-ej/ranas.csv")
+ranas <- read_csv("datos/ranas.csv")
 
 # imprimir los datos en pantalla
 ranas
@@ -29,3 +29,4 @@ ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia, color=familia))+
 # ¿que pasa aquí?
 ggplot(ranas,aes(x=svl,y=freq_dom,shape=familia),color=familia)+
   geom_point()
+

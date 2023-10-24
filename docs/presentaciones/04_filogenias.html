@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Axel Arango &amp; Luis D. Verde Arregoitia">
+
+<title>PCB 2024-1 Grupo T446 - Filogenias</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      PCB 2024-1  Grupo T446
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PCB 2024-1 Grupo T446</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/luisDVA/PCB-R-curso" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../materiales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materiales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#filogenias-en-r" id="toc-filogenias-en-r" class="nav-link active" data-scroll-target="#filogenias-en-r">Filogenias en R</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#graficando-filogenias-con-ggtree" id="toc-graficando-filogenias-con-ggtree" class="nav-link" data-scroll-target="#graficando-filogenias-con-ggtree">Graficando filogenias con <code>ggtree</code></a></li>
+  <li><a href="#paquetes-necesarios" id="toc-paquetes-necesarios" class="nav-link" data-scroll-target="#paquetes-necesarios">Paquetes necesarios:</a></li>
+  <li><a href="#icteridae" id="toc-icteridae" class="nav-link" data-scroll-target="#icteridae">Icteridae</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"></a></li>
+  <li><a href="#anotaciones" id="toc-anotaciones" class="nav-link" data-scroll-target="#anotaciones">Anotaciones</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"></a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"></a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"></a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"></a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"></a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"></a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22"></a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23"></a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24"></a>
+  <ul class="collapse">
+  <li><a href="#enriquecer-figuras-con-imágenes" id="toc-enriquecer-figuras-con-imágenes" class="nav-link" data-scroll-target="#enriquecer-figuras-con-imágenes">Enriquecer figuras con imágenes</a></li>
+  <li><a href="#requisitos" id="toc-requisitos" class="nav-link" data-scroll-target="#requisitos">Requisitos</a></li>
+  </ul></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25"></a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26"></a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27"></a></li>
+  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28"></a></li>
+  <li><a href="#section-29" id="toc-section-29" class="nav-link" data-scroll-target="#section-29"></a></li>
+  <li><a href="#section-30" id="toc-section-30" class="nav-link" data-scroll-target="#section-30"></a></li>
+  <li><a href="#section-31" id="toc-section-31" class="nav-link" data-scroll-target="#section-31"></a></li>
+  <li><a href="#graficando-atributos-de-las-especies-en-la-filogenia." id="toc-graficando-atributos-de-las-especies-en-la-filogenia." class="nav-link" data-scroll-target="#graficando-atributos-de-las-especies-en-la-filogenia.">Graficando atributos de las especies en la filogenia.</a></li>
+  <li><a href="#section-32" id="toc-section-32" class="nav-link" data-scroll-target="#section-32"></a></li>
+  <li><a href="#section-33" id="toc-section-33" class="nav-link" data-scroll-target="#section-33"></a></li>
+  <li><a href="#filogenia-con-atributos" id="toc-filogenia-con-atributos" class="nav-link" data-scroll-target="#filogenia-con-atributos">Filogenia con atributos</a></li>
+  <li><a href="#section-34" id="toc-section-34" class="nav-link" data-scroll-target="#section-34"></a></li>
+  <li><a href="#datos-binarios" id="toc-datos-binarios" class="nav-link" data-scroll-target="#datos-binarios">Datos binarios</a></li>
+  <li><a href="#combinando-atributos" id="toc-combinando-atributos" class="nav-link" data-scroll-target="#combinando-atributos">Combinando atributos</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="04_filogenias.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Filogenias</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Axel Arango &amp; Luis D. Verde Arregoitia </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-1_5da631697a7a83c75c8d871dd3ce96b5">
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /media/luisd/H/sync/Dropbox/darcyDB/PDRF/PCB-R-curso</code></pre>
+</div>
+</div>
+<section id="filogenias-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="filogenias-en-r">Filogenias en R</h2>
+<p>¿árbol filogenético?</p>
+<p>. . .</p>
+<p>Diagrama que muestra la relación evolutiva/similitud entre especies (o taxones)</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p><br></p>
+<p>Uno de los formatos más utilizados para representar filogenias son el <em>Newick</em>(.tree)</p>
+<p><br><br></p>
+<p>El formato Newick es una notación para representar relaciones evolutivas utilizando paréntesis y comas.</p>
+<p>A y B se parecen más entre sí que a X</p>
+<div class="cell" data-hash="04_filogenias_cache/html/prueba newick_0b7466dc17dc69157abc3ca9caa44de8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"((A,B),X);"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "((A,B),X);"</code></pre>
+</div>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<p>Para trabajar con esta notación, podemos usar <code>ape</code> (Analysis of Phylogenetics and Evolution):</p>
+<div class="cell" data-hash="04_filogenias_cache/html/newick_e9305c459dd9d8b795701c73bb65e060">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.tree</span>(<span class="at">text=</span><span class="st">"((A,B),X);"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/newick-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<p>El formato Newick es anidado:</p>
+<p>Los lobos, coyotes y zorros pertenecen a Canidae; los lobos y coyotes (género <em>Canis</em>) están más estrechamente relacionados</p>
+<div class="cell" data-hash="04_filogenias_cache/html/canii_91eae2b27ef6b14c9c1de1072bcfc6b1">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Canidae <span class="ot">&lt;-</span><span class="st">"(Vulpes_vulpes,(Canis_lupus,Canis_latrans));"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.tree</span>(<span class="at">text=</span>Canidae) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/canii-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<p>Si agregamos murciélagos, todos pertenecen a los mamíferos:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-2_97a9f2a353668c426826bcd5b80a0829">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Mammalia <span class="ot">&lt;-</span><span class="st">"(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)));"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.tree</span>(<span class="at">text=</span>Mammalia) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<p>Si quisieramos agregar cuervos y zanates. ¿Éstos dónde irían?</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-3_1307184a33bb06356eb7c0d4eb6f55b1">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tetrapoda<span class="ot">&lt;-</span><span class="st">"((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans))));"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read.tree</span>(<span class="at">text=</span>tetrapoda) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5"></h2>
+<p>Agregando una planta, los mamíferos y las aves se anidan</p>
+<div class="cell" data-hash="04_filogenias_cache/html/planta_d6c8a1206bf34e2acb0e1efea017a605">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Eukarya<span class="ot">&lt;-</span><span class="st">"(Sideroxylon_celastrinum,((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans)))));"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Nktree<span class="ot">&lt;-</span><span class="fu">read.tree</span>(<span class="at">text=</span>Eukarya)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Nktree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/planta-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="graficando-filogenias-con-ggtree" class="level2">
+<h2 class="anchored" data-anchor-id="graficando-filogenias-con-ggtree">Graficando filogenias con <code>ggtree</code></h2>
+<p><code>ggtree</code> nos permite graficar, personalizar, anotar árboles filogenéticos usando la gramática de gráficos</p>
+</section>
+<section id="paquetes-necesarios" class="level2">
+<h2 class="anchored" data-anchor-id="paquetes-necesarios">Paquetes necesarios:</h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-5_e5f0a96ba3ae04e6b61b0165d45a8df1">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deeptime)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytree)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggimage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="icteridae" class="level2">
+<h2 class="anchored" data-anchor-id="icteridae">Icteridae</h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-6_b373d3285580db223519d13f440693a2">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="ot">&lt;-</span><span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"Icteridae_tree.txt"</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ictree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Phylogenetic tree with 100 tips and 99 internal nodes.
+
+Tip labels:
+  Icterus_melanopsis, Icterus_northropi, Icterus_laudabilis, Icterus_dominicensis, Icterus_cayanensis, Icterus_pyrrhopterus, ...
+Node labels:
+  761, 762, 763, 764, 765, 766, ...
+
+Rooted; includes branch lengths.</code></pre>
+</div>
+</div>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6"></h2>
+<p>Visualizando el objeto con <code>ape</code></p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-7_c68b69a0dc1052cb8127406209797180">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ictree, <span class="at">show.tip.label=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7"></h2>
+<p>Con <code>ggtree</code></p>
+<blockquote class="blockquote">
+<p>Asignamos la figura al objeto <code>p1</code></p>
+</blockquote>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-8_0a56635f9bc1a9cb14dc456b2fee9c2f">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggtree</span>(ictree,<span class="at">color=</span><span class="st">"black"</span>,<span class="at">size=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8"></h2>
+<p>El argumento/función <code>layout</code> cambia la disposición del árbol:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-9_84244b79e7ecff313ff111be327f2894">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span><span class="fu">layout_dendrogram</span>()<span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  p1<span class="sc">+</span><span class="fu">layout_fan</span>()<span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  p1<span class="sc">+</span><span class="fu">layout_circular</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Scale for y is already present.
+Adding another scale for y, which will replace the existing scale.
+Scale for y is already present.
+Adding another scale for y, which will replace the existing scale.
+Scale for y is already present.
+Adding another scale for y, which will replace the existing scale.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9"></h2>
+<p>Cambiar el color del fondo:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-10_23449c3895d83235b0f9afffcd926727">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tree</span>(<span class="at">bgcolor=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10"></h2>
+<p>Agregar las etiquetas de las puntas:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-11_4ceb6821a241aa8df751b5754e5d7f23">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tiplab</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">color=</span><span class="st">"darkblue"</span>,<span class="at">angle=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11"></h2>
+<p>Formas en cada punta</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-12_5e74ed0f3e7ca70e713f119bb48a5640">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tippoint</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">color=</span><span class="st">"brown"</span>,<span class="at">shape=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12"></h2>
+<p>Rotular nodos:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-13_c0c0610c9312488230a949cafe7177cb">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodelab</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">color=</span><span class="st">"purple"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13"></h2>
+<p>Puntos en cada nodo:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-14_07795ad4558a46ff36837453d0a66099">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodepoint</span>(<span class="at">size=</span><span class="dv">2</span>,<span class="at">color=</span><span class="st">"red"</span>,<span class="at">shape=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14"></h2>
+<p>A gregar una escala temporal a la filogenia, con el paquete <code>deeptime</code></p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-15_fa621aff25f19d712bc18434088f4e45">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>py<span class="ot">&lt;-</span><span class="fu">revts</span>(p1)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>py<span class="sc">+</span><span class="fu">coord_geo</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="at">abbrv =</span> F,<span class="at">neg=</span>T,<span class="at">skip=</span><span class="cn">NULL</span>,<span class="at">dat=</span><span class="st">"stage"</span>,<span class="at">size=</span><span class="fl">1.5</span>)<span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tree2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15"></h2>
+<p>Combinando <code>geoms</code></p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-16_220daa92e6d9bbadfc3a63bb18a1b4a4">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout_dendrogram</span>()<span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tree</span>(<span class="at">bgcolor=</span><span class="st">"#e9f0ea"</span>)<span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tiplab</span>(<span class="at">size=</span><span class="fl">0.5</span>,<span class="at">color=</span><span class="st">"darkblue"</span>,<span class="at">angle=</span><span class="dv">45</span>)<span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tippoint</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">color=</span><span class="st">"brown"</span>,<span class="at">shape=</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodelab</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodepoint</span>(<span class="at">size=</span><span class="dv">2</span>,<span class="at">color=</span><span class="st">"red"</span>,<span class="at">alpha=</span><span class="fl">0.3</span>,<span class="at">shape=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="anotaciones" class="level2">
+<h2 class="anchored" data-anchor-id="anotaciones">Anotaciones</h2>
+<blockquote class="blockquote">
+<p>ej: destacar el género <em>Quiscalus</em></p>
+</blockquote>
+<ul>
+<li>encontrar el nodo del ancestro en común más reciente</li>
+<li>crear un <em>tibble</em> con la información del árbol</li>
+<li>buscar las especies de <em>Quiscalus</em>:</li>
+</ul>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-17_2eaabe8ae38139e0bce6d3c14ff99b1f">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Quiscalus"</span>,label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  parent  node branch.length label                  
+   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;                  
+1    146    41         1.82  Quiscalus_quiscula     
+2    148    42         0.851 Quiscalus_niger        
+3    149    43         0.335 Quiscalus_major        
+4    149    44         0.335 Quiscalus_mexicanus    
+5    150    45         1.02  Quiscalus_nicaraguensis
+6    150    46         1.02  Quiscalus_lugubris     </code></pre>
+</div>
+</div>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16"></h2>
+<p>Ancestro común más reciente (<code>MRCA()</code>) de las dos especies en el género con la longitud de rama más larga y más corta</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-18_079ace0b029f6e128387d6fd786adf5b">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">MRCA</span>(<span class="dv">41</span>,<span class="dv">43</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  parent  node branch.length label
+   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;
+1    144   146          1.37 806  </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-19_f3e44d725a38ad931b097fa12e8eda15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">MRCA</span>(<span class="st">"Quiscalus_quiscula"</span>,<span class="st">"Quiscalus_mexicanus"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  parent  node branch.length label
+   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;
+1    144   146          1.37 806  </code></pre>
+</div>
+</div>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17"></h2>
+<p>Anotar el género <em>Quiscalus</em> en la filogenia utilizando <code>geom_cladelab</code> (nodo 146)</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-20_879048b09e0f868ea757cf2fa356dd70">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_cladelab</span>(<span class="at">node=</span><span class="dv">146</span>,<span class="at">label =</span> <span class="st">"Quiscalus"</span>,<span class="at">offset=</span><span class="dv">0</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">barcolor=</span><span class="st">"red"</span>,<span class="at">textcolor=</span><span class="st">"brown"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">angle=</span><span class="sc">-</span><span class="dv">90</span>, <span class="at">offset.text=</span><span class="fl">0.1</span>,<span class="at">hjust=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18"></h2>
+<p>Destacar el género<em>Icterus</em>:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-21_f732f6e5a26fc6391b9dfb3ee62bf8f3">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Icterus"</span>,label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31 × 4
+   parent  node branch.length label                
+    &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;                
+ 1    111     1         0.193 Icterus_melanopsis   
+ 2    111     2         0.193 Icterus_northropi    
+ 3    114     3         1.47  Icterus_laudabilis   
+ 4    114     4         1.47  Icterus_dominicensis 
+ 5    116     5         0.197 Icterus_cayanensis   
+ 6    116     6         0.197 Icterus_pyrrhopterus 
+ 7    115     7         0.943 Icterus_auricapillus 
+ 8    117     8         1.49  Icterus_bonana       
+ 9    117     9         1.49  Icterus_portoricensis
+10    118    10         2.24  Icterus_prosthemelas 
+# ℹ 21 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19"></h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-22_40f34a6d2a70748dccf0598b8372870a">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ictree <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">MRCA</span>(<span class="dv">25</span>,<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  parent  node branch.length label
+   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;
+1    103   104          2.92 764  </code></pre>
+</div>
+</div>
+</section>
+<section id="section-20" class="level2">
+<h2 class="anchored" data-anchor-id="section-20"></h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-23_d0476a6b9438ebc5635c3bae4d43bd8a">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span><span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">11</span>)<span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_cladelab</span>(<span class="at">node=</span><span class="dv">104</span>,<span class="at">label=</span><span class="st">"Icterus"</span>,<span class="at">geom=</span><span class="st">"label"</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill=</span><span class="st">"yellow"</span>,<span class="at">textcolor=</span><span class="st">"red"</span>, <span class="at">barcolor=</span><span class="st">"gray"</span>,<span class="at">angle=</span><span class="dv">90</span>,<span class="at">size=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-21" class="level2">
+<h2 class="anchored" data-anchor-id="section-21"></h2>
+<p><code>geom_strip()</code> para dibujar líneas entre dos puntas arbitrarias</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-24_3f184e7a6c456fc8e7e0d6ccd345232c">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span><span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_strip</span>(<span class="st">"Quiscalus_quiscula"</span>,<span class="st">"Icterus_icterus"</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">label=</span><span class="st">" un clado polifilético"</span>, <span class="at">barsize =</span> <span class="dv">2</span>, <span class="at">offset.text =</span> <span class="fl">0.2</span>,<span class="at">size=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-22" class="level2">
+<h2 class="anchored" data-anchor-id="section-22"></h2>
+<p><code>geom_highlight</code> para destacar clados sobre las mismas ramas:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-25_d91f3e7496ce41d78e0582f37df64c1d">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_highlight</span>(<span class="at">node=</span><span class="dv">146</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">fill=</span><span class="st">"purple"</span>,<span class="at">type =</span> <span class="st">"rect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-23" class="level2">
+<h2 class="anchored" data-anchor-id="section-23"></h2>
+<p>highlight + rótulo</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-26_ffca57cdef45d8839335bf8dcc90cb92">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_highlight</span>(<span class="at">node=</span><span class="dv">146</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">fill=</span><span class="st">"purple"</span>,<span class="at">type =</span> <span class="st">"rect"</span>)<span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_cladelab</span>(<span class="at">node=</span><span class="dv">146</span>,<span class="at">label =</span> <span class="st">"Quiscalus"</span>,<span class="at">offset=</span><span class="dv">0</span>,<span class="at">barcolor=</span><span class="st">"#9418f2"</span>,<span class="at">textcolor=</span><span class="st">"#4c0980"</span>, <span class="at">offset.text=</span><span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="fl">11.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-24" class="level2">
+<h2 class="anchored" data-anchor-id="section-24"></h2>
+<section id="enriquecer-figuras-con-imágenes" class="level3">
+<h3 class="anchored" data-anchor-id="enriquecer-figuras-con-imágenes">Enriquecer figuras con imágenes</h3>
+<ul>
+<li><p>siluetas desde <a href="https://www.phylopic.org/">phylopic</a> o imagenes propias.</p></li>
+<li><p>Es necesario cargar <code>rsvg</code> primero</p></li>
+</ul>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-27_c22c8bfc89eecd95930fecad4e92b172">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rsvg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to librsvg 2.48.9</code></pre>
+</div>
+</div>
+</section>
+<section id="requisitos" class="level3">
+<h3 class="anchored" data-anchor-id="requisitos">Requisitos</h3>
+<ul>
+<li>tabla con nodos, especies o clados a anotar, y el identificador de los mismos en Phylopic (<em>phylopic_id</em>)</li>
+</ul>
+</section>
+</section>
+<section id="section-25" class="level2">
+<h2 class="anchored" data-anchor-id="section-25"></h2>
+<p><em>Quiscalus</em> y <em>Agelaius</em> tienen imagenes indexadas en <em>phylopic</em></p>
+<p>Encontrar los identificadores con <code>phylopic_uid()</code></p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-28_3696891c2c5e80df620f5076d0895ad8">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ids<span class="ot">&lt;-</span><span class="fu">phylopic_uid</span>(<span class="fu">c</span>(<span class="st">"Quiscalus"</span>,<span class="st">"Agelaius"</span>))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>ids</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name                                  uid
+Quiscalus Quiscalus 2ada4e2f-35ab-48d2-b32e-3bad57033dd4
+Agelaius   Agelaius 2a48d7c6-5e9d-4d71-9291-ff4c68643cdf</code></pre>
+</div>
+</div>
+</section>
+<section id="section-26" class="level2">
+<h2 class="anchored" data-anchor-id="section-26"></h2>
+<p>Tabla con los datos necesarios para anotar nuestra filogenia:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-29_5db6a5d4c3451fe58d49487d8725c0d5">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dt<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">node=</span><span class="fu">c</span>(<span class="dv">146</span>,<span class="dv">136</span>),<span class="at">image=</span>ids<span class="sc">$</span>uid,<span class="at">genus=</span><span class="fu">c</span>(<span class="st">"Quiscalus"</span>,<span class="st">"Agelaius"</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  node                                image     genus
+1  146 2ada4e2f-35ab-48d2-b32e-3bad57033dd4 Quiscalus
+2  136 2a48d7c6-5e9d-4d71-9291-ff4c68643cdf  Agelaius</code></pre>
+</div>
+</div>
+</section>
+<section id="section-27" class="level2">
+<h2 class="anchored" data-anchor-id="section-27"></h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-30_55ab04d391a23b1470db595fe8c9f373">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span> <span class="fu">geom_cladelab</span>(<span class="at">data =</span> dt, </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">node =</span> node, <span class="at">label =</span> genus, </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">image =</span> image, <span class="at">color =</span> genus), </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">geom =</span> <span class="st">"phylopic"</span>, <span class="at">offset =</span> <span class="dv">0</span>, <span class="at">offset.text=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-28" class="level2">
+<h2 class="anchored" data-anchor-id="section-28"></h2>
+<p>Cambiando los colores de las figuras siguiendo gramática de gráficos:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-31_fba276e7e7304629d06625e790522209">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span> <span class="fu">geom_cladelab</span>(<span class="at">data =</span> dt, </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">node =</span> node, <span class="at">label =</span> genus, </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">image =</span> image, <span class="at">color =</span> genus), </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">geom =</span> <span class="st">"phylopic"</span>, <span class="at">offset =</span> <span class="dv">0</span>, <span class="at">offset.text=</span><span class="fl">0.5</span>)<span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#f75419"</span>,<span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-29" class="level2">
+<h2 class="anchored" data-anchor-id="section-29"></h2>
+<p>Más <code>geoms</code></p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-32_da1681385d39bf2573ff084c6d49bd8e">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pr<span class="ot">&lt;-</span>p1<span class="sc">+</span> <span class="fu">geom_cladelab</span>(<span class="at">data =</span> dt, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">node =</span> node, <span class="at">label =</span> genus, </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">image =</span> image, <span class="at">color =</span> genus), </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">geom =</span> <span class="st">"phylopic"</span>, <span class="at">offset =</span> <span class="dv">0</span>, <span class="at">offset.text=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#f75419"</span>,<span class="st">"purple"</span>))<span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_highlight</span>(<span class="at">node=</span><span class="dv">146</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">fill=</span><span class="st">"purple"</span>,<span class="at">type =</span> <span class="st">"rect"</span>)<span class="sc">+</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_highlight</span>(<span class="at">node=</span><span class="dv">136</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">fill=</span><span class="st">"#f75419"</span>,<span class="at">type =</span> <span class="st">"rect"</span>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>pr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-30" class="level2">
+<h2 class="anchored" data-anchor-id="section-30"></h2>
+<p>Ejemplo con múltiples anotaciones por Axel Arango:</p>
+</section>
+<section id="section-31" class="level2">
+<h2 class="anchored" data-anchor-id="section-31"></h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-34_8ebf7f161d40cec363a4b3ec1e1adc65">
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="graficando-atributos-de-las-especies-en-la-filogenia." class="level2">
+<h2 class="anchored" data-anchor-id="graficando-atributos-de-las-especies-en-la-filogenia.">Graficando atributos de las especies en la filogenia.</h2>
+<p>Cargar los atributos, en este caso Hand Wing Index (HWI) y el hábito migratorio:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-35_79f3668f8fe3eb7ace12ef8e1f7a2fe4">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>hwi<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"hwi_icteridae.csv"</span>),<span class="at">header=</span>T)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hwi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     X      HWI
+1   Icterus_melanopsis 26.51912
+2    Icterus_northropi 21.02135
+3   Icterus_laudabilis 22.22500
+4 Icterus_dominicensis 26.52877
+5   Icterus_cayanensis 26.26213
+6 Icterus_pyrrhopterus 17.75463</code></pre>
+</div>
+</div>
+</section>
+<section id="section-32" class="level2">
+<h2 class="anchored" data-anchor-id="section-32"></h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-36_5bc46e91fd087038db6ffafd8f88d698">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>migrants<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"icterimigrants.csv"</span>),<span class="at">header=</span>T)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(migrants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   sp  migratory
+1  Agelaioides_badius No-migrant
+2  Agelaius_assimilis No-migrant
+3  Agelaius_humeralis No-migrant
+4 Agelaius_phoeniceus    Migrant
+5   Agelaius_tricolor No-migrant
+6  Agelaius_xanthomus No-migrant</code></pre>
+</div>
+</div>
+</section>
+<section id="section-33" class="level2">
+<h2 class="anchored" data-anchor-id="section-33"></h2>
+<p>Unienr con la filogenia (es importante que las especies estén rotuladas como label)</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-37_a9aa0b47ed2bf14b5381631001b721f3">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hwi)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"hwi"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(migrants)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"migratory"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>hwimigrants<span class="ot">&lt;-</span>hwi<span class="sc">%&gt;%</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(migrants,<span class="at">by=</span><span class="st">"label"</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>datatree<span class="ot">&lt;-</span><span class="fu">full_join</span>(ictree,hwimigrants,<span class="at">by=</span><span class="st">"label"</span>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>datatree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'treedata' S4 object'.
+
+...@ phylo:
+
+Phylogenetic tree with 100 tips and 99 internal nodes.
+
+Tip labels:
+  Icterus_melanopsis, Icterus_northropi, Icterus_laudabilis,
+Icterus_dominicensis, Icterus_cayanensis, Icterus_pyrrhopterus, ...
+Node labels:
+  761, 762, 763, 764, 765, 766, ...
+
+Rooted; includes branch lengths.
+
+with the following features available:
+  '', 'hwi', 'migratory'.
+
+# The associated data tibble abstraction: 199 × 5
+# The 'node', 'label' and 'isTip' are from the phylo tree.
+    node label                 isTip   hwi migratory 
+   &lt;int&gt; &lt;chr&gt;                 &lt;lgl&gt; &lt;dbl&gt; &lt;chr&gt;     
+ 1     1 Icterus_melanopsis    TRUE   26.5 No-migrant
+ 2     2 Icterus_northropi     TRUE   21.0 No-migrant
+ 3     3 Icterus_laudabilis    TRUE   22.2 No-migrant
+ 4     4 Icterus_dominicensis  TRUE   26.5 No-migrant
+ 5     5 Icterus_cayanensis    TRUE   26.3 No-migrant
+ 6     6 Icterus_pyrrhopterus  TRUE   17.8 No-migrant
+ 7     7 Icterus_auricapillus  TRUE   17.3 No-migrant
+ 8     8 Icterus_bonana        TRUE   16.9 No-migrant
+ 9     9 Icterus_portoricensis TRUE   22.3 No-migrant
+10    10 Icterus_prosthemelas  TRUE   24.1 No-migrant
+# ℹ 189 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="filogenia-con-atributos" class="level2">
+<h2 class="anchored" data-anchor-id="filogenia-con-atributos">Filogenia con atributos</h2>
+<ul>
+<li>Valores continuos del HWI sobre las puntas del árbol en una escala de colores:</li>
+</ul>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-38_85c2ac7e97f7d6de743734b51e1f0748">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>p5<span class="ot">&lt;-</span><span class="fu">ggtree</span>(datatree)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">+</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tippoint</span>(<span class="fu">aes</span>(<span class="at">color=</span>hwi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="section-34" class="level2">
+<h2 class="anchored" data-anchor-id="section-34"></h2>
+<p>podemos también personalizar esta escala:</p>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-39_d312209c31e8979ef26b330ce1278aa4">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">+</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tippoint</span>(<span class="fu">aes</span>(<span class="at">color=</span>hwi),<span class="at">shape=</span><span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_gradient</span>(<span class="at">low=</span><span class="st">'blue'</span>, <span class="at">high=</span><span class="st">'red'</span>,<span class="at">breaks=</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="datos-binarios" class="level2">
+<h2 class="anchored" data-anchor-id="datos-binarios">Datos binarios</h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-40_07bd4e4f5f881f4f3e8c9e34ebc2c2fb">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">+</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tippoint</span>(<span class="fu">aes</span>(<span class="at">color=</span>migratory),<span class="at">shape=</span><span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"green"</span>,<span class="st">"orange"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="combinando-atributos" class="level2">
+<h2 class="anchored" data-anchor-id="combinando-atributos">Combinando atributos</h2>
+<div class="cell" data-hash="04_filogenias_cache/html/unnamed-chunk-41_e076cd7c8dbd5b5309105f609e51c1c0">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>px<span class="ot">&lt;-</span> py<span class="sc">%&lt;+%</span> migrants <span class="sc">+</span> <span class="fu">geom_tippoint</span>(<span class="fu">aes</span>(<span class="at">color=</span>migratory),<span class="at">shape=</span><span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#961d29"</span>,<span class="st">"#1420a3"</span>))<span class="sc">+</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#961d29"</span>,<span class="st">"#1420a3"</span>))</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>px<span class="sc">+</span> <span class="fu">geom_facet</span>(<span class="at">panel=</span><span class="st">"HWI"</span>,<span class="at">data =</span> hwi,<span class="at">geom=</span>geom_col,<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>hwi,<span class="at">color=</span>migratory,<span class="at">fill=</span>migratory),<span class="at">orientation=</span><span class="st">'y'</span>)<span class="sc">+</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tree2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04_filogenias_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Luis D. Verde Arregoitia</div>   
+    <div class="nav-footer-center">Página creada con <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right"><img src="presentaciones/imgs/UNAM-posgrado-300x87.png" class="img-fluid" width="120"> <img src="presentaciones/imgs/logoPCB.png" class="img-fluid" width="120"></div>
+  </div>
+</footer>
+
+
+
+</body></html>

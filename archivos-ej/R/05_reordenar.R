@@ -1,10 +1,13 @@
+# martes 24
+# ej 5, reordenar categorías
 library(ggplot2)
 library(forcats)
 
 
 # cargar datos
-gateo <- read.csv("archivos-ej/edad_gateo.csv")
+gateo <- read.csv("datos/edad_gateo.csv")
 gateo
+
 # barras
 ggplot(gateo,aes(x=mes_nacimiento,y=edad_gateo))+
   geom_bar(stat = "identity",fill="#0a4e96",color="black")
@@ -32,6 +35,7 @@ ggplot(gateo,
 
 
 # agregar titulo
+
 
 # ¿cómo podemos acomodar los meses cronológicamente?
 

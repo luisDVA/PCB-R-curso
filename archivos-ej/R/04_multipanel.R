@@ -1,8 +1,9 @@
-# ejercicio 3, facetas
+# martes 24
+# ejercicio 4 facetas
 library(ggplot2)
 
 # Cargar los datos
-cafeteria <- read.csv("archivos-ej/cafeteria.csv")
+cafeteria <- read.csv("datos/cafeteria.csv")
 
 # gráfico inicial
 ggplot(cafeteria,
@@ -21,7 +22,7 @@ ggplot(cafeteria,
        aes(x=grasa,y=energia,shape=bajo_grasa, color=bajo_grasa))+
   geom_point(size=4)+
   labs(x="grasa",y="energía", title="Menú Cafetería")+
-  facet_wrap("bajo_grasa") # notación de formula
+  facet_wrap("bajo_grasa") # nombre entre comillas
 
 
 # cambiar no. de columnas
@@ -66,5 +67,3 @@ ggplot(cafeteria,
    theme(legend.position="none")
 
 
-ggplot(cafeteria,aes(carbohidratos,proteina))+
-  geom_point()+facet_wrap("tipo")

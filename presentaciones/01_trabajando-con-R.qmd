@@ -840,5 +840,41 @@ Paquetes adicionales para importar datos rectangulares desde archivos de texto y
 
 Importar una tabla a R desde un archivo
 
+## Exportando objetos
 
-# ¿Dudas?
+Exportamos objetos con funciones `write` que guardan un objeto como archivo en el disco.
+
+- Objetos tabulares se pueden exportar a archivos de texto 
+
+```{r}
+#| eval: false
+
+write.csv(miobjeto,"carpeta-salida/datosLunes.txt")
+# con readr
+readr::write_tsv(miobjeto,"carpeta-salida/datosLunes.tsv")
+
+```
+
+## Exportando objetos
+
+
+Es posible guardar la imagen del entorno de trabajo
+
+```{r}
+#| eval: false   
+save.image(file = "mis_objetos.RData")
+```
+
+Función `save()` para exportar algunos objetos
+
+```{r}
+#| eval: false   
+save(x, y, file = "dos_objetos.RData")
+```
+
+Guardar 1 objeto en RDS
+
+```{r}
+#| eval: false   
+saveRDS(x, file = "mi_objeto.rds")
+```
