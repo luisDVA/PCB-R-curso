@@ -21,6 +21,8 @@ Estas presentaciones en formato web cuentan con un índice de contenidos interac
 
 [Preparación de datos ](presentaciones/02_preparacion-de-datos.qmd){.external target="_blank"}
 
+### Martes 24
+
 [Visualización](presentaciones/03_visualización.qmd){.external target="_blank"}
 
 [Filogenias](presentaciones/04_filogenias.qmd){.external target="_blank"}
