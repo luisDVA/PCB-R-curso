@@ -1404,7 +1404,7 @@
     "href": "presentaciones/04_filogenias.html#filogenias-en-r",
     "title": "Filogenias",
     "section": "Filogenias en R",
-    "text": "Filogenias en R\n¿árbol filogenético?\n. . .\nDiagrama que muestra la relación evolutiva/similitud entre especies (o taxones)"
+    "text": "Filogenias en R\n¿árbol filogenético?\n\nDiagrama que muestra la relación evolutiva/similitud entre especies (o taxones)"
   },
   {
     "objectID": "presentaciones/04_filogenias.html#section",
@@ -1488,7 +1488,7 @@
     "href": "presentaciones/04_filogenias.html#section-8",
     "title": "Filogenias",
     "section": "",
-    "text": "El argumento/función layout cambia la disposición del árbol:\n\np1+layout_dendrogram()+\n  p1+layout_fan()+\n  p1+layout_circular()\n\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale.\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale.\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale."
+    "text": "El argumento/función layout cambia la disposición del árbol:\n\np1+layout_dendrogram()+\n  p1+layout_fan()+\n  p1+layout_circular()"
   },
   {
     "objectID": "presentaciones/04_filogenias.html#section-9",
@@ -1544,7 +1544,7 @@
     "href": "presentaciones/04_filogenias.html#section-16",
     "title": "Filogenias",
     "section": "",
-    "text": "Ancestro común más reciente (MRCA()) de las dos especies en el género con la longitud de rama más larga y más corta\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(41,43)\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806  \n\n\n. . .\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(\"Quiscalus_quiscula\",\"Quiscalus_mexicanus\")\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806"
+    "text": "Ancestro común más reciente (MRCA()) de las dos especies en el género con la longitud de rama más larga y más corta\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(41,43)\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806  \n\n\n\n\nictree %&gt;%\n  as_tibble %&gt;%\n  MRCA(\"Quiscalus_quiscula\",\"Quiscalus_mexicanus\")\n\n# A tibble: 1 × 4\n  parent  node branch.length label\n   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;\n1    144   146          1.37 806"
   },
   {
     "objectID": "presentaciones/04_filogenias.html#section-17",
@@ -1600,7 +1600,7 @@
     "href": "presentaciones/04_filogenias.html#section-24",
     "title": "Filogenias",
     "section": "",
-    "text": "Enriquecer figuras con imágenes\n\nsiluetas desde phylopic o imagenes propias.\nEs necesario cargar rsvg primero\n\n\nlibrary(\"rsvg\")\n\nLinking to librsvg 2.48.9\n\n\n\n\nRequisitos\n\ntabla con nodos, especies o clados a anotar, y el identificador de los mismos en Phylopic (phylopic_id)"
+    "text": "Enriquecer figuras con imágenes\n\nsiluetas desde phylopic o imagenes propias.\nEs necesario cargar rsvg primero\n\n\nlibrary(\"rsvg\")\n\nRequisitos\n\ntabla con nodos, especies o clados a anotar, y el identificador de los mismos en Phylopic (phylopic_id)"
   },
   {
     "objectID": "presentaciones/04_filogenias.html#section-25",
