@@ -26,3 +26,5 @@ Estas presentaciones en formato web cuentan con un índice de contenidos interac
 [Visualización](presentaciones/03_visualización.qmd){.external target="_blank"}
 
 [Filogenias](presentaciones/04_filogenias.qmd){.external target="_blank"}
+
+[Presentación Dr. Andrés Parada](presentaciones/EcologySeqMass.pdf)
